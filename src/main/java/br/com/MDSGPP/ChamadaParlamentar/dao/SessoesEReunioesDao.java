@@ -68,7 +68,7 @@ public class SessoesEReunioesDao {
 		}			
 	}
 
-	public void adicionarSessaoNaTable(String data)
+	public void adcionarSessaoNaTable(String data)
 			throws SQLException, ClassNotFoundException, MalformedURLException, ServiceException {
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
@@ -78,7 +78,6 @@ public class SessoesEReunioesDao {
 
 		for(int i = 0; i<lista.size(); i++) {
 			double porcentagem = (((double)(i)/(double)lista.size())*100.0);
-
 
 			System.out.println(i+"- " + porcentagem+"%");
 			Calendar hoje = new GregorianCalendar();

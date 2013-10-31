@@ -53,7 +53,7 @@ public class ConexaoComWsDeputados {
 		}	
 	}
 	
-	public ArrayList<Deputados> criaLista() throws MalformedURLException,
+	public static ArrayList<Deputados> criaLista() throws MalformedURLException,
 	UnknownHostException, ServiceException {
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 		ObterDeputadosResponseObterDeputadosResult deputados;

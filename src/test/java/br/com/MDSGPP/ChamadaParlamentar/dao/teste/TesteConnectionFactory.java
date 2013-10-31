@@ -20,6 +20,7 @@ public class TesteConnectionFactory {
 	public void test() {
 		assertNotNull(connection);
 	}
+	
 	@Test
 	public void testGet() throws ClassNotFoundException{
 		assertNotNull(connection.getConnection());
