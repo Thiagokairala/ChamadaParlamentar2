@@ -12,12 +12,12 @@ import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReu
 
 public class TesteConexaoComWsSessoesEReunioes {
 
-	@Test
+	//@Test
 	public void testObterConexao() throws MalformedURLException, ServiceException {
 		assertNotNull(ConexaoComWsSessoesEReunioes.obterConexao());
 	}
 
-	@Test
+	//@Test
 	public void testReceberElementPresenca() throws MalformedURLException, ServiceException {
 		assertNotNull(ConexaoComWsSessoesEReunioes.
 				receberElementPresenca(ConexaoComWsSessoesEReunioes.obterConexao(), 
