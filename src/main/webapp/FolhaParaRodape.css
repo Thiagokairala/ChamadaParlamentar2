@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+#rodape {
+	clear: both;
+	background: #8B0000;
+	height: 20px;
+	border-width: 2px;
+	border-color: #FFD39B;
+	border-top-style: solid;
+	border-bottom-style: solid;
+}
+
+#rodape p {
+	margin-left: 860px;
+	margin-top: 0px;
+	font-family: "Lily Script One";
+}
+
+#rodape a {
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#rodape a:hover {
+	font-style: italic;
+	font-weight: bold;
+}

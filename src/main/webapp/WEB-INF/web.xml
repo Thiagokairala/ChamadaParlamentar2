@@ -1,0 +1,11 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>Parlamentar Recebido</servlet-name>
+        <servlet-class>br.com.MDSGPP.ChamadaParlamentar.control.ParlamentarRecebido</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Parlamentar Recebido</servlet-name>
+        <url-pattern>/parlamentarRecebido</url-pattern>
+    </servlet-mapping>
+</web-app>
