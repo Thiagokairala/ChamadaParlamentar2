@@ -1,4 +1,4 @@
-package br.com.MDSGPP.ChamadaParlamentar.control;
+package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 
