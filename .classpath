@@ -25,5 +25,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/2.37.1/selenium-firefox-driver-2.37.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-java/2.37.1/selenium-java-2.37.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-support/2.37.1/selenium-support-2.37.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-server/2.37.1/selenium-server-2.37.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-api/2.37.1/selenium-api-2.37.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nilton/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/2.37.1/selenium-remote-driver-2.37.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
