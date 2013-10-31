@@ -1,21 +1,12 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao;
 
-import java.net.MalformedURLException;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.xml.rpc.ServiceException;
-
-import org.apache.axis.message.MessageElement;
-import org.w3c.dom.NodeList;
-
-import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsDeputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
-import br.gov.camara.www.SitCamaraWS.Deputados.ObterDeputadosResponseObterDeputadosResult;
 
 public class DeputadoDao {
 
@@ -102,19 +93,15 @@ public class DeputadoDao {
 	}
 
 	public Deputados receberDadosDeputado(String nome) {
-<<<<<<< HEAD
+
 		String sql = "select * from deputado where nomeCivil = ?";
-=======
-		String sql = "select * from deputado where nomeCivil = "+ nome;
->>>>>>> 0d8502447a8d2c9de999c81445bdc52494039b55
 
 		PreparedStatement stmt;
 		try {
 			stmt = this.conexao.prepareStatement(sql);
-<<<<<<< HEAD
+
 			stmt.setString(1, nome);
-=======
->>>>>>> 0d8502447a8d2c9de999c81445bdc52494039b55
+
 			ResultSet rs = stmt.executeQuery();
 
 			Deputados deputado = new Deputados(rs.getInt("idParlamentar"), rs.getInt("matricula"),
