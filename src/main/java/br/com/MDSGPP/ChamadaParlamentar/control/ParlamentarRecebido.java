@@ -1,11 +1,7 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
 import java.io.IOException;
-<<<<<<< HEAD
-=======
-import java.sql.SQLException;
-import java.util.ArrayList;
->>>>>>> 0d8502447a8d2c9de999c81445bdc52494039b55
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

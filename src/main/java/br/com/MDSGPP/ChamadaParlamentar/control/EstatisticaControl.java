@@ -5,10 +5,8 @@ import java.text.DecimalFormat;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.EstatisticaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
-<<<<<<< HEAD
+
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionEstatistica;
-=======
->>>>>>> 0d8502447a8d2c9de999c81445bdc52494039b55
 import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
