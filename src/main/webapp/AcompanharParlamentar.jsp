@@ -22,7 +22,6 @@
 <title>Acompanhar Parlamentar</title>
 
 <jsp:useBean id="service" class="br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl" />
-
 </head>
 <body>
 
