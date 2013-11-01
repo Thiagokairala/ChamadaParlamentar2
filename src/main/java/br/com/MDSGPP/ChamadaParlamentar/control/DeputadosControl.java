@@ -1,6 +1,5 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,6 +16,7 @@ public class DeputadosControl {
 		DeputadoDao deputado;
 		try {
 			deputado = new DeputadoDao();
+						
 			return deputado.getNomesDeputados();
 		} catch (SQLException e) {
 			e.printStackTrace();

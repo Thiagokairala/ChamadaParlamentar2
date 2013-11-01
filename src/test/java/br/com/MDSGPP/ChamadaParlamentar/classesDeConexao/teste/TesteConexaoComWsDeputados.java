@@ -23,13 +23,13 @@ public class TesteConexaoComWsDeputados {
 		conexao = new ConexaoComWsDeputados();
 	}
 	
-	@Test
+	//@Test
 	public void testObterConexao() throws MalformedURLException,
 	UnknownHostException, ServiceException {
 		assertNotNull(ConexaoComWsDeputados.obterConexao());
 	}
 
-	@Test
+	//@Test
 	public void testReceberElementDeputados() throws MalformedURLException,
 	UnknownHostException, ServiceException {
 		assertNotNull(ConexaoComWsDeputados.
@@ -37,7 +37,7 @@ public class TesteConexaoComWsDeputados {
 						obterConexao()));
 	}
 	
-	@Test
+	//@Test
 	public void testCriaLista() throws MalformedURLException,
 	UnknownHostException, ServiceException {
 		ArrayList<Deputados> lista = conexao.criaLista();
