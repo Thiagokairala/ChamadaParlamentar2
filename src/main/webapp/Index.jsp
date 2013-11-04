@@ -38,7 +38,8 @@
 
 		</div><!-- fim da id principal -->
 	
-	
+		
+		<jsp:include page = 'Footer.html'/>
 	</div><!--fim da div tudo-->
 	
 </body>
