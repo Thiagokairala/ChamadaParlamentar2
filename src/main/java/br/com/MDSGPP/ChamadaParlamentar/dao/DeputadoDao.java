@@ -21,8 +21,7 @@ public class DeputadoDao {
 	}
 
 	public void adicionaDeputado(ArrayList<Deputados> deputados) throws SQLException {
-
-		String sql = "insert into deputado" + "(idParlamentar, matricula, ideCadastro, "
+		String sql = "insert into deputado(idParlamentar, matricula, ideCadastro, "
 				+ "nomeCivil, nomeDeTratamento, sexo, uf, partido"
 				+ ", numeroDoGabinete, anexo, telefone, email)" +
 				"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -30,7 +29,7 @@ public class DeputadoDao {
 
 		PreparedStatement stmt = conexao.prepareStatement(sql);
 		for(int i = 0; i<deputados.size(); i++) {
-
+	
 			stmt.setInt(1, deputados.get(i).getIdDoParlamentar());
 			stmt.setInt(2, deputados.get(i).getMatricula());
 			stmt.setInt(3, deputados.get(i).getIdeCadastro());
@@ -97,7 +96,7 @@ public class DeputadoDao {
 
 	public Deputados receberDadosDeputado(String nome) {
 
-		String sql = "select * from deputado where nomeCivil = ?";
+		String sql = "select * from deputado where nomeDeTratamento = ?";
 
 		PreparedStatement stmt;
 		try {

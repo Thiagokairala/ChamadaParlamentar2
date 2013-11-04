@@ -1,7 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Estatistica {
 
