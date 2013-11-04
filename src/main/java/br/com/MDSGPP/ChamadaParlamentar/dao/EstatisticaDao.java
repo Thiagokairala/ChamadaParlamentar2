@@ -11,7 +11,9 @@ public class EstatisticaDao {
 	private Connection conexao;
 	
 	public EstatisticaDao() throws ClassNotFoundException {
-		this.conexao = new ConnectionFactory().getConnection();
+		if(conexao == null) {
+			this.conexao = new ConnectionFactory().getConnection();
+		}
 	}
 
 

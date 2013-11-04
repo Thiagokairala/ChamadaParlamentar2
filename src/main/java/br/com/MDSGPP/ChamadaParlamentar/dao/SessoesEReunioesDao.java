@@ -24,7 +24,9 @@ public class SessoesEReunioesDao {
 	private Connection conexao;
 
 	public SessoesEReunioesDao() throws ClassNotFoundException {
-		this.conexao = new ConnectionFactory().getConnection();
+		if(conexao == null) {
+			this.conexao = new ConnectionFactory().getConnection();
+		}
 	}
 
 	public void adcionarDataNaTable(String data, String matricula) 

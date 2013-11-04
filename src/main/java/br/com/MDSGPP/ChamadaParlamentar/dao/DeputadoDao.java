@@ -14,7 +14,10 @@ public class DeputadoDao {
 
 
 	public DeputadoDao() throws ClassNotFoundException {
-		this.conexao = new ConnectionFactory().getConnection();
+		if(conexao == null) {
+			this.conexao = new ConnectionFactory().getConnection();
+		}
+		
 	}
 
 	public void adicionaDeputado(ArrayList<Deputados> deputados) throws SQLException {
