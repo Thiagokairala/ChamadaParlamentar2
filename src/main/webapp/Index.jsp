@@ -7,18 +7,10 @@
 <title>Chamada Parlamentar</title>
 </head>
 <body>
-	<div id = "tudo">	
+	<div id = "tudo">
 	
-		<div id = "topo">
-			
-			<h1>Chamada Parlamentar</h1>
-			
-		</div><!-- fim da div topo -->
-		
-		<div id = "menu">
-					
-		</div><!-- fim da id menu -->
-		
+		<jsp:include page='Header.html'/>
+	
 		<div id = "principal">
 		
 			<h1>A lei dos dados abertos</h1>

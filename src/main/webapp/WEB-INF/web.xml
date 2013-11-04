@@ -8,4 +8,5 @@
     <servlet-name>Parlamentar Recebido</servlet-name>
     <url-pattern>/parlamentarRecebido</url-pattern>
   </servlet-mapping>
+  
 </web-app>
