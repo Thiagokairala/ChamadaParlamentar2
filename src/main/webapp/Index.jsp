@@ -4,13 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<style type="text/css">
+		<jsp:include page="FolhaParaHeader.css"/>
+</style>
+
 <title>Chamada Parlamentar</title>
 </head>
 <body>
 	<div id = "tudo">
 	
-		<jsp:include page='Header.html'/>
-	
+		<div id = "topo">
+			<jsp:include page='Header.html'/>
+		</div><!-- Fim da div topo -->
+		
 		<div id = "principal">
 		
 			<h1>A lei dos dados abertos</h1>
