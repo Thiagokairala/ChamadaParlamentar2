@@ -8,6 +8,11 @@
 	
 	height: 135px;
 }
+
+#topo p{
+	margin-top: 50px;
+	margin-left: 150px;
+}
 	
 #menu{
 	position: absolute;
@@ -28,5 +33,6 @@
 	color: #000;
 	font-size: 17px;
 }
+
 
 

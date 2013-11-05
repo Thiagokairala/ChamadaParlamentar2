@@ -24,7 +24,7 @@
 		</div><!-- Fim da div topo -->
 		
 		<div id = "principal">
-			_________________________________________________________________________________
+			
 			<h1>A lei dos dados abertos</h1>
             <p>Segundo a definição da Open Knowledge Foundation, em suma
           	dados são abertos quando qualquer pessoa pode livremente usá-los,

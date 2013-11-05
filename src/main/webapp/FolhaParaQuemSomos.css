@@ -1,19 +1,21 @@
 @CHARSET "ISO-8859-1";
 
-#principal{
+#somos{
+	background-color:#E6E8FA;
 	float: left;
 	width:650px;
 	margin-left: 150px;
-	margin-top: 50px;
+	margin-top: 100px;
 	margin-right: 5px;
-
 }
 
-#principal h1{
+#somos h1{
 	font-size: 50px;
+	margin-left: 20px;
 	font-family: "Century Gothic";
+	color: #000;
 }
 
-#principal p{
-	font-size: 17px;
+#somos p{
+	margin-left: 10px;
 }
