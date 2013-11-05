@@ -7,12 +7,11 @@
 }
 
 #politica{
-	margin-top: -550px;
-	margin-right:px;
 	float:left;
+	margin-top: 60px;
 }
 
 #noticia {
-	float:right;
-	margin-top: -550px;
+	float: right;
+	margin-top: 60px;
 }
