@@ -23,6 +23,7 @@
 			<jsp:include page='Header.html'/>
 		</div><!-- Fim da div topo -->
 		
+		<div id = "arrumar">
 		<div id = "principal">
 			
 			<h1>A lei dos dados abertos</h1>
@@ -57,9 +58,9 @@
 				
 			    <!--Widget Agencia Camara--><div id = "noticias">
     				<script src="http://www2.camara.leg.br/camaranoticias/js/widget/agc-widgets.js" type="text/javascript"></script>
-    			</div><!--//Widget Agencia Camara-->
-			
+    			</div><!--//Widget Agencia Camara-->			
 		</div>
+		</div><!-- fim da div arrumar -->
 		
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>

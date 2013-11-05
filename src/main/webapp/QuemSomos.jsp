@@ -32,7 +32,7 @@
             	<br>-Carlos Cruz
             	<br>-Bruno bragança
             	<br>-Thiago Kairala<br>
-            	<br> <b>Gerenciamento de Projeto e Portifólio:</b>
+            	<br> <b>Gestão de Portifólio e Projeto de Software:</b>
             	<br><br>-Thabata Helen
             	<br>-Nilton Araruna
             	<br>-João Guilherme Araruna

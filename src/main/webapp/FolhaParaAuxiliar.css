@@ -3,17 +3,23 @@
 #auxiliar{
 	background-color:#E6E8FA;
 	float: right;
-	width:500px;
+	margin-rigth: 100px;
+	margin-left: 20px;
+	width:390px;
+	margin-top: 100px;
+	margin-bottom:5px;
+	height:370px;
 }
 
 #politica{
 	float:left;
-	margin-top: 145px;
-	margin-left: 30px;
+	margin-top: 2px;
+	margin-left: 10px;
+	margin-rigth: 10px;
 }
 
 #noticias {
 	float: right;
-	margin-top: 145px;
-	margin-right: 80px;
+	margin-top: 2px;
+	
 }
