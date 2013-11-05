@@ -7,6 +7,7 @@
 
 <style type="text/css">
 		<jsp:include page="FolhaParaHeader.css"/>
+		<jsp:include page="FolhaParaTudo.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>

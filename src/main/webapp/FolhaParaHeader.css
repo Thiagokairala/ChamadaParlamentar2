@@ -1,10 +1,21 @@
 @CHARSET "ISO-8859-1";
 
 #topo {
-	background-color: #333333;
-	height: 150px;	
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-image:url(header.jpg);
+	background-color:#333333;
+	
+	height: 135px;
+}
+	
+#menu{
+	position: absolute;
+	margin: 0;
+	padding: 0;
 }
 
-#topo h1 {
-	
+#menu li{
+	display: inline;
+	list-style-type: none;
 }
