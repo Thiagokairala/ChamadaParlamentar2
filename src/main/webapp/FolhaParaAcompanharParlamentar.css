@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+#pesquisa{
+	background-color:#E6E8FA;
+	float: left;
+	width:650px;
+	margin-left: 150px;
+	margin-top: 100px;
+	margin-right: 5px;
+}
+
+#pesquisa h1{
+	font-size: 20px;
+	margin-left: 20px;
+	font-family: "Century Gothic";
+	color: #000;
+}
