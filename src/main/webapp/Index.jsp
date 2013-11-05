@@ -8,6 +8,8 @@
 <style type="text/css">
 		<jsp:include page="FolhaParaHeader.css"/>
 		<jsp:include page="FolhaParaTudo.css"/>
+		<jsp:include page="FolhaParaPrincipal.css"/>
+		<jsp:include page="FolhaParaBody.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -20,7 +22,7 @@
 		</div><!-- Fim da div topo -->
 		
 		<div id = "principal">
-		
+			____________________________________________________________________________
 			<h1>A lei dos dados abertos</h1>
             <p>Segundo a definição da Open Knowledge Foundation, em suma
             dados são abertos quando qualquer pessoa pode livremente usá-los,
