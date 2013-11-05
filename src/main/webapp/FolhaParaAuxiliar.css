@@ -2,16 +2,17 @@
 
 #auxiliar{
 	float: right;
-	width: 450px;
-	display:inline;
+	width:500px;
 }
 
 #politica{
 	float:left;
 	margin-top: 60px;
+	
 }
 
-#noticia {
+#noticias {
 	float: right;
 	margin-top: 60px;
+	margin-right: 120px;
 }
