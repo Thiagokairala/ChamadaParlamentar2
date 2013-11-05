@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+
+#auxiliar{
+	float: right;
+	width: 450px;
+	display:inline;
+}
+
+#politica{
+	margin-top: -550px;
+	margin-right:px;
+	float:left;
+}
+
+#noticia {
+	float:right;
+	margin-top: -550px;
+}
