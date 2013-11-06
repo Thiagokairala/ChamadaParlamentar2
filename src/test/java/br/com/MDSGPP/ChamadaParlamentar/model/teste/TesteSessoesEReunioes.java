@@ -1,21 +1,24 @@
 package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class TesteSessoesEReunioes extends TestCase {
 	SessoesEReunioes sessoes = new SessoesEReunioes();
 	
+	
 	public void setUp() throws Exception {
 	
 		sessoes.setData("000");
 		sessoes.setDescricao("Sessao muito importante");
-		
 	}
-	
 	//Testando a instância do objeto.
 	@Test
 public void testInstancia() {
@@ -27,4 +30,5 @@ public void testInstancia() {
 		assertTrue(sessoes.getData().equalsIgnoreCase("000"));
 		assertTrue(sessoes.getDescricao().equalsIgnoreCase("Sessao muito importante"));
 	}
+	
 }
