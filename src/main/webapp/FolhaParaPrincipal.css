@@ -3,9 +3,8 @@
 #principal{
 	float: left;
 	width:650px;
-	margin-left: 150px;
-	margin-top: 50px;
-	margin-right: 5px;
+	margin-left: 10.42%;
+	margin-top: 4.7%;
 
 }
 
@@ -20,4 +19,5 @@
 
 #arrumar {
 	width: 1300px;
+	margin-left: 10%;
 }
