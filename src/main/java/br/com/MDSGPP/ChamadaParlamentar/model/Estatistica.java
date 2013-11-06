@@ -57,6 +57,7 @@ public class Estatistica {
 	public void setLista(ArrayList<String> lista) {
 		Lista = lista;
 	}
+
 	
 	
 }
