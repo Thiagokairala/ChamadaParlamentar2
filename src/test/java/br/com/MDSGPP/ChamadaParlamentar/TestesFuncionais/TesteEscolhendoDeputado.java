@@ -20,7 +20,7 @@ public class TesteEscolhendoDeputado {
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
-  @Test
+  //@Test
   public void testEscolhendoDeputado() throws Exception {
     driver.get(baseUrl + "/ChamadaParlamentar/Index.jsp");
     driver.findElement(By.linkText("Acompanhar Parlamentar")).click();
