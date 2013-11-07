@@ -9,12 +9,12 @@
 }
 
 #principal h1{
-	font-size: 50px;
+	font-size: 250%;
 	font-family: "Century Gothic";
 }
 
 #principal p{
-	font-size: 17px;
+	font-size: 100%;
 }
 
 #arrumar {
