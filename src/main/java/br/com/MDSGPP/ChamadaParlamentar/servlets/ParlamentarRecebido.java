@@ -7,19 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
-import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
-
 
 public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-
 	protected void service (HttpServletRequest request, HttpServletResponse response) {
 
-		String nome = request.getParameter("deputado");
-
+		System.out.println("oiOioi");
+		String nome = request.getParameter("nome");
+		System.out.println(nome);
+		/*
 		Estatistica estatistica = EstatisticaControl.gerarEstatisticas(nome);
 
 		request.setAttribute("estatistica", estatistica);
@@ -36,6 +32,6 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}	
 }

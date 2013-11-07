@@ -27,14 +27,17 @@
 			
 			<h1>Digite o nome do seu parlamentar:</h1>
         
+        	<form name ="selecaoDeputado" id = "selecaoDeputado" 
+        			action = "parlamentarRecebido" method = "POST">
+        		<input type = "text" name= "nome" />
+        		<input name="enviar" type = "submit" value = "ENVIAR" />
+            </form>
 
 		</div><!-- fim da id principal -->
 		
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
-	</div><!--fim da div tudo-->
-	
-	
+	</div><!--fim da div tudo-->	
 </body>
 </html>
