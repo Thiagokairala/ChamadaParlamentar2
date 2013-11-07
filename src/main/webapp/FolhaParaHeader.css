@@ -10,7 +10,7 @@
 }
 
 #topo p{
-	margin-top: 2.6%;
+	margin-top: 2.95%;
 	margin-left:12%;
 }
 	
@@ -20,6 +20,7 @@
 	padding: 0;
 	margin-top: 2.6%;
 	margin-left: 12%;
+	text-decoration: underline overline;
 }
 
 #menu li{
@@ -31,7 +32,7 @@
 	text-decoration:none;
 	padding: 0px 20px 14px 15px;
 	color: #000;
-	font-size: 17px;
+	font-size: 150%;
 }
 
 
