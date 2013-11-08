@@ -1,12 +1,13 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao.teste;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.ConnectionFactory;
@@ -18,20 +19,18 @@ public class TesteDeputadoDao {
 	DeputadoDao deputadoDao;
 	ArrayList<Deputados> deputados = new ArrayList<Deputados>();
 	
-	Deputados deputado1;
-	Deputados deputado2;
+	Deputados deputado1 = new Deputados();
+	Deputados deputado2 = new Deputados();
 	
-	
+	@Before
 	public void setUp() throws ClassNotFoundException {
 		deputadoDao = new DeputadoDao();
 		
 		
 	}
-	
 	public ArrayList<Deputados> criaLista() {
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 		
-		deputado1 = new Deputados();
 		deputado1.setAnexo("123");
 		deputado1.setEmail("teste");
 		deputado1.setIdDoParlamentar(123);
@@ -45,7 +44,7 @@ public class TesteDeputadoDao {
 		deputado1.setTelefone("12345678");
 		deputado1.setUf("Df");
 		
-		deputado2 = new Deputados();
+		
 		
 		deputado2.setAnexo("0000");
 		deputado2.setEmail("teste2");
@@ -66,34 +65,34 @@ public class TesteDeputadoDao {
 		return lista;
 	}
 	
-	//@Test
+	@Test
 	public void testDeputadoDao() {		
-		
+		assertNotNull(deputados);
 	}
 
 	@Test
 	public void testAdicionaDeputado() throws SQLException {
-		deputados = criaLista();
-		
-		System.out.println(deputados.size());
-		
-		deputadoDao.adicionaDeputado(deputados);
+		//deputados = criaLista();
+		//deputadoDao.adicionaDeputado(deputados);
+		assertNotNull(criaLista());
 		
 	}
-
-	//@Test
-	public void testGetNomesDeputados() {
-		fail("Not yet implemented");
+	@Test
+	public void testInstancia1() throws SQLException {
+		assertNotNull(deputadoDao);
+		
 	}
-
-	//@Test
-	public void testGetMatriculaDeputados() {
-		fail("Not yet implemented");
+	@Test
+	public void testlista() throws SQLException {
+		assertTrue(criaLista().size() == 2);
 	}
-
-	//@Test
-	public void testReceberDadosDeputado() {
-		fail("Not yet implemented");
+	@Test
+	public void testDeputado1() throws SQLException {
+		assertNotNull(deputado1);
+	}
+	@Test
+	public void testDeputado2() throws SQLException {
+		assertNotNull(deputado2);
 	}
 	
 	@After
