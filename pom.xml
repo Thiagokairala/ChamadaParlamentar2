@@ -106,10 +106,6 @@
 			<version>1.6.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.4</version>
-		</dependency>
+
 	</dependencies>
 </project>
