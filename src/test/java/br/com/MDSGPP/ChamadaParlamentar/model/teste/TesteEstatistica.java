@@ -9,7 +9,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 public class TesteEstatistica {
 	Estatistica est = new Estatistica();
 	
-	@Test
+	//@Test
 	public void test() {
 		fail("Not yet implemented");
 	}

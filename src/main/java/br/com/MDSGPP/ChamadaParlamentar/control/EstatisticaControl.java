@@ -5,10 +5,9 @@ import java.text.DecimalFormat;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.EstatisticaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
-
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionEstatistica;
-
 import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
+import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class EstatisticaControl {
@@ -64,5 +63,10 @@ public class EstatisticaControl {
 		}
 		return estatistica;
 	}
-
+	
+	public static String arrumarNomePesquisa(Deputados deputado) {
+		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
+				"-" + deputado.getPartido() + "/" + deputado.getUf();
+		return montar;
+	}
 }

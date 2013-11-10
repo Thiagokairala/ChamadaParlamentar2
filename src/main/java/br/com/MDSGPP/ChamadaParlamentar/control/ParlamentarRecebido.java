@@ -1,12 +1,15 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
-import java.sql.SQLException;
+import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
+import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 
 public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
@@ -18,28 +21,32 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 		String nome = request.getParameter("nome");
 
 		Deputados deputado = null;
-		DeputadoDao deputadoDao = null;
-		
-		try {
-			deputadoDao = new DeputadoDao();
-		} catch (ClassNotFoundException e) {
 
+		deputado = DeputadosControl.verificaExistencia(nome);
+		
+		RequestDispatcher rd;
+		if(deputado != null) {
+			Estatistica estatistica = EstatisticaControl.
+					gerarEstatisticas(EstatisticaControl.
+							arrumarNomePesquisa(deputado));
+			
+			request.setAttribute("estatistica", estatistica);
+		
+			 rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
+		}
+		else {
+			 rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
 		}
 		
 		try {
-			deputado = deputadoDao.receberDadosDeputadoCivil(nome);
-		} catch (SQLException e) {
-			try {
-				deputado = deputadoDao.receberDadosDeputadoTratamento(nome);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			rd.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
-		System.out.println(deputado);
-		
-		
+
 	}	
 }

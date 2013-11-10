@@ -48,7 +48,7 @@ public class DeputadoDao {
 		}
 		stmt.close();	
 	}
-
+	//esse método será utilizado para o autocomplete
 	public ArrayList<String> getNomesDeputados() throws SQLException {
 		String sql = "Select * from deputado"; 
 
@@ -72,66 +72,49 @@ public class DeputadoDao {
 
 	}
 
-	public ArrayList<Integer> getMatriculaDeputados() {
+	public ArrayList<Integer> getMatriculaDeputados() throws SQLException {
 		String sql = "Select * from deputado"; //criando o comando sql, procura como buscar uma linha especifica...
 
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
-		try {
-			PreparedStatement stmt= this.conexao.prepareStatement(sql);//criando o prepared statement q é o que vai conetar com o banco
-			ResultSet rs = stmt.executeQuery();//executando o stmt para buscar os dados
+		PreparedStatement stmt= this.conexao.prepareStatement(sql);//criando o prepared statement q é o que vai conetar com o banco
+		ResultSet rs = stmt.executeQuery();//executando o stmt para buscar os dados
 
-			while(rs.next()) {
-				lista.add(rs.getInt("matricula"));
-			}
-
-		} catch (SQLException e) {
-			lista.add(0);
-			e.printStackTrace();
+		while(rs.next()) {
+			lista.add(rs.getInt("matricula"));
 		}
 
+
 		return lista;
-
 	}
 
-	public Deputados receberDadosDeputadoTratamento(String nome) throws SQLException {
+	public ArrayList<Deputados> getDeputados() throws SQLException {
+		String sql = "Select * from deputado";
+		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 
-		String sql = "select * from deputado where nomeDeTratamento = ?";
-		Deputados deputado = null;
-		PreparedStatement stmt;
-		stmt = this.conexao.prepareStatement(sql);
-
-		String NOME = nome.toUpperCase();
-		stmt.setString(1, NOME);
+		PreparedStatement stmt = this.conexao.prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();
-
-		deputado = new Deputados(rs.getInt("idParlamentar"), rs.getInt("matricula"),
-				rs.getInt("ideCadastro"), rs.getString("nomeCivil"), rs.getString("nomeDeTratamento"),
-				rs.getString("sexo"), rs.getString("uf"), rs.getString("partido"),
-				rs.getString("numeroDoGabinete"), rs.getString("anexo"), rs.getString("telefone"),
-				rs.getString("email"));
-
-		return deputado;
-	}
-
-	public Deputados receberDadosDeputadoCivil(String nome) throws SQLException {
-
-		String sql = "select * from deputado where nomeCivil = ?";
-		Deputados deputado = null;
-		PreparedStatement stmt;
-		stmt = this.conexao.prepareStatement(sql);
-		String NOME = nome.toUpperCase();
-		stmt.setString(1, NOME);
-
-		ResultSet rs = stmt.executeQuery();
-
-		deputado = new Deputados(rs.getInt("idParlamentar"), rs.getInt("matricula"),
-				rs.getInt("ideCadastro"), rs.getString("nomeCivil"), rs.getString("nomeDeTratamento"),
-				rs.getString("sexo"), rs.getString("uf"), rs.getString("partido"),
-				rs.getString("numeroDoGabinete"), rs.getString("anexo"), rs.getString("telefone"),
-				rs.getString("email"));
-
-		return deputado;
+		
+		while(rs.next()) {
+			Deputados deputado = new Deputados();
+			
+			deputado.setIdDoParlamentar(rs.getInt("idParlamentar"));
+			deputado.setMatricula(rs.getInt("matricula"));
+			deputado.setIdeCadastro(rs.getInt("ideCadastro"));
+			deputado.setNomeCivilDoParlamentar(rs.getString("nomeCivil"));
+			deputado.setNomeDeTratamentoDoParlamentar(rs.getString("nomeDeTratamento"));
+			deputado.setSexo(rs.getString("sexo"));		
+			deputado.setUf(rs.getString("uf"));
+			deputado.setPartido("partido");
+			deputado.setNumeroDoGabinete(rs.getString("numeroDoGabinete"));
+			deputado.setAnexo(rs.getString("anexo"));
+			deputado.setTelefone(rs.getString("telefone"));
+			deputado.setEmail(rs.getString("email"));
+					
+			lista.add(deputado);
+		}
+		
+		return lista;
 	}
 }

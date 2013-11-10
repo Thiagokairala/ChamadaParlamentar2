@@ -81,25 +81,6 @@ public class TesteDeputadoDao {
 		assertNotNull(lista);
 		assertTrue(lista.size() == 513);
 	}
-
-	@Test
-	public void testGetMatriculaDeputados() {
-		ArrayList<Integer> lista = deputadoDao.getMatriculaDeputados();
-		
-		assertNotNull(lista);
-		assertTrue(lista.size() == 513);
-	}
-
-	//@Test
-	public void testReceberDadosDeputado() throws SQLException {
-		ArrayList<String> lista = deputadoDao.getNomesDeputados();
-		
-		for(int i = 0; i<lista.size(); i++) {
-			System.out.println(lista.get(i));
-			Deputados deputado = deputadoDao.receberDadosDeputado(lista.get(i));
-			
-		}
-	}
 	
 	@After
 	public void tearDown() throws ClassNotFoundException, SQLException {
