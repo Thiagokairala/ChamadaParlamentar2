@@ -93,22 +93,6 @@ public class TesteDeputadoDao {
 	@Test
 	public void testDeputado2() throws SQLException {
 		assertNotNull(deputado2);
-=======
-		assertNotNull(deputadoDao);
-	}
-
-	@Test
-	public void testAdicionaDeputado() throws SQLException {		
-		deputadoDao.adicionaDeputado(criaLista());
-	}
-
-	@Test
-	public void testGetNomesDeputados() throws SQLException {
-		ArrayList<String> lista = deputadoDao.getNomesDeputados();
-		
-		assertNotNull(lista);
-		assertTrue(lista.size() == 513);
->>>>>>> novoLayout
 	}
 	
 	@After
