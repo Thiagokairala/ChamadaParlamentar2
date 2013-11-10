@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+
+#topo {
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-image:url(header.jpg);
+	background-color:#333333;
+	
+	height: 135px;
+}
+
+#topo hr {
+  border: none;
+  background-color: #B4CBDF;
+  color: #B4CBDF;
+  height: 1%;
+  margin-top: 3.88%;
+  margin-left: 12%;
+  margin-right: 30.5%;
+}
+	
+#menu{
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	margin-top: 2.6%;
+	margin-left: 11.42%;
+}
+
+#menu li{
+	display: inline;
+	list-style-type: none;
+}
+
+#menu a{
+	text-decoration:none;
+	padding: 0px 20px 14px 15px;
+	color: #000;
+	font-size: 105%;
+}
+
+
+

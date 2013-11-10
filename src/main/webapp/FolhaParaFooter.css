@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+#rodape{
+	background-color:#333333;
+	margin-top: 43.3%;
+	height: 1.3em;
+	clear: both;
+}
+
+#rodape p{
+	margin-left: 92%;
+}
+
+#rodape a{
+	color: #ffe4e1;
+	text-decoration: none;
+}
+
+#rodape a: hover{
+	font-style: italic;
+	font-weight: bold;
+}

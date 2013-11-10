@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.junit.Before;
+
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;

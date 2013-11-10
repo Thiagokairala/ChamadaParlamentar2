@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+#principal{
+	float: left;
+	width:50%;
+	margin-left: 5%;
+	margin-top: 4.7%;
+
+}
+
+#principal h1{
+	font-size: 250%;
+	font-family: "Century Gothic";
+}
+
+#principal p{
+	font-size: 100%;
+}
+
+#arrumar {
+	margin-left: 7.5%;
+}
