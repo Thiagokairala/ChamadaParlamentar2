@@ -5,16 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type= "text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type = "text/javascript">
-	$(document).ready(function(){
-		$("#nome").keyup(function() {
-			var nome = $("#nome").val();
-			
-			alert(nome);
-		});
-	});
-</script>
+
 
 
 <style type="text/css">
