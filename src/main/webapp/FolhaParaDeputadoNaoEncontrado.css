@@ -1,6 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 #aviso{
+	
 	background-color:#E6E8FA;
 	float: left;
 	width:40%;
@@ -11,4 +12,15 @@
 
 #aviso h1{
 	margin-left: 2%;
+}
+
+#aviso a{
+	
+	text-decoration:none;
+	color: #000;
+	font-size: 120%;
+}
+
+#aviso li{
+	list-style-type:none;
 }
