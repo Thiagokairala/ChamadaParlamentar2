@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
-
-
 <style type="text/css">
                 <jsp:include page="FolhaParaHeader.css"/>
                 <jsp:include page="FolhaParaTudo.css"/>
