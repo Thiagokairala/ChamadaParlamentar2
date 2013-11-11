@@ -43,7 +43,7 @@
                                 action ="parlamentarRecebido" method= "POST">
                                 
                         <input type = "text" name= "nome" id="nome" />
-                        <input name="enviar" type = "submit" value = "ENVIAR" />
+                      <input type=image src="pesquisa_lupa.png" width="20" height="15"> 
             </form>
 
                 </div><!-- fim da id principal -->
