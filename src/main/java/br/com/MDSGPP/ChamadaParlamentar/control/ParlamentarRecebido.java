@@ -30,8 +30,9 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
                                                         arrumarNomePesquisa(deputado));
                         
                         request.setAttribute("estatistica", estatistica);
-                
+                                       
                          rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
+                         System.out.println(estatistica);
                 }
                 else {
                          rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");

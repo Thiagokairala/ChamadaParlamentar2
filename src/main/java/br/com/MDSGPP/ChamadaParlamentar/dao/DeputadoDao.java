@@ -106,7 +106,7 @@ public class DeputadoDao {
 			deputado.setNomeDeTratamentoDoParlamentar(rs.getString("nomeDeTratamento"));
 			deputado.setSexo(rs.getString("sexo"));		
 			deputado.setUf(rs.getString("uf"));
-			deputado.setPartido("partido");
+			deputado.setPartido(rs.getString("partido"));
 			deputado.setNumeroDoGabinete(rs.getString("numeroDoGabinete"));
 			deputado.setAnexo(rs.getString("anexo"));
 			deputado.setTelefone(rs.getString("telefone"));

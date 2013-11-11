@@ -9,6 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-nome: ${estatistica.nome }
+nome: <p>${estatistica.nome }</p>
+
+sessoes assistidas: <p>${estatistica.numeroSessao }</p>
+
+sessoes totais: <p>${estatistica.totalSessao }</p>
+
+porcentagem: <p>${estatistica.porcentagem }</p>
+
+sessoe:  
+			<c:forEach var= "sessao" items = "${estatistica.lista }">
+				<p>${sessao }</p><br />
+			</c:forEach>
 </body>
 </html>

@@ -19,51 +19,42 @@ public class EstatisticaControl {
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao;
 		SessoesEReunioesDao sessoes;
-		
-		String nomeUper = nome.toUpperCase();
-		
-		if(ExceptionEstatistica.verificaNome(nomeUper)) {
-			try {
-				sessoes = new SessoesEReunioesDao();
-				dao = new EstatisticaDao();	
+
+		try {
+			sessoes = new SessoesEReunioesDao();
+			dao = new EstatisticaDao();	
 
 
-				estatistica.setLista(dao.getEstatisticaDeputados(nomeUper));
+			estatistica.setLista(dao.getEstatisticaDeputados(nome));
 
-				estatistica.setNome(nomeUper);
-
-
-				if(ValidaDadosWS.validaLista(estatistica.getLista())) {
-					estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
-
-					DecimalFormat df = new DecimalFormat("###.00");  
-					estatistica.setPorcentagem(df.format(
-							(((double)estatistica.getLista().size())/
-									((double)sessoes.passarNumeroDeSessoes()))*100) + "%");
+			estatistica.setNome(nome);
 
 
-				}
-				else {
-					estatistica.getLista().add("Dados não disponiveis!");
-				}
-				estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
+			if(ValidaDadosWS.validaLista(estatistica.getLista())) {
+				estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
 
-
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				DecimalFormat df = new DecimalFormat("###.00");  
+				estatistica.setPorcentagem(df.format(
+						(((double)estatistica.getLista().size())/
+								((double)sessoes.passarNumeroDeSessoes()))*100) + "%");
 			}
-		}
-		else {
-			estatistica = null;
+			else {
+				estatistica.getLista().add("Dados não disponiveis!");
+			}
+			estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
+
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return estatistica;
 	}
-	
+
 	public static String arrumarNomePesquisa(Deputados deputado) {
 		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
 				"-" + deputado.getPartido() + "/" + deputado.getUf();
