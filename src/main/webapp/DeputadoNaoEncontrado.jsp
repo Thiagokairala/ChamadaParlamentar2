@@ -25,6 +25,11 @@
 		
 		<div id = "aviso">
 			<h1>Deputado Não Encontrado!</h1>
+			
+			<ul id = "voltar">
+				<li><a href = "AcompanharParlamentar.jsp">Deseja tentar novamente?</a></li>
+			</ul>
+			
             
 
 		</div><!-- fim da id principal -->
