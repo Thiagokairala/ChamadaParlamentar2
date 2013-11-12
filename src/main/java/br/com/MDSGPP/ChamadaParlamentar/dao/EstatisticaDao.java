@@ -1,19 +1,14 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class EstatisticaDao {
+public class EstatisticaDao extends ConnectionFactory {
 
-	private Connection conexao;
-	
-	public EstatisticaDao() throws ClassNotFoundException {
-		if(conexao == null) {
-			this.conexao = new ConnectionFactory().getConnection();
-		}
+	public EstatisticaDao() throws ClassNotFoundException, SQLException {
+		new ConnectionFactory().getConnection();
 	}
 
 
@@ -21,9 +16,9 @@ public class EstatisticaDao {
 		String sql = "select * from sessao where deputadoPresente LIKE ?"; 
 
 		ArrayList<String> lista = new ArrayList<String>();
-		PreparedStatement stmt= this.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
 		stmt.setString(1, nome);
-		
+
 		ResultSet rs = stmt.executeQuery(); 
 
 		while(rs.next()) {

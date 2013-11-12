@@ -1,6 +1,7 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
+import br.com.MDSGPP.ChamadaParlamentar.control.RankingControl;
+import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
@@ -32,12 +35,11 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
                         request.setAttribute("estatistica", estatistica);
                                        
                          rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
-                         System.out.println(estatistica);
                 }
                 else {
                          rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
                 }
-                
+               
                 try {
                         rd.forward(request, response);
                 } catch (ServletException e) {
@@ -47,6 +49,5 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                 }
-
         }        
 }

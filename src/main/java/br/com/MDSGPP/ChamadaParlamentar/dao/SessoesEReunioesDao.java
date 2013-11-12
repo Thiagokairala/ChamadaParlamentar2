@@ -1,7 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao;
 
 import java.net.MalformedURLException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,14 +18,10 @@ import org.w3c.dom.NodeList;
 import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReunioes;
 import br.gov.camara.www.SitCamaraWS.SessoesReunioes.ListarPresencasParlamentarResponseListarPresencasParlamentarResult;
 
-public class SessoesEReunioesDao {
-
-	private Connection conexao;
-
-	public SessoesEReunioesDao() throws ClassNotFoundException {
-		if(conexao == null) {
-			this.conexao = new ConnectionFactory().getConnection();
-		}
+public class SessoesEReunioesDao extends ConnectionFactory {
+	
+	public SessoesEReunioesDao() throws ClassNotFoundException, SQLException {
+		new ConnectionFactory().getConnection();
 	}
 
 	public void adcionarDataNaTable(String data, String matricula) 
@@ -136,7 +131,7 @@ public class SessoesEReunioesDao {
 	{
 		String sql = "select * from datas";
 
-		PreparedStatement stmt= this.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery(); 
 		int i = 0;
 
