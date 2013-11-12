@@ -17,6 +17,9 @@ public class RankingControl {
 		ArrayList<ArrayList<Estatistica>> recebido = 
 				ExceptionRanking.limparLista(lista);
 		ArrayList<Estatistica> removidos = recebido.get(1);
+		ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
+		ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
+		
 		lista = recebido.get(0);
 		
 		Ranking ranking = new Ranking();
@@ -43,6 +46,14 @@ public class RankingControl {
 				break;
 			}
 		}
+		
+		for(int i = 0; i<5; i++) {
+			melhores.add(lista.get(i));
+			piores.add(lista.get(lista.size() -1 -i));
+		}
+		
+		ranking.setMelhores(melhores);
+		ranking.setPiores(piores);
 		ranking.setLista(lista);
 		ranking.setRemovidos(removidos);
 		return ranking;

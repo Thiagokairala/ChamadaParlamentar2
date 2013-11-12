@@ -29,8 +29,7 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
+	
 		request.setAttribute("ranking", ranking);
 		RequestDispatcher rd = request.getRequestDispatcher("/Ranking.jsp");
 
