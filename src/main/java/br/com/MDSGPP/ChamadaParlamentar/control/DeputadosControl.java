@@ -1,9 +1,15 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
+import java.net.MalformedURLException;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.xml.rpc.ServiceException;
+
+import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsDeputados;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
+import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public class DeputadosControl {
@@ -31,7 +37,38 @@ public class DeputadosControl {
 	public static Deputados verificaExistencia(String nome) {
 		Deputados deputado = null;
 		
+		/*parte de atualização do banco*/
+		DeputadoDao deputadoDao;
 		try {
+			deputadoDao = new DeputadoDao();
+			
+			SessoesEReunioesDao sessoesDao = new SessoesEReunioesDao();
+			
+			deputadoDao.adicionaDeputado(ConexaoComWsDeputados.criaLista());
+			sessoesDao.adcionarDataNaTable("20/11/2012", "440");
+			sessoesDao.adcionarSessaoNaTable("20/11/2012");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		/*try {
 			DeputadoDao deputadoDao = new DeputadoDao();			
 			ArrayList<Deputados> lista = deputadoDao.getDeputados();
 
@@ -50,7 +87,7 @@ public class DeputadosControl {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		return deputado;
 	}
 }
