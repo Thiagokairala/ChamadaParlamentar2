@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+#principal{
+	background-color:#E6E8FA;
+	float: left;
+	width:40%;
+	margin-left: 30px;
+	margin-top: 80px;
+	margin-right: 30px;
+}
+
+#principal h1{
+	font-size: 180%;
+	margin-left: 2%;
+}
+
+#principal h2{
+	font-size: 150%;
+	margin-left:2%;
+}
+
+#principal p{
+	margin-left: 2%;
+}
+
+#auxiliar{
+	background-color:#696969;
+	float: right;
+	width:40%;
+	margin-top: 80px;
+	height:auto;
+}
+
+#auxiliar h1{
+	font-size: 180%;
+	margin-left: 2%;
+}
+
+#auxiliar p{
+	margin-left: 2%;
+}

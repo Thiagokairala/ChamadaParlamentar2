@@ -13,6 +13,7 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaRanking.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -45,14 +46,12 @@
 			
 		</div><!-- fim da id principal -->
 		<div id = "auxiliar">
-			<h1>Deputados com dados não disponíveis</h1>
+			<h1>Deputados com dados não disponíveis:</h1>
 			
 			<c:forEach var = "naoPossuiDados" items = "${ranking.removidos }">
 				<p>${naoPossuiDados.nome } </p>
 			</c:forEach>
-		</div>
-		
-		
+		</div><!-- fim da div auxiliar -->
 		</div><!-- fim da div arrumar -->
 		
 		<div id="rodape">
