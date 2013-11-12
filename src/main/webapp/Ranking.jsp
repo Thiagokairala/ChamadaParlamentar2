@@ -26,8 +26,7 @@
 		<div id = "arrumar">
 		<div id = "principal">
 			
-			<h1>Em construção</h1>
-            
+			<h1>Ranking dos Deputados</h1>
 
 		</div><!-- fim da id principal -->
 		

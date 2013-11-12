@@ -18,9 +18,10 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 
 	protected void service (HttpServletRequest request, HttpServletResponse response) {
 		Ranking ranking = null;
+
 		try {
-			RankingControl.gerarRanking
-			(RankingControl.gerarListaEstatistica(new DeputadoDao().getDeputados()));
+			ranking = RankingControl.gerarRanking
+					(RankingControl.gerarListaEstatistica(new DeputadoDao().getDeputados()));
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,6 +29,7 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 
 		request.setAttribute("ranking", ranking);
 		RequestDispatcher rd = request.getRequestDispatcher("/Ranking.jsp");

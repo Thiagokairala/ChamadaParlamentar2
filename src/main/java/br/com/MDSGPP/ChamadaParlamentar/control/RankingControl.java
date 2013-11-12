@@ -2,8 +2,10 @@ package br.com.MDSGPP.ChamadaParlamentar.control;
 
 import java.util.ArrayList;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
+import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingControl {
 
@@ -11,17 +13,14 @@ public class RankingControl {
 
 	}
 
-	public static void gerarRanking(ArrayList<Estatistica> lista) {
-		ArrayList<Estatistica> removidos = new ArrayList<Estatistica>();
-
-		for(int i = 0; i<lista.size(); i++) {
-			try {
-				Integer.parseInt(lista.get(i).getNumeroSessao());
-			} catch (NumberFormatException e) {
-				lista.remove(i);
-				i--;
-			}
-		}
+	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
+		ArrayList<ArrayList<Estatistica>> recebido = 
+				ExceptionRanking.limparLista(lista);
+		ArrayList<Estatistica> removidos = recebido.get(1);
+		lista = recebido.get(0);
+		
+		Ranking ranking = new Ranking();
+		
 		for (int i=0; i< lista.size(); i++) // bubble sort outer loop
 		{
 			int verifica = 0;
@@ -44,13 +43,9 @@ public class RankingControl {
 				break;
 			}
 		}
-
-		for(int i = 0; i<lista.size(); i++) {
-			System.out.println(lista.get(i).getNome() + ' ' +lista.get(i).getPorcentagem());
-		}
-		for(int j = 0; j<removidos.size(); j++) {
-			System.out.println(removidos.get(j).getNome() + ' ' + removidos.get(j).getPorcentagem());
-		}
+		ranking.setLista(lista);
+		ranking.setRemovidos(removidos);
+		return ranking;
 	}
 
 	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista) {
