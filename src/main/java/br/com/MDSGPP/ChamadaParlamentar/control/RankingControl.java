@@ -1,5 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
@@ -59,7 +60,7 @@ public class RankingControl {
 		return ranking;
 	}
 
-	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista) {
+	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista) throws ClassNotFoundException, SQLException {
 
 		ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
 		for(int i = 0; i< lista.size(); i++) {

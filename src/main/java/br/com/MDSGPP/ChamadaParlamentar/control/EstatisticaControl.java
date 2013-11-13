@@ -15,49 +15,41 @@ public class EstatisticaControl {
 	public EstatisticaControl() {
 		// TODO Auto-generated constructor stub
 	}
-	public static Estatistica gerarEstatisticas(String nome)	{
+	public static Estatistica gerarEstatisticas(String nome)
+			throws ClassNotFoundException, SQLException	{
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao;
 		SessoesEReunioesDao sessoes;
 
-		try {
-			sessoes = new SessoesEReunioesDao();
-			dao = new EstatisticaDao();	
+		sessoes = new SessoesEReunioesDao();
+		dao = new EstatisticaDao();	
 
 
-			estatistica.setLista(dao.getEstatisticaDeputados(nome));
+		estatistica.setLista(dao.getEstatisticaDeputados(nome));
 
-			estatistica.setNome(nome);
+		estatistica.setNome(nome);
 
 
-			if(ValidaDadosWS.validaLista(estatistica.getLista())) {
-				estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
+		if(ValidaDadosWS.validaLista(estatistica.getLista())) {
+			estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
 
-				DecimalFormat df = new DecimalFormat("###.00");  
-				estatistica.setPorcentagem(df.format(
-						(((double)estatistica.getLista().size())/
-								((double)sessoes.passarNumeroDeSessoes()))*100) + "%");
-			}
-			else {
-				estatistica.getLista().add("Dados não disponiveis!");
-			}
+			DecimalFormat df = new DecimalFormat("###.00");  
+			estatistica.setPorcentagem(df.format(
+					(((double)estatistica.getLista().size())/
+							((double)sessoes.passarNumeroDeSessoes()))*100) + "%");
 			estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
-
-
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		else {
+			estatistica = null;
+		}
+		
+
 		return estatistica;
 	}
 
 	public static String arrumarNomePesquisa(Deputados deputado) {
 		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
 				"-" + deputado.getPartido() + "/" + deputado.getUf();
-		return montar;
+		return montar.toUpperCase();
 	}
 }
