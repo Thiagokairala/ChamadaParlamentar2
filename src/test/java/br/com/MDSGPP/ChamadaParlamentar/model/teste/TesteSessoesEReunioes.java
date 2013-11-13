@@ -52,6 +52,8 @@ public class TesteSessoesEReunioes {
 	public void testSetData() {
 		sessoes.setData("11/12/2012");
 		assertTrue(sessoes.getData().equals("11/12/2012"));
+		sessoes.setData("nao deve passar");
+		assertTrue(sessoes.getData() == null);
 	}
 
 	@Test

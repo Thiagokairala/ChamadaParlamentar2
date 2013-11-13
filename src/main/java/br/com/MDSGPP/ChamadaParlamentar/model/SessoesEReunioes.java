@@ -36,6 +36,9 @@ public class SessoesEReunioes {
 		if(ExceptionSessoesEReunioes.validaData(data)){
 			this.data = data;
 		}
+		else {
+			this.data = null;
+		}
 	}
 
 	public String getDescricao() {
