@@ -27,4 +27,13 @@ public class ExceptionRanking {
 		passar.add(removidos);
 		return passar;
 	}
+	
+	public static boolean verificaLista(ArrayList<Estatistica> lista) {
+		boolean passar = false;
+		
+		if(lista.size()>10)
+			passar = true;
+		
+		return passar;
+	}
 }

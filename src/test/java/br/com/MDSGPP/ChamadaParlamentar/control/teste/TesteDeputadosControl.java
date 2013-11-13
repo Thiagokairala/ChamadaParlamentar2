@@ -31,9 +31,11 @@ public class TesteDeputadosControl {
 	public void testVerificaExistencia() throws ClassNotFoundException, SQLException {
 		String nome1 = "naoVaiPassar";
 		String nome2 = "tiririca";
+		String nome3 = "JOSÉ AUGUSTO MAIA";
 		
 		assertTrue(DeputadosControl.verificaExistencia(nome1) == null);
 		assertNotNull(DeputadosControl.verificaExistencia(nome2));
+		assertNotNull(DeputadosControl.verificaExistencia(nome3));
 		
 	}
 }

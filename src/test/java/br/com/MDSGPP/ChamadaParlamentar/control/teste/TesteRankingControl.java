@@ -1,6 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.control.teste;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,11 +31,15 @@ public class TesteRankingControl {
 		Ranking ranking = RankingControl.gerarRanking
 				(RankingControl.gerarListaEstatistica
 						(new DeputadoDao().getDeputados()));
+		ArrayList<Estatistica> teste = new ArrayList<Estatistica>();
+		Ranking ranking2 = RankingControl.gerarRanking(teste);
 		
 		assertNotNull(ranking.getLista());
 		assertNotNull(ranking.getMelhores());
 		assertNotNull(ranking.getPiores());
 		assertNotNull(ranking.getRemovidos());
+		
+		assertTrue(ranking2 == null);
 	}
 	
 	@Test
