@@ -9,7 +9,8 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingControl {
-
+	private static final int tamanhoRankings = 5;
+	
 	public RankingControl() {
 
 	}
@@ -24,39 +25,15 @@ public class RankingControl {
 			ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
 			ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
 
-
-
 			lista = recebido.get(0);
 
+			lista = ordenacao(lista);
 
-			// bubble sort outer loop
-			for (int i=0; i< lista.size(); i++) 
-			{
-				int verifica = 0;
-				for (int j=0; j < lista.size() - i - 1 ; j++) {
-
-					int primeiro = Integer.parseInt(lista.get(j).getNumeroSessao());
-					int segundo = Integer.parseInt(lista.get(j+1).getNumeroSessao());
-
-					if ( primeiro < segundo ) {
-						Estatistica temp;
-
-						temp = lista.get(j);
-
-						lista.set(j, lista.get(j+1));
-						lista.set(j+1, temp);
-						verifica++;
-					}
-				}
-				if(verifica == 0) {
-					break;
-				}
-			}
-
-			for(int i = 0; i<5; i++) {
+			for(int i = 0; i<tamanhoRankings; i++) {
 				melhores.add(lista.get(i));
 				piores.add(lista.get(lista.size() -1 -i));
 			}
+			
 			ranking.setMelhores(melhores);
 			ranking.setPiores(piores);
 			ranking.setLista(lista);
@@ -65,7 +42,6 @@ public class RankingControl {
 		else {
 			ranking = null;
 		}
-
 
 		return ranking;
 	}
@@ -80,5 +56,31 @@ public class RankingControl {
 		}
 
 		return devolver;
+	}
+
+	private static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
+		// bubble sort outer loop
+		for (int i=0; i< lista.size(); i++) {
+			int verifica = 0;
+			for (int j=0; j < lista.size() - i - 1 ; j++) {
+
+				int primeiro = Integer.parseInt(lista.get(j).getNumeroSessao());
+				int segundo = Integer.parseInt(lista.get(j+1).getNumeroSessao());
+
+				if ( primeiro < segundo ) {
+					Estatistica temp;
+
+					temp = lista.get(j);
+
+					lista.set(j, lista.get(j+1));
+					lista.set(j+1, temp);
+					verifica++;
+				}
+			}
+			if(verifica == 0) {
+				break;
+			}
+		}
+		return lista;
 	}
 }
