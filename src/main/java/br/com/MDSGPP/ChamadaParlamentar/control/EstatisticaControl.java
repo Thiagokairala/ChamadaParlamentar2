@@ -11,7 +11,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class EstatisticaControl {
 	
-	public final static double passarPorcentagem = 100.0;
+	public static final double passarPorcentagem = 100.0;
 
 	public EstatisticaControl() {
 		// TODO Auto-generated constructor stub
