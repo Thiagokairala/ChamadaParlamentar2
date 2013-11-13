@@ -67,12 +67,15 @@ public class DeputadoDao extends ConnectionFactory {
 	}
 
 	public ArrayList<Integer> getMatriculaDeputados() throws SQLException {
-		String sql = "Select * from deputado"; //criando o comando sql, procura como buscar uma linha especifica...
+		//criando o comando sql, procura como buscar uma linha especifica...
+		String sql = "Select * from deputado";
 
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);//criando o prepared statement q é o que vai conetar com o banco
-		ResultSet rs = stmt.executeQuery();//executando o stmt para buscar os dados
+		//criando o prepared statement q é o que vai conetar com o banco
+		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		//executando o stmt para buscar os dados
+		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
 			lista.add(rs.getInt("matricula"));

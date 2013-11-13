@@ -22,7 +22,7 @@ public class EstatisticaDao extends ConnectionFactory {
 		ResultSet rs = stmt.executeQuery(); 
 
 		while(rs.next()) {
-			lista.add(rs.getString("idSessoes"));;
+			lista.add(rs.getString("idSessoes"));
 		}
 		stmt.close();
 

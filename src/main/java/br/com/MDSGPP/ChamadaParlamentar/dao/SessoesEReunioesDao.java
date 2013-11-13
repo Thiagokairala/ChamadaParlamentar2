@@ -12,7 +12,6 @@ import java.util.GregorianCalendar;
 import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.message.MessageElement;
-import org.w3c.dom.DOMException;
 import org.w3c.dom.NodeList;
 
 import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReunioes;
@@ -25,7 +24,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 	}
 
 	public void adcionarDataNaTable(String data, String matricula) 
-			throws DOMException, SQLException, MalformedURLException, ServiceException {			     
+			throws SQLException, MalformedURLException, ServiceException {			     
 		ListarPresencasParlamentarResponseListarPresencasParlamentarResult sessao;
 
 		Calendar hoje = new GregorianCalendar();

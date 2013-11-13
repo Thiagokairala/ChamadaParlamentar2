@@ -29,8 +29,8 @@ public class RankingControl {
 			lista = recebido.get(0);
 
 
-
-			for (int i=0; i< lista.size(); i++) // bubble sort outer loop
+			// bubble sort outer loop
+			for (int i=0; i< lista.size(); i++) 
 			{
 				int verifica = 0;
 				for (int j=0; j < lista.size() - i - 1 ; j++) {

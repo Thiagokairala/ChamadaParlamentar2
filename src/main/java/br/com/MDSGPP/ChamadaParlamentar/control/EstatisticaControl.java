@@ -5,12 +5,13 @@ import java.text.DecimalFormat;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.EstatisticaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionEstatistica;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class EstatisticaControl {
+	
+	public final static double passarPorcentagem = 100.0;
 
 	public EstatisticaControl() {
 		// TODO Auto-generated constructor stub
@@ -36,7 +37,7 @@ public class EstatisticaControl {
 			DecimalFormat df = new DecimalFormat("###.00");  
 			estatistica.setPorcentagem(df.format(
 					(((double)estatistica.getLista().size())/
-							((double)sessoes.passarNumeroDeSessoes()))*100) + "%");
+							((double)sessoes.passarNumeroDeSessoes()))*passarPorcentagem) + "%");
 			estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
 		}
 		else {
