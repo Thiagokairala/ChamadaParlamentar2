@@ -1,9 +1,10 @@
 package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
@@ -11,72 +12,75 @@ import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class TesteSessoesEReunioes {
 
-	SessoesEReunioes ser1;
-	SessoesEReunioes ser2;
-	
+
+	SessoesEReunioes sessoes;
+	SessoesEReunioes sessoesTeste; 
+
+	@Before
+	public void setUp() {
+		ArrayList<Deputados> listaTeste = new ArrayList<Deputados>();
+		sessoes = new SessoesEReunioes();
+		sessoesTeste = new 
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", listaTeste);
+	}
+
 	@Test
 	public void testSessoesEReunioesStringStringArrayListOfDeputados() {
-		Deputados deputado1 = new Deputados();
-		Deputados deputado2 = new Deputados();
-		
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
-		
-		lista.add(deputado1);
-		lista.add(deputado2);
-		
-		
-		ser1 = new SessoesEReunioes("12/12/2011", "descricaoQualquer", lista);
-		ser2 = new SessoesEReunioes("abc", "descricaoQualquer2", lista);
-		
-		assertNotNull(ser1);
-		assertNotNull(ser2);
-		
-		assertTrue(ser1.getData().equalsIgnoreCase("12/12/2011"));
-		assertTrue(ser1.getDeputados() != null);
-		assertTrue(ser1.getDescricao() != null);
-		
-		assertTrue(ser2.getData() == null);
-		assertTrue(ser2.getDeputados() == null);
-		assertTrue(ser2.getDescricao() == null);
+		SessoesEReunioes sessoes2 = new 
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", lista);
+		SessoesEReunioes sessoes3 = new 
+				SessoesEReunioes("oioi", "não pode passar", lista);
+
+		assertNotNull(sessoes2);
+		assertTrue(sessoes3.getData() == null);
+		assertTrue(sessoes3.getDescricao() == null);
+		assertTrue(sessoes3.getDeputados() == null);
 	}
 
 	@Test
 	public void testSessoesEReunioes() {
-		ser1 = null;
-		
-		ser1 = new SessoesEReunioes();
-		
-		assertNotNull(ser1);
+		assertNotNull(sessoes);
 	}
 
-	//@Test
+	@Test
 	public void testGetData() {
-		fail("Not yet implemented");
+		assertTrue(sessoesTeste.getData().equals("11/12/2012"));
 	}
 
-	//@Test
+	@Test
 	public void testSetData() {
-		fail("Not yet implemented");
+		sessoes.setData("11/12/2012");
+		assertTrue(sessoes.getData().equals("11/12/2012"));
 	}
 
-	//@Test
+	@Test
 	public void testGetDescricao() {
-		fail("Not yet implemented");
+		assertTrue(sessoesTeste.getDescricao().equals("descricaoDeTeste"));
 	}
 
-	//@Test
+	@Test
 	public void testSetDescricao() {
-		fail("Not yet implemented");
+		sessoes.setDescricao("descricaoDeTeste");
+		assertTrue(sessoes.getDescricao().equals("descricaoDeTeste"));
 	}
 
-	//@Test
+	@Test
 	public void testGetDeputados() {
-		fail("Not yet implemented");
+		assertNotNull(sessoesTeste.getDeputados());
 	}
 
-	//@Test
+	@Test
 	public void testSetDeputados() {
-		fail("Not yet implemented");
+		Deputados deputado = new Deputados();
+		deputado.setNomeDeTratamentoDoParlamentar("teste");
+		ArrayList<Deputados> lista = new ArrayList<Deputados>();
+		lista.add(deputado);
+		sessoes.setDeputados(lista);
+
+		assertTrue(sessoes.getDeputados()
+				.get(0).getNomeDeTratamentoDoParlamentar()
+				.equals("teste"));
 	}
 
 }

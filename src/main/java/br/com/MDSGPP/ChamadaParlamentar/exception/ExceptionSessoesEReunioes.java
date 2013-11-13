@@ -3,11 +3,14 @@ package br.com.MDSGPP.ChamadaParlamentar.exception;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import java.util.GregorianCalendar;
+
 
 public class ExceptionSessoesEReunioes {
 
 	public static boolean validaData(String data) {
+
 		boolean validado = false;
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");

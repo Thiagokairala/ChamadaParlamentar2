@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,10 +27,30 @@
 		<div id = "arrumar">
 		<div id = "principal">
 			
-			<h1>Em construção</h1>
-            
-
+			<h1>Ranking dos Deputados: </h1>
+			
+			<h2>Os cinco mais presentes</h2>
+			
+			<c:forEach var = "melhores" items = "${ranking.melhores }">
+				<p>${melhores.nome }: ${melhores.porcentagem }</p>
+			</c:forEach>
+			
+			<br><br><br>
+			
+			<h2>Os cinco mais ausentes</h2>
+			
+			<c:forEach var = "piores" items = "${ranking.piores }">
+				<p>${piores.nome }: ${piores.porcentagem }</p>
+			</c:forEach>
+			
 		</div><!-- fim da id principal -->
+		<div id = "auxiliar">
+			<h1>Deputados com dados não disponíveis</h1>
+			
+			<c:forEach var = "naoPossuiDados" items = "${ranking.removidos }">
+				<p>${naoPossuiDados.nome } </p>
+			</c:forEach>
+		</div>
 		
 		
 		</div><!-- fim da div arrumar -->

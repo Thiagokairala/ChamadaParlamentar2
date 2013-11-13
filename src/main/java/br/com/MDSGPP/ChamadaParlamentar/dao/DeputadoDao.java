@@ -1,6 +1,5 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,16 +7,11 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
-public class DeputadoDao {
+public class DeputadoDao extends ConnectionFactory {
 
-	private Connection conexao;
-
-
-	public DeputadoDao() throws ClassNotFoundException {
-		if(conexao == null) {
-			this.conexao = new ConnectionFactory().getConnection();
-		}
-
+	
+	public DeputadoDao() throws ClassNotFoundException, SQLException {
+		new ConnectionFactory().getConnection();
 	}
 
 	public void adicionaDeputado(ArrayList<Deputados> deputados) throws SQLException {
@@ -54,7 +48,7 @@ public class DeputadoDao {
 
 		ArrayList<String> lista = new ArrayList<String>();
 
-		PreparedStatement stmt= this.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
@@ -77,7 +71,7 @@ public class DeputadoDao {
 
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
-		PreparedStatement stmt= this.conexao.prepareStatement(sql);//criando o prepared statement q é o que vai conetar com o banco
+		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);//criando o prepared statement q é o que vai conetar com o banco
 		ResultSet rs = stmt.executeQuery();//executando o stmt para buscar os dados
 
 		while(rs.next()) {
@@ -92,13 +86,13 @@ public class DeputadoDao {
 		String sql = "Select * from deputado";
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 
-		PreparedStatement stmt = this.conexao.prepareStatement(sql);
+		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();
-		
+
 		while(rs.next()) {
 			Deputados deputado = new Deputados();
-			
+
 			deputado.setIdDoParlamentar(rs.getInt("idParlamentar"));
 			deputado.setMatricula(rs.getInt("matricula"));
 			deputado.setIdeCadastro(rs.getInt("ideCadastro"));
@@ -111,10 +105,10 @@ public class DeputadoDao {
 			deputado.setAnexo(rs.getString("anexo"));
 			deputado.setTelefone(rs.getString("telefone"));
 			deputado.setEmail(rs.getString("email"));
-					
+
 			lista.add(deputado);
 		}
-		
+
 		return lista;
 	}
 }
