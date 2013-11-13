@@ -1,0 +1,67 @@
+@CHARSET "ISO-8859-1";
+
+#arrumar h1{
+	margin-top: 100px;
+	margin-left: 30px;
+	font-size: 180%;
+}
+#principal{
+	background-color:#FFD700;
+	float: left;
+	width:40%;
+	margin-left: 30px;
+	margin-top: 50px;
+	margin-right: 30px;
+}
+
+#principal h1{
+	margin-left: 2%;
+}
+
+#principal h2{
+	font-size: 150%;
+	margin-left:2%;
+}
+
+#principal p{
+	margin-left: 2%;
+}
+
+#auxiliar{
+	background-color:#696969;
+	float: right;
+	width:40%;
+	margin-top: 80px;
+	margin-right: 400px;
+	height:auto;
+}
+
+#auxiliar h1{
+	font-size: 180%;
+	margin-left: 2%;
+}
+
+#auxiliar p{
+	margin-left: 2%;
+}
+
+#piores{
+	background-color:#B22222;
+	float: left;
+	width:40%;
+	margin-top:50px;
+}
+
+#piores h1{
+	margin-left: 2%;
+	font-size: 150%;
+}
+
+#piores p{
+	margin-left: 2%;
+}
+#titulo{
+	margin-top: 100px;
+	margin-left: 50px;
+	font-size: 230%;
+}
