@@ -34,12 +34,16 @@ public class TesteRankingControl {
 		ArrayList<Estatistica> teste = new ArrayList<Estatistica>();
 		Ranking ranking2 = RankingControl.gerarRanking(teste);
 		
+		Ranking ranking3 = RankingControl.gerarRanking(null);
+		
 		assertNotNull(ranking.getLista());
 		assertNotNull(ranking.getMelhores());
 		assertNotNull(ranking.getPiores());
 		assertNotNull(ranking.getRemovidos());
 		
 		assertTrue(ranking2 == null);
+		
+		assertTrue(ranking3 == null);
 	}
 	
 	@Test

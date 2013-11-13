@@ -15,17 +15,20 @@ public class RankingControl {
 	}
 
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
-		ArrayList<ArrayList<Estatistica>> recebido = 
-				ExceptionRanking.limparLista(lista);
-		ArrayList<Estatistica> removidos = recebido.get(1);
-		ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
-		ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
-		Ranking ranking = new Ranking();
 
+		Ranking ranking = new Ranking();
 		if(ExceptionRanking.verificaLista(lista)) {
+			ArrayList<ArrayList<Estatistica>> recebido = 
+					ExceptionRanking.limparLista(lista);
+			ArrayList<Estatistica> removidos = recebido.get(1);
+			ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
+			ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
+
+
+
 			lista = recebido.get(0);
 
-			
+
 
 			for (int i=0; i< lista.size(); i++) // bubble sort outer loop
 			{
@@ -63,7 +66,7 @@ public class RankingControl {
 			ranking = null;
 		}
 
-		
+
 		return ranking;
 	}
 

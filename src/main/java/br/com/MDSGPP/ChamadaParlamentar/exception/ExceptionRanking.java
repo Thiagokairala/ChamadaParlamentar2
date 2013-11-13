@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class ExceptionRanking {
-	
+
 	public static ArrayList<ArrayList<Estatistica>> limparLista(ArrayList<Estatistica> lista){
 		ArrayList<ArrayList<Estatistica>> passar = new ArrayList<ArrayList<Estatistica>>();
 		ArrayList<Estatistica> removidos = new ArrayList<Estatistica>();
@@ -22,18 +22,22 @@ public class ExceptionRanking {
 				i--;
 			}
 		}
-		
+
 		passar.add(lista);
 		passar.add(removidos);
 		return passar;
 	}
-	
+
 	public static boolean verificaLista(ArrayList<Estatistica> lista) {
 		boolean passar = false;
-		
-		if(lista.size()>10)
-			passar = true;
-		
+
+		try {
+			if(lista.size()>10)
+				passar = true;
+		} catch (NullPointerException e) {
+			passar = false;
+		}
+
 		return passar;
 	}
 }
