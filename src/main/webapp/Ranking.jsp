@@ -25,34 +25,31 @@
 			<jsp:include page='Header.html'/>
 		</div><!-- Fim da div topo -->
 		
-		<div id = "arrumar">
-		<div id = "principal">
+		<div id = "titulo">
+			Ranking Deputados:
+			</div><!-- fim da id titulo -->
 			
-			<h1>Ranking dos Deputados: </h1>
-			
+			<div id = "principal">
 			<h2>Os cinco mais presentes</h2>
 			
 			<c:forEach var = "melhores" items = "${ranking.melhores }">
 				<p>${melhores.nome }: ${melhores.porcentagem }</p>
 			</c:forEach>
-			
-			<br><br><br>
-			
-			<h2>Os cinco mais ausentes</h2>
-			
+			</div><!-- fim da id principal -->
+			<div id = "piores">
+			<h1>Os cinco mais ausentes:</h1>
 			<c:forEach var = "piores" items = "${ranking.piores }">
 				<p>${piores.nome }: ${piores.porcentagem }</p>
 			</c:forEach>
+			</div><!-- fim da id piores -->
 			
-		</div><!-- fim da id principal -->
-		<div id = "auxiliar">
+			<div id = "auxiliar">
 			<h1>Deputados com dados não disponíveis:</h1>
 			
 			<c:forEach var = "naoPossuiDados" items = "${ranking.removidos }">
 				<p>${naoPossuiDados.nome } </p>
 			</c:forEach>
-		</div><!-- fim da div auxiliar -->
-		</div><!-- fim da div arrumar -->
+			</div><!-- fim da div auxiliar -->
 		
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
