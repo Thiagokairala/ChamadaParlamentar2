@@ -43,7 +43,4 @@ public class Ranking {
 	public void setPiores(ArrayList<Estatistica> piores) {
 		this.piores = piores;
 	}
-	
-	
-	
 }

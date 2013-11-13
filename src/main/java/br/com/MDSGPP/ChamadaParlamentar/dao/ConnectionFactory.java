@@ -13,12 +13,12 @@ public class ConnectionFactory {
 		
 	}
 	
-	public void getConnection() throws ClassNotFoundException, SQLException {
+	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		if(ConnectionFactory.conexao == null) {
 			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionFactory.conexao = DriverManager.getConnection
 					("jdbc:mysql://localhost/projetoMDS", "root", "12345");
 		}
-		
+		return ConnectionFactory.conexao;
 	 }
 }

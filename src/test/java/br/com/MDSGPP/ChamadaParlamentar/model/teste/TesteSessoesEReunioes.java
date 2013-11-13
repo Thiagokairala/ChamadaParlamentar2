@@ -1,34 +1,87 @@
 package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
-import java.util.Collection;
 
-import junit.framework.TestCase;
-
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
-public class TesteSessoesEReunioes extends TestCase {
-	SessoesEReunioes sessoes = new SessoesEReunioes();
-	
-	
-	public void setUp() throws Exception {
-	
-		sessoes.setData("000");
-		sessoes.setDescricao("Sessao muito importante");
+public class TesteSessoesEReunioes {
+
+	SessoesEReunioes sessoes;
+	SessoesEReunioes sessoesTeste; 
+
+	@Before
+	public void setUp() {
+		ArrayList<Deputados> listaTeste = new ArrayList<Deputados>();
+		sessoes = new SessoesEReunioes();
+		sessoesTeste = new 
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", listaTeste);
 	}
-	//Testando a instância do objeto.
+
 	@Test
-public void testInstancia() {
+	public void testSessoesEReunioesStringStringArrayListOfDeputados() {
+		ArrayList<Deputados> lista = new ArrayList<Deputados>();
+		SessoesEReunioes sessoes2 = new 
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", lista);
+		SessoesEReunioes sessoes3 = new 
+				SessoesEReunioes("oioi", "não pode passar", lista);
+
+		assertNotNull(sessoes2);
+		assertTrue(sessoes3.getData() == null);
+		assertTrue(sessoes3.getDescricao() == null);
+		assertTrue(sessoes3.getDeputados() == null);
+	}
+
+	@Test
+	public void testSessoesEReunioes() {
 		assertNotNull(sessoes);
 	}
-	//Testando gets e sets
+
 	@Test
-	public void testObjeto() {
-		assertTrue(sessoes.getData().equalsIgnoreCase("000"));
-		assertTrue(sessoes.getDescricao().equalsIgnoreCase("Sessao muito importante"));
+	public void testGetData() {
+		assertTrue(sessoesTeste.getData().equals("11/12/2012"));
 	}
-	
+
+	@Test
+	public void testSetData() {
+		sessoes.setData("11/12/2012");
+		assertTrue(sessoes.getData().equals("11/12/2012"));
+	}
+
+	@Test
+	public void testGetDescricao() {
+		assertTrue(sessoesTeste.getDescricao().equals("descricaoDeTeste"));
+	}
+
+	@Test
+	public void testSetDescricao() {
+		sessoes.setDescricao("descricaoDeTeste");
+		assertTrue(sessoes.getDescricao().equals("descricaoDeTeste"));
+	}
+
+	@Test
+	public void testGetDeputados() {
+		assertNotNull(sessoesTeste.getDeputados());
+	}
+
+	@Test
+	public void testSetDeputados() {
+		Deputados deputado = new Deputados();
+		deputado.setNomeDeTratamentoDoParlamentar("teste");
+		ArrayList<Deputados> lista = new ArrayList<Deputados>();
+		lista.add(deputado);
+		sessoes.setDeputados(lista);
+		
+		assertTrue(sessoes.getDeputados()
+				.get(0).getNomeDeTratamentoDoParlamentar()
+				.equals("teste"));
+	}
+
 }

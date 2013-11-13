@@ -16,6 +16,10 @@ public class ExceptionRanking {
 				removidos.add(lista.get(i));
 				lista.remove(i);
 				i--;
+			} catch(NullPointerException e) {
+				removidos.add(lista.get(i));
+				lista.remove(i);
+				i--;
 			}
 		}
 		

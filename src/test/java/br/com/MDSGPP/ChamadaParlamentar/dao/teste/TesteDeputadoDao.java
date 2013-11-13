@@ -23,7 +23,7 @@ public class TesteDeputadoDao {
 	Deputados deputado2 = new Deputados();
 	
 	@Before
-	public void setUp() throws ClassNotFoundException {
+	public void setUp() throws ClassNotFoundException, SQLException {
 		deputadoDao = new DeputadoDao();
 	}
 	public ArrayList<Deputados> criaLista() {
@@ -69,13 +69,18 @@ public class TesteDeputadoDao {
 	public void testDeputadoDao() {		
 		assertNotNull(deputadoDao);
 	}
+	
+	@Test
+	public void TestegetMatriculaDeputados() throws SQLException {
+		ArrayList<Integer> lista = deputadoDao.getMatriculaDeputados();
+		assertNotNull(lista);
+	}
 
-	//@Test
+	@Test
 	public void testAdicionaDeputado() throws SQLException {
-		//deputados = criaLista();
-		//deputadoDao.adicionaDeputado(deputados);
+		ArrayList<Deputados> deputados = criaLista();
+		deputadoDao.adicionaDeputado(deputados);
 		assertNotNull(criaLista());
-		
 	}
 	@Test
 	public void testInstancia1() throws SQLException {
