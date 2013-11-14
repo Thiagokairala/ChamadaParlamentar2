@@ -18,6 +18,7 @@ public class RankingControl {
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
 
 		Ranking ranking = new Ranking();
+		
 		if(ExceptionRanking.verificaLista(lista)) {
 			ArrayList<ArrayList<Estatistica>> recebido = 
 					ExceptionRanking.limparLista(lista);

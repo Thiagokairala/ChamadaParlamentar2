@@ -36,7 +36,7 @@ public class TesteEstatisticaControl {
 		estatisticaTeste2 = EstatisticaControl.gerarEstatisticas("abelardo lupion-dem/pr");
 		estatisticaTeste3 = EstatisticaControl.gerarEstatisticas("ABELARDO LUPION-DEM/PR");
 		
-		assertTrue(estatisticaTeste1 == null);
+		assertTrue(estatisticaTeste1.getLista().get(0).equals("Dados não disponiveis"));
 		assertTrue(estatisticaTeste2 != null);
 		assertTrue(estatisticaTeste3 != null);
 	}

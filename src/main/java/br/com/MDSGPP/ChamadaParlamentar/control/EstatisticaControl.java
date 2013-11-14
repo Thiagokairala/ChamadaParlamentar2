@@ -41,8 +41,10 @@ public class EstatisticaControl {
 			estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
 		}
 		else {
-			estatistica = null;
+			estatistica.getLista().add("Dados não disponiveis");
 		}
+		
+		estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
 		
 
 		return estatistica;
