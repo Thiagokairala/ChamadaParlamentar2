@@ -17,3 +17,13 @@
 	margin-left: 12%;
 	margin-right: 53%;
 }
+
+.menu {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	margin-top: 2.4%;
+	margin-left: 11.42%;
+	list-style: none;
+	float: left;
+}
