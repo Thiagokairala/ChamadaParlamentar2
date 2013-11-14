@@ -44,3 +44,9 @@
 	font-size: 105%;
 	display: block;
 }
+
+.menu li a {
+	margin-bottom: 0.8%;
+	margin-top: 2%;
+	padding-bottom: 0;
+}
