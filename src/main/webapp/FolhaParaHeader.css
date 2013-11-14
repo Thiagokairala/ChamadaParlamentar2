@@ -12,7 +12,7 @@
 	border: none;
 	background-color: #B4CBDF;
 	color: #B4CBDF;
-	height: .1%;
+	height: 1%%;
 	margin-top: 4%;
 	margin-left: 12%;
 	margin-right: 53%;
@@ -53,6 +53,7 @@
 
 .menu li a:hover {
 	background: #333;
+	
 	color: #fff;
 	-moz-box-shadow: 0 3px 10px 0 #333333;
 	-webkit-box-shadow: 0 3px 10px 0 #333333;
@@ -70,6 +71,13 @@
 }
 
 .menu li:hover ul,.menu li.over ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.menu li ul li {
+	border: 1px #c0c0c0;
 	display: block;
 	margin: 0;
 	padding: 0;
