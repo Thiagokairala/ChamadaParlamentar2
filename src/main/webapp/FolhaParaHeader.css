@@ -58,3 +58,13 @@
 	-webkit-box-shadow: 0 3px 10px 0 #333333;
 	text-shadow: 0px 0px 5px #fff;
 }
+
+.menu li  ul {
+	position: absolute;
+	top: 105%;
+	left: 0;
+	background-color: #f8f8ff;
+	display: none;
+	margin: 0;
+	padding: 0;
+}
