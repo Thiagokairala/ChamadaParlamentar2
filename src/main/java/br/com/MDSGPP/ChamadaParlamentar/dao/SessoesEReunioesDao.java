@@ -15,6 +15,7 @@ import org.apache.axis.message.MessageElement;
 import org.w3c.dom.NodeList;
 
 import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 import br.gov.camara.www.SitCamaraWS.SessoesReunioes.ListarPresencasParlamentarResponseListarPresencasParlamentarResult;
 
 public class SessoesEReunioesDao extends ConnectionFactory {
@@ -140,6 +141,25 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		}
 
 		return i;		
+	}
+	
+	public ArrayList<SessoesEReunioes> buscarTodasDescricoes() throws SQLException {
+		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();
+		String sql = "select * from datas";
+		
+		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		
+		
+		while(rs.next()) {
+			SessoesEReunioes sessao = new SessoesEReunioes();
+			sessao.setData(rs.getString("datas"));
+			sessao.setDescricao(rs.getString("sessao"));
+			
+			lista.add(sessao);
+		}
+		
+		return lista;
 	}
 }
 
