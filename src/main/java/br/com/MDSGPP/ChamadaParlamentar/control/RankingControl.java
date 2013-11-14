@@ -50,16 +50,22 @@ public class RankingControl {
 	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista) throws ClassNotFoundException, SQLException {
 
 		ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
+		String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(0));
+		devolver.add(EstatisticaControl.gerarEstatisticas(nome));
+		
+		int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
+		
 		for(int i = 0; i< lista.size(); i++) {
-			String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
+			nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
 
-			devolver.add(EstatisticaControl.gerarEstatisticas(nome));
+			devolver.add(EstatisticaControl.gerarEstatisticas(nome, 
+					totalSessao));
 		}
 
 		return devolver;
 	}
 
-	private static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
+	public static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
 		// bubble sort outer loop
 		for (int i=0; i< lista.size(); i++) {
 			int verifica = 0;

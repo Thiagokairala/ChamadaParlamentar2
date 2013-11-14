@@ -19,37 +19,60 @@ public class EstatisticaControl {
 	public static Estatistica gerarEstatisticas(String nome)
 			throws ClassNotFoundException, SQLException	{
 		Estatistica estatistica = new Estatistica();
-		EstatisticaDao dao;
-		SessoesEReunioesDao sessoes;
-
-		sessoes = new SessoesEReunioesDao();
-		dao = new EstatisticaDao();	
-
-
+		EstatisticaDao dao = new EstatisticaDao();	
+		SessoesEReunioesDao sessoes = new SessoesEReunioesDao();
+		int numeroTotalSessao = sessoes.passarNumeroDeSessoes();
+		
 		estatistica.setLista(dao.getEstatisticaDeputados(nome));
 
 		estatistica.setNome(nome);
 
+		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
+		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
+		
 
+		return estatistica;
+	}
+	
+	public static Estatistica gerarEstatisticas(String nome, int numeroTotalSessao) 
+			throws ClassNotFoundException, SQLException {
+		
+		Estatistica estatistica = new Estatistica();
+		EstatisticaDao dao = new EstatisticaDao();	
+		SessoesEReunioesDao sessoes = new SessoesEReunioesDao();
+		
+		estatistica.setLista(dao.getEstatisticaDeputados(nome));
+
+		estatistica.setNome(nome);
+
+		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
+		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
+		
+
+		return estatistica;
+		
+	}
+	
+	
+	public static Estatistica calcularEstatistica
+		(Estatistica estatistica, SessoesEReunioesDao sessoes, 
+				int numeroTotalSessao) {
 		if(ValidaDadosWS.validaLista(estatistica.getLista())) {
 			estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
 
 			DecimalFormat df = new DecimalFormat("###.00");  
 			estatistica.setPorcentagem(df.format(
 					(((double)estatistica.getLista().size())/
-							((double)sessoes.passarNumeroDeSessoes()))*passarPorcentagem) + "%");
-			estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
+							((double)numeroTotalSessao))*passarPorcentagem) + "%");
 		}
 		else {
 			estatistica.getLista().add("Dados não disponiveis");
 		}
 		
-		estatistica.setTotalSessao(Integer.toString(sessoes.passarNumeroDeSessoes()));
-		
-
 		return estatistica;
 	}
-
+	
+	
 	public static String arrumarNomePesquisa(Deputados deputado) {
 		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
 				"-" + deputado.getPartido() + "/" + deputado.getUf();
