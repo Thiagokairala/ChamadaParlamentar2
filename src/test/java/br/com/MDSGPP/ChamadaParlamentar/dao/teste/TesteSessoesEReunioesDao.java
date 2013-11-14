@@ -34,6 +34,9 @@ public class TesteSessoesEReunioesDao {
 	public void testbuscarTodasDescricoes() throws SQLException {
 		ArrayList<SessoesEReunioes> sessoes = sessoesDao.buscarTodasDescricoes();
 		
+		assertNotNull(sessoes);
+		
+		assertTrue(sessoes.size() != 0);
 	}
 
 }
