@@ -7,3 +7,13 @@
 	background-color: #333333;
 	height: 135px;
 }
+
+#topo hr {
+	border: none;
+	background-color: #B4CBDF;
+	color: #B4CBDF;
+	height: .1%;
+	margin-top: 4%;
+	margin-left: 12%;
+	margin-right: 53%;
+}
