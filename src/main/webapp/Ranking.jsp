@@ -26,7 +26,7 @@
 		</div><!-- Fim da div topo -->
 		
 		<div id = "titulo">
-			Ranking Deputados:
+			<h1>Ranking Deputados</h1>
 			</div><!-- fim da id titulo -->
 			
 			<div id = "principal">
