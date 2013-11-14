@@ -19,7 +19,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 import br.gov.camara.www.SitCamaraWS.SessoesReunioes.ListarPresencasParlamentarResponseListarPresencasParlamentarResult;
 
 public class SessoesEReunioesDao extends ConnectionFactory {
-	
+
 	public SessoesEReunioesDao() throws ClassNotFoundException, SQLException {
 		new ConnectionFactory().getConnection();
 	}
@@ -82,8 +82,6 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 			SimpleDateFormat df = new SimpleDateFormat();
 			df.applyPattern("dd/MM/yyyy");
 
-
-
 			ListarPresencasParlamentarResponseListarPresencasParlamentarResult sessao;
 			try {
 				sessao = ConexaoComWsSessoesEReunioes.receberElementPresenca
@@ -91,8 +89,6 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 								data, df.format(hoje.getTime()), Integer.toString(lista.get(i)));
 
 				NodeList dias = sessao.get_any()[0].getElementsByTagName("dia");
-
-
 
 				for(int j = 0; j<dias.getLength(); j++) {
 
@@ -141,25 +137,6 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		}
 
 		return i;		
-	}
-	
-	public ArrayList<SessoesEReunioes> buscarTodasDescricoes() throws SQLException {
-		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();
-		String sql = "select * from datas";
-		
-		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
-		ResultSet rs = stmt.executeQuery();
-		
-		
-		while(rs.next()) {
-			SessoesEReunioes sessao = new SessoesEReunioes();
-			sessao.setData(rs.getString("datas"));
-			sessao.setDescricao(rs.getString("sessao"));
-			
-			lista.add(sessao);
-		}
-		
-		return lista;
 	}
 }
 
