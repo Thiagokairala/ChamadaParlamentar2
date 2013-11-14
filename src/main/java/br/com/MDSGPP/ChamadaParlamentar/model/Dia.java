@@ -3,8 +3,8 @@ package br.com.MDSGPP.ChamadaParlamentar.model;
 import java.util.ArrayList;
 
 public class Dia {
-	String data;
-	ArrayList<String> lista = new ArrayList<String>();
+	private String data;
+	private ArrayList<String> lista = new ArrayList<String>();
 	
 	public String getData() {
 		return data;
