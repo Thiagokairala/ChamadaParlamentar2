@@ -59,7 +59,7 @@ public class RankingControl {
 		return devolver;
 	}
 
-	private static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
+	public static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
 		// bubble sort outer loop
 		for (int i=0; i< lista.size(); i++) {
 			int verifica = 0;
