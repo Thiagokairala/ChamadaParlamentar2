@@ -28,12 +28,12 @@ public class DiaControl {
 			ArrayList<Dia> dia) {
 		ArrayList<Dia> listaPassar = new ArrayList<Dia>();
 		
-		for(int i = 0; i<= datasPorPagina; i++) {
+		for(int i = 0; i< datasPorPagina; i++) {
 			if(pagina == 0) {
 				listaPassar.add(dia.get(i));
 			}
 			else {
-				if(listaPassar.size() < i+(pagina*datasPorPagina)) {
+				if(i+(pagina*datasPorPagina)<dia.size()) {
 					listaPassar.add(dia.get(i+ (pagina*datasPorPagina)));
 				}
 			}
