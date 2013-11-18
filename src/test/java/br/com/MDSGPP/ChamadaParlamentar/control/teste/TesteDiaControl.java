@@ -5,13 +5,26 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public class TesteDiaControl {
-
+	DiaControl control;
+	
+	
+	@Before
+	public void setUp() {
+		control = new DiaControl();
+	}
+	
+	@Test
+	public void testDiaControl() {
+		assertNotNull(control);
+	}
+	
 	@Test
 	public void testGetDias() throws ClassNotFoundException, SQLException {
 		ArrayList<Dia> dias = DiaControl.getDias();
