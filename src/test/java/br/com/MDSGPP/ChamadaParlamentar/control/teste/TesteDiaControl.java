@@ -29,20 +29,22 @@ public class TesteDiaControl {
 		int datasPorPagina = 5;
 		int paginaFinal =(int) (dias.size()/datasPorPagina);
 		
-		ArrayList<Dia> diasTeste = DiaControl.getListaCerta(pagina, datasPorPagina, dias);
-		ArrayList<Dia> diasTeste2 = DiaControl.getListaCerta(pagina2, datasPorPagina, dias);
-		ArrayList<Dia> diasTesteFinal = DiaControl.getListaCerta(paginaFinal, datasPorPagina, dias);
+		ArrayList<Dia> diasTeste = DiaControl.getListaCerta(pagina-1, datasPorPagina, dias);
+		ArrayList<Dia> diasTeste2 = DiaControl.getListaCerta(pagina2-1, datasPorPagina, dias);
+		ArrayList<Dia> diasTesteFinal = DiaControl.getListaCerta(paginaFinal-1, datasPorPagina, dias);
+		ArrayList<Dia> diasTesteFinalReal = DiaControl.getListaCerta(paginaFinal, datasPorPagina, dias);
 		assertNotNull(diasTeste);
 		
 		assertTrue(diasTeste.size() == datasPorPagina);
 		assertTrue(diasTeste2.size() == datasPorPagina);
 		assertNotNull(diasTesteFinal.size());
+		assertNotNull(diasTesteFinalReal);
 		
 		for(int i =0; i<diasTeste.size(); i++) {
-			assertTrue(diasTeste.get(i).equals(dias.get(i+(pagina*datasPorPagina))));
-			assertTrue(diasTeste2.get(i).equals(dias.get(i+(pagina2*datasPorPagina))));
+			assertTrue(diasTeste.get(i).equals(dias.get(i+((pagina-1)*datasPorPagina))));
+			assertTrue(diasTeste2.get(i).equals(dias.get(i+((pagina2-1)*datasPorPagina))));
 			if(i < diasTesteFinal.size()) {
-				assertTrue(diasTesteFinal.get(i).equals(dias.get(i+(paginaFinal*datasPorPagina))));
+				assertTrue(diasTesteFinal.get(i).equals(dias.get(i+((paginaFinal-1)*datasPorPagina))));
 			}
 		}
 	

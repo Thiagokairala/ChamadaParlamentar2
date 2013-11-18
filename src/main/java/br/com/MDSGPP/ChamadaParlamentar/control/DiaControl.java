@@ -33,7 +33,7 @@ public class DiaControl {
 				listaPassar.add(dia.get(i));
 			}
 			else {
-				if(i+(pagina*datasPorPagina)<dia.size()) {
+				if(i+(pagina*datasPorPagina) < dia.size()) {
 					listaPassar.add(dia.get(i+ (pagina*datasPorPagina)));
 				}
 			}
