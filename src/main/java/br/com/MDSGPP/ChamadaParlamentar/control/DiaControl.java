@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DiaDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
+import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class DiaControl {
 
@@ -39,5 +40,16 @@ public class DiaControl {
 		}
 		
 		return listaPassar;
+	}
+	
+	public static SessoesEReunioes procurarDia(ArrayList<Dia> lista, String descricao) {
+		for(int i = 0; i<lista.size(); i++) {
+			
+			for(int j = 0; j<lista.get(i).getListaDescricaoCompleta().size(); j++) {
+				if(lista.get(i).getListaDescricaoCompleta().get(j).equalsIgnoreCase(descricao)) {
+					
+				}
+			}
+		}
 	}
 }

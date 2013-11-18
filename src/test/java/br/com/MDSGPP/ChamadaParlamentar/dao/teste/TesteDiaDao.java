@@ -17,12 +17,12 @@ public class TesteDiaDao {
 	public void setUp() throws Exception {
 	}
 
-	@Test
+	//@Test
 	public void testDiaDao() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testBuscarTodasDescricoes() throws ClassNotFoundException, SQLException {
 		ArrayList<Dia> dias = new ArrayList<Dia>();
 		DiaDao diaDao = new DiaDao();

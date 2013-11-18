@@ -36,16 +36,14 @@ public class DiaDao extends ConnectionFactory {
 
 		while(rs.next()) {
 			String descricao = rs.getString("sessao");
-			lista.get(cont).setListaDescricaoCompleta(descricao);
+			String descAux = descricao;
 			descricao = descricao.split(" -")[0];
 
-			if(lista.get(cont).getData().equalsIgnoreCase(rs.getString("datas"))) {
-				lista.get(cont).getLista().add(descricao);
-			}
-			else {
+			if(lista.get(cont).getData().equalsIgnoreCase(rs.getString("datas"))== false) {
 				cont++;
-				lista.get(cont).getLista().add(descricao);
 			}
+			lista.get(cont).getLista().add(descricao);
+			lista.get(cont).getListaDescricaoCompleta().add(descAux);
 		}
 
 		return lista;

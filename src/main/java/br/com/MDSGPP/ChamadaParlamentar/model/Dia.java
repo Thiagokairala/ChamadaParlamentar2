@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Dia {
 	private String data;
 	private ArrayList<String> lista = new ArrayList<String>();
-	private String listaDescricaoCompleta;
+	private	ArrayList<String> listaDescricaoCompleta = new ArrayList<String>();
 	
 	public String getData() {
 		return data;
@@ -19,10 +19,10 @@ public class Dia {
 	public void setLista(ArrayList<String> lista) {
 		this.lista = lista;
 	}
-	public String getListaDescricaoCompleta() {
+	public ArrayList<String> getListaDescricaoCompleta() {
 		return listaDescricaoCompleta;
 	}
-	public void setListaDescricaoCompleta(String descricao) {
+	public void setListaDescricaoCompleta(ArrayList<String> descricao) {
 		this.listaDescricaoCompleta = descricao;
 	}
 	
