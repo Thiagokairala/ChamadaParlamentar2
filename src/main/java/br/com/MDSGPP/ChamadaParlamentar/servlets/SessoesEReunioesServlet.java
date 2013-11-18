@@ -20,9 +20,28 @@ public class SessoesEReunioesServlet extends HttpServlet {
 	protected void service (HttpServletRequest request, HttpServletResponse response) {
 		RequestDispatcher rd = null;
 		
-		try {
+		try {		
+			int pagina = 1;
+			int datasPorPagina = 5;
+			
+			
+			if(request.getParameter("pagina") != null) {
+				pagina = Integer.parseInt(request.getParameter("pagina"));
+			}
+			
 			ArrayList<Dia> dia = DiaControl.getDias();
-			request.setAttribute("dias", dia);
+				
+			int numeroDatas = dia.size();	
+							
+			int noDePaginas = ((int) Math.ceil(numeroDatas * 1.0 / datasPorPagina))-1;
+			
+			ArrayList<Dia> diaPassar = DiaControl.getListaCerta(pagina-1, datasPorPagina, dia);
+			
+			
+			request.setAttribute("noDePaginas", noDePaginas);
+			request.setAttribute("paginaAtual", pagina);
+			request.setAttribute("dias", diaPassar);
+					
 			rd = request.getRequestDispatcher("AcompanharSessao.jsp");
 		} catch (ClassNotFoundException e) {
 			rd = request.getRequestDispatcher("Erro.jsp");

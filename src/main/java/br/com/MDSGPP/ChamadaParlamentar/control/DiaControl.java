@@ -7,13 +7,37 @@ import br.com.MDSGPP.ChamadaParlamentar.dao.DiaDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public class DiaControl {
-	
+
 	public static ArrayList<Dia> getDias() throws ClassNotFoundException, SQLException {
 		ArrayList<Dia> lista;
 		DiaDao diaDao = new DiaDao();
-		
+
 		lista = diaDao.buscarTodasDescricoes();
-		return lista;
+
+		ArrayList<Dia> listaInverter = new ArrayList<Dia>();
+
+		for(int i = 0; i<lista.size(); i++) {
+			listaInverter.add(lista.get(lista.size()-1-i));
+		}
+
+		return listaInverter;
 	}
-	
+
+	public static ArrayList<Dia> getListaCerta(int pagina, int datasPorPagina,
+			ArrayList<Dia> dia) {
+		ArrayList<Dia> listaPassar = new ArrayList<Dia>();
+		
+		for(int i = 0; i<= datasPorPagina; i++) {
+			if(pagina == 0) {
+				listaPassar.add(dia.get(i));
+			}
+			else {
+				if(listaPassar.size() < i+(pagina*datasPorPagina)) {
+					listaPassar.add(dia.get(i+ (pagina*datasPorPagina)));
+				}
+			}
+		}
+		
+		return listaPassar;
+	}
 }
