@@ -20,24 +20,25 @@ public class DiaDao extends ConnectionFactory {
 
 		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
-				
+
 		lista = criarDias(rs);
-		
+
 		ResultSet rs2 = stmt.executeQuery();
-		
+
 		lista = popularListaDia(rs2, lista);
-		
+
 		return lista;
 	}
-	
+
 	public static ArrayList<Dia> popularListaDia(ResultSet rs, 
 			ArrayList<Dia> lista) throws SQLException {
-int cont = 0;
-		
+		int cont = 0;
+
 		while(rs.next()) {
 			String descricao = rs.getString("sessao");
+			lista.get(cont).setListaDescricaoCompleta(descricao);
 			descricao = descricao.split(" -")[0];
-			
+
 			if(lista.get(cont).getData().equalsIgnoreCase(rs.getString("datas"))) {
 				lista.get(cont).getLista().add(descricao);
 			}
@@ -46,7 +47,7 @@ int cont = 0;
 				lista.get(cont).getLista().add(descricao);
 			}
 		}
-		
+
 		return lista;
 	}
 
