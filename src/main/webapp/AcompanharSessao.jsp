@@ -31,7 +31,8 @@
 				<c:forEach var = "dia" items = "${dias }">
 					<h2>Data: ${dia.data }</h2>
 					<c:forEach var = "sessao" items = "${dia.listaSessoes }">
-						<p>${sessao.descricao }</p>
+						<td><a href = "sessaoPorNome?descricao=${sessao.descricaoCompleta}">
+							${sessao.descricao }</a></td>
 					</c:forEach>
 				</c:forEach>
             

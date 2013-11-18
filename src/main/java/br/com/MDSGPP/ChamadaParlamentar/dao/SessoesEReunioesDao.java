@@ -139,16 +139,17 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 	}
 	
 	public ArrayList<String> procurarSessao(String descricao) throws SQLException {
-		String sql = "select * from sessao where descricao LIKE ?";
+		String sql = "select * from sessao where idSessoes LIKE ?";
+		
 		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
 		
 		stmt.setString(1, descricao);
 		ResultSet rs = stmt.executeQuery();
-
+		
 		ArrayList<String> lista = new ArrayList<String>();
 		
 		while(rs.next()) {
-			lista.add(rs.getString("deputadosPresentes"));
+			lista.add(rs.getString("deputadoPresente"));
 		}
 		
 		return lista;

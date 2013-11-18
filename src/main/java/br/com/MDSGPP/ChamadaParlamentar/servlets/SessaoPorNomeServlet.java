@@ -25,9 +25,14 @@ public class SessaoPorNomeServlet extends HttpServlet{
 		String descricao = request.getParameter("descricao");
 		try {
 			sessao = SessoesEReunioesControl.passarSessao(descricao);
-
-			request.setAttribute("sessao", sessao);
-			rd = request.getRequestDispatcher("SessaoPorNome.jsp");
+			
+			if(sessao.getDeputadosPresentes().size() != 0) {
+				request.setAttribute("sessao", sessao);
+				rd = request.getRequestDispatcher("SessaoPorNome.jsp");
+			}
+			else {
+				rd = request.getRequestDispatcher("SessaoNaoEncontrada.jsp");
+			}
 		} catch (ClassNotFoundException e) {
 			rd = request.getRequestDispatcher("Erro.jsp");
 		} catch (SQLException e) {
