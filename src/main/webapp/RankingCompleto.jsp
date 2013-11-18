@@ -9,9 +9,10 @@
 <style type="text/css">
 		<jsp:include page="FolhaParaHeader.css"/>
 		<jsp:include page="FolhaParaTudo.css"/>
+		<jsp:include page="FolhaParaPrincipal.css"/>
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
-		<jsp:include page="FolhaParaRanking.css"/>
+		<jsp:include page="FolhaParaAuxiliar.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -24,24 +25,16 @@
 		</div><!-- Fim da div topo -->
 		
 		<div id = "titulo">
-			<h1>Ranking Deputados</h1>
 			</div><!-- fim da id titulo -->
 			
 			<div id = "principal">
-			<div id = "melhores">
-			<h2>Os cinco mais presentes</h2>
+			<h2>Ranking dos Deputados: </h2>
 			
-			<c:forEach var = "melhores" items = "${ranking.melhores }">
-				<p>${melhores.nome }: ${melhores.porcentagem }</p>
+			<c:forEach var = "ranking" items = "${ranking.lista }">
+				<p>${ranking.nome }: ${ranking.porcentagem }</p>
 			</c:forEach>
-			</div><!-- fim da id melhores -->
-			<div id = "piores">
-			<h2>Os cinco mais ausentes:</h2>
-			<c:forEach var = "piores" items = "${ranking.piores }">
-				<p>${piores.nome }: ${piores.porcentagem }</p>
-			</c:forEach>
-			</div><!-- fim da id piores -->
 			</div><!-- fim da id principal -->
+			
 			<div id = "auxiliar">
 			<h1>Deputados com dados não disponíveis:</h1>
 			
@@ -50,11 +43,10 @@
 			</c:forEach>
 			</div><!-- fim da div auxiliar -->
 		
-			</div><!--fim da div tudo-->
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
-
+	</div><!--fim da div tudo-->
 	
 	
 </body>

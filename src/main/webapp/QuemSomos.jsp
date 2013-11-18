@@ -27,11 +27,11 @@
             <p>Somos estudantes de Engenharia de Software da Universidade de Brasília.
             	<br>Integrantes:<br>
             	<br> <b>Métodos de Desenvolvimento de Software:</b>
-            	<br><br>-Rafael Fazzolino P. Barbosa
+            	<br><br>-Thiago Kairala
             	<br>-Eduardo Brasil Martins
             	<br>-Carlos Cruz
             	<br>-Bruno bragança
-            	<br>-Thiago Kairala<br>
+            	<br>-Rafael Fazzolino P. Barbosa<br>
             	<br> <b>Gestão de Portifólio e Projeto de Software:</b>
             	<br><br>-Thabata Helen
             	<br>-Nilton Araruna

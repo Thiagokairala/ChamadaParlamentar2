@@ -24,6 +24,16 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Ranking Completo</servlet-name>
+		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.RankingCompleto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Ranking Completo</servlet-name>
+		<url-pattern>/rankingCompleto</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>Acompanhar Sessao</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SessoesEReunioesServlet</servlet-class>
 	</servlet>

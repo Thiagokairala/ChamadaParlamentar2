@@ -52,5 +52,14 @@ public class TesteRankingControl {
 		
 		assertNotNull(lista1);
 	}
+	
+	@Test
+	public void testOrdenacao() {
+		ArrayList<Estatistica> lista = new ArrayList<Estatistica>();
+		
+		lista = RankingControl.ordenacao(lista);
+		
+		assertNotNull(lista);
+	}
 
 }
