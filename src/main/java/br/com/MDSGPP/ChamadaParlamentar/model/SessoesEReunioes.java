@@ -13,11 +13,14 @@ public class SessoesEReunioes {
 
 	private ArrayList<Deputados> deputados = new ArrayList<Deputados>();
 
-	public SessoesEReunioes(String data, String descricao, ArrayList<Deputados> deputados) {
+	public SessoesEReunioes(String data, 
+			String descricao, ArrayList<Deputados> deputados,
+			String descricaoCompleta) {
 		if(ExceptionSessoesEReunioes.validaData(data)) {
 			this.data = data;
 			this.descricao = descricao;
 			this.deputados = deputados;
+			this.descricaoCompleta = descricaoCompleta;
 		}
 		else {
 			this.data = null;
@@ -74,6 +77,4 @@ public class SessoesEReunioes {
 	public void setDeputadosPresentes(ArrayList<String> deputadosPresentes) {
 		this.deputadosPresentes = deputadosPresentes;
 	}
-	
-	
 }

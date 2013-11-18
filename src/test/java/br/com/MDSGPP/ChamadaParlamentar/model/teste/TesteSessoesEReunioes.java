@@ -2,6 +2,7 @@ package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -21,16 +22,17 @@ public class TesteSessoesEReunioes {
 		ArrayList<Deputados> listaTeste = new ArrayList<Deputados>();
 		sessoes = new SessoesEReunioes();
 		sessoesTeste = new 
-				SessoesEReunioes("11/12/2012", "descricaoDeTeste", listaTeste);
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", listaTeste, "descricaoTeste");
 	}
 
 	@Test
 	public void testSessoesEReunioesStringStringArrayListOfDeputados() {
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 		SessoesEReunioes sessoes2 = new 
-				SessoesEReunioes("11/12/2012", "descricaoDeTeste", lista);
+				SessoesEReunioes("11/12/2012", "descricaoDeTeste", lista,
+						"descricaoTeste");
 		SessoesEReunioes sessoes3 = new 
-				SessoesEReunioes("oioi", "não pode passar", lista);
+				SessoesEReunioes("oioi", "não pode passar", lista, "descricaoTeste");
 
 		assertNotNull(sessoes2);
 		assertTrue(sessoes3.getData() == null);
@@ -84,5 +86,44 @@ public class TesteSessoesEReunioes {
 				.get(0).getNomeDeTratamentoDoParlamentar()
 				.equals("teste"));
 	}
+	
+	@Test
+	public void testGetDescricaoCompleta() {
+		assertNotNull(sessoesTeste.getDescricaoCompleta());
+	}
+	
+	@Test
+	public void testSetDescricaoCompleta() {
+		sessoes.setDescricaoCompleta("teste");
+		
+		assertTrue(sessoes.getDescricaoCompleta().equalsIgnoreCase("teste"));
+	}
+	
+	@Test
+	public void testGetDeputadosPresentes() {
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add("teste");
+		lista.add("teste2");
+		
+		sessoes.setDeputadosPresentes(lista);
+		assertTrue(sessoes.getDeputadosPresentes().size() == 2);
+		assertNotNull(sessoes.getDeputadosPresentes().get(0));
+		assertNotNull(sessoes.getDeputadosPresentes().get(1));
+	}
+	
+	@Test
+	public void testSetDeputadosPresentes() {
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add("teste");
+		lista.add("teste2");
+		sessoes.setDeputadosPresentes(null);
+		
+		assertTrue(sessoes.getDeputadosPresentes() == null);
+		sessoes.setDeputadosPresentes(lista);
+		assertTrue(sessoes.getDeputadosPresentes().size() == 2);
+		assertNotNull(sessoes.getDeputadosPresentes().get(0));
+		assertNotNull(sessoes.getDeputadosPresentes().get(1));
+	}
+	
 
 }
