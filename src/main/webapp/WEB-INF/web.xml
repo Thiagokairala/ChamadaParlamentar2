@@ -13,6 +13,15 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Parlamentar Recebido</servlet-name>
 		<url-pattern>/parlamentarRecebido</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Parlamentar Recebido</servlet-name>
+		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.ParlamentarRecebido</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Parlamentar Recebido</servlet-name>
+		<url-pattern>/parlamentarRecebido</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>Ranking</servlet-name>

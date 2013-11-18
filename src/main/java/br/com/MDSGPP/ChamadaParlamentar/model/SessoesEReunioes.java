@@ -8,6 +8,8 @@ public class SessoesEReunioes {
 
 	private String data;
 	private String descricao;
+	private String descricaoCompleta;
+	private ArrayList<String> deputadosPresentes = new ArrayList<String>();
 
 	private ArrayList<Deputados> deputados = new ArrayList<Deputados>();
 
@@ -56,4 +58,22 @@ public class SessoesEReunioes {
 	public void setDeputados(ArrayList<Deputados> deputados) {
 		this.deputados = deputados;
 	}
+
+	public String getDescricaoCompleta() {
+		return descricaoCompleta;
+	}
+
+	public void setDescricaoCompleta(String descricaoCompleta) {
+		this.descricaoCompleta = descricaoCompleta;
+	}
+
+	public ArrayList<String> getDeputadosPresentes() {
+		return deputadosPresentes;
+	}
+
+	public void setDeputadosPresentes(ArrayList<String> deputadosPresentes) {
+		this.deputadosPresentes = deputadosPresentes;
+	}
+	
+	
 }

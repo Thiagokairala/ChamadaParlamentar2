@@ -42,8 +42,10 @@ public class DiaDao extends ConnectionFactory {
 			if(lista.get(cont).getData().equalsIgnoreCase(rs.getString("datas"))== false) {
 				cont++;
 			}
-			lista.get(cont).getLista().add(descricao);
-			lista.get(cont).getListaDescricaoCompleta().add(descAux);
+			SessoesEReunioes passar = new SessoesEReunioes();
+			passar.setDescricao(descricao);
+			passar.setDescricaoCompleta(descAux);
+			lista.get(cont).getListaSessoes().add(passar);
 		}
 
 		return lista;

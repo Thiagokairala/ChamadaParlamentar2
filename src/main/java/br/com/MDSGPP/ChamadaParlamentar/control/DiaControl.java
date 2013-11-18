@@ -41,15 +41,4 @@ public class DiaControl {
 		
 		return listaPassar;
 	}
-	
-	public static SessoesEReunioes procurarDia(ArrayList<Dia> lista, String descricao) {
-		for(int i = 0; i<lista.size(); i++) {
-			
-			for(int j = 0; j<lista.get(i).getListaDescricaoCompleta().size(); j++) {
-				if(lista.get(i).getListaDescricaoCompleta().get(j).equalsIgnoreCase(descricao)) {
-					
-				}
-			}
-		}
-	}
 }
