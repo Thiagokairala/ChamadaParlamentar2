@@ -13,6 +13,8 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaRankingCompleto.css"/>
+		
 </style>
 
 <title>Chamada Parlamentar</title>
