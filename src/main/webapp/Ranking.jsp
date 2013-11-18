@@ -9,10 +9,8 @@
 <style type="text/css">
 		<jsp:include page="FolhaParaHeader.css"/>
 		<jsp:include page="FolhaParaTudo.css"/>
-		<jsp:include page="FolhaParaPrincipal.css"/>
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
-		<jsp:include page="FolhaParaAuxiliar.css"/>
 		<jsp:include page="FolhaParaRanking.css"/>
 </style>
 
@@ -30,19 +28,20 @@
 			</div><!-- fim da id titulo -->
 			
 			<div id = "principal">
+			<div id = "melhores">
 			<h2>Os cinco mais presentes</h2>
 			
 			<c:forEach var = "melhores" items = "${ranking.melhores }">
 				<p>${melhores.nome }: ${melhores.porcentagem }</p>
 			</c:forEach>
-			</div><!-- fim da id principal -->
+			</div><!-- fim da id melhores -->
 			<div id = "piores">
-			<h1>Os cinco mais ausentes:</h1>
+			<h2>Os cinco mais ausentes:</h2>
 			<c:forEach var = "piores" items = "${ranking.piores }">
 				<p>${piores.nome }: ${piores.porcentagem }</p>
 			</c:forEach>
 			</div><!-- fim da id piores -->
-			
+			</div><!-- fim da id principal -->
 			<div id = "auxiliar">
 			<h1>Deputados com dados não disponíveis:</h1>
 			
@@ -51,10 +50,11 @@
 			</c:forEach>
 			</div><!-- fim da div auxiliar -->
 		
+			</div><!--fim da div tudo-->
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
-	</div><!--fim da div tudo-->
+
 	
 	
 </body>

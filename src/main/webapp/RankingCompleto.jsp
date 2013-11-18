@@ -25,7 +25,6 @@
 		</div><!-- Fim da div topo -->
 		
 		<div id = "titulo">
-			Ranking Deputados:
 			</div><!-- fim da id titulo -->
 			
 			<div id = "principal">

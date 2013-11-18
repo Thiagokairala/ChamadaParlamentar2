@@ -1,12 +1,34 @@
 @CHARSET "ISO-8859-1";
 
-#principal {
+#melhores {
 	background: -webkit-gradient(linear, left top, left bottom, from(#00CD66), to(#f8f8ff)) repeat-X;
 	float: left;
 	width: auto;
+	height: auto;
+	margin-left: 12.5%;
 }
+
+#piores {
+	background: -webkit-gradient(linear, left top, left bottom, from(#8E2323), to(#f8f8ff)) repeat-X;
+	float: right;
+	width: auto;
+	height: auto;
+	margin-right: 15%%;
+}
+
+ #melhores, #piores {
+ 	text-align: center;
+ }
 
 #titulo {
 	margin-left: 12%;
 	margin-top: 10%;
 }
+
+#auxiliar {
+	clear: both;
+	text-align: center;
+	margin-top: 5%;
+	
+}
+
