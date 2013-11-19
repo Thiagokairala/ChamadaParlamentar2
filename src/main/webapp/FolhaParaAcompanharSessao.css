@@ -3,6 +3,13 @@
 #paginas {
 	bottom: 0;
 	clear: both;
+	background-color:#E6E8FA;
+	float: right;
+	margin-right: 4px;
+}
+#paginas a{
+	text-decoration:none;
+	color: #000;
 }
 
 #principal h2{
