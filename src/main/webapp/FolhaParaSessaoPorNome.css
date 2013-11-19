@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+
+#tudo h1{
+	background-color:#E6E8FA;
+	margin-left: 150px;
+	margin-top: 80px;
+	width: 600px;
+}
+
+#tudo p{
+	margin-left: 150px;
+}

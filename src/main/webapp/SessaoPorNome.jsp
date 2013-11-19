@@ -13,6 +13,8 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaSessaoPorNome.css"/>
+		
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -29,12 +31,9 @@
 		<c:forEach var = "deputado" items= "${sessao.deputadosPresentes }">
 			<p>${deputado }</p>
 		</c:forEach>
-
+</div><!--fim da div tudo-->
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
-	</div><!--fim da div tudo-->
-	
-	
 </body>
 </html>
