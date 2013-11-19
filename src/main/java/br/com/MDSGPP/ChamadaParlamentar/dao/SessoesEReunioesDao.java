@@ -23,103 +23,36 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		new ConnectionFactory().getConnection();
 	}
 
-	public void adcionarDataNaTable(String data, String matricula) 
+	public void adcionarDataNaTable(ArrayList<String> insert) 
 			throws SQLException, MalformedURLException, ServiceException {			     
-		ListarPresencasParlamentarResponseListarPresencasParlamentarResult sessao;
 
-		Calendar hoje = new GregorianCalendar();
+		for(int i = 0; i <insert.size(); i= i+2) {
+			String sql = "insert into datas(datas, sessao) values(?, ?)";
 
-		SimpleDateFormat df = new SimpleDateFormat();
-		df.applyPattern("dd/MM/yyyy");
+			PreparedStatement stmt;
 
-		sessao = ConexaoComWsSessoesEReunioes.receberElementPresenca
-				(ConexaoComWsSessoesEReunioes.obterConexao(),
-						data, df.format(hoje.getTime()), matricula);
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, insert.get(i));
+			stmt.setString(2, insert.get(i+1));
 
-		NodeList dias = sessao.get_any()[0].getElementsByTagName("dia");
-
-		for(int i= 0; i<dias.getLength(); i++) {				
-			MessageElement diaTemp = (MessageElement) dias.item(i);
-
-			NodeList dataTemp = diaTemp.getElementsByTagName("data");
-			NodeList descricaoTemp = diaTemp.getElementsByTagName("descricao");
-
-			MessageElement dataText = (MessageElement) dataTemp.item(0);
-
-			for(int j = 0; j<descricaoTemp.getLength(); j++) {
-				MessageElement descricaoText = (MessageElement) descricaoTemp.item(j);
-
-				String sql = "insert into datas(datas, sessao) values(?, ?)";
-
-				PreparedStatement stmt;
-
-				stmt = conexao.prepareStatement(sql);
-				System.out.println(dataText.getFirstChild().getNodeValue());
-				stmt.setString(1, dataText.getFirstChild().getNodeValue());
-				stmt.setString(2, descricaoText.getFirstChild().getNodeValue());
-
-				stmt.execute();
-				stmt.close();
-			}
-		}			
+			stmt.execute();
+			stmt.close();
+		}
 	}
 
-	public void adcionarSessaoNaTable(String data)
+	public void adcionarSessaoNaTable(ArrayList<String> insert)
 			throws SQLException, ClassNotFoundException, MalformedURLException, ServiceException {
-		ArrayList<Integer> lista = new ArrayList<Integer>();
 
-		DeputadoDao conexaoDeputado = new DeputadoDao();
+		String sql = "insert into sessao(idSessoes, deputadoPresente)values(?,?)";
+		PreparedStatement stmt = conexao.prepareStatement(sql);
 
-		lista = conexaoDeputado.getMatriculaDeputados();
+		for(int i = 0; i<insert.size(); i=i+2) {
+			stmt.setString(1, insert.get(i));
+			stmt.setString(2, insert.get(i+1));
 
-		for(int i = 0; i<lista.size(); i++) {
-			double porcentagem = (((double)(i)/(double)lista.size())*100.0);
-
-			System.out.println(i+"- " + porcentagem+"%");
-			Calendar hoje = new GregorianCalendar();
-
-			SimpleDateFormat df = new SimpleDateFormat();
-			df.applyPattern("dd/MM/yyyy");
-
-			ListarPresencasParlamentarResponseListarPresencasParlamentarResult sessao;
-			try {
-				sessao = ConexaoComWsSessoesEReunioes.receberElementPresenca
-						(ConexaoComWsSessoesEReunioes.obterConexao(),
-								data, df.format(hoje.getTime()), Integer.toString(lista.get(i)));
-
-				NodeList dias = sessao.get_any()[0].getElementsByTagName("dia");
-
-				for(int j = 0; j<dias.getLength(); j++) {
-
-					MessageElement diasTemp = (MessageElement) dias.item(j);				
-					NodeList descricaoTemp = diasTemp.getElementsByTagName("descricao");
-					NodeList presencaTemp = diasTemp.getElementsByTagName("frequencia");
-
-
-					for(int k = 0; k<descricaoTemp.getLength(); k++) {
-						MessageElement descricaoText = (MessageElement) descricaoTemp.item(k);
-						NodeList nomeTemp = sessao.get_any()[0].getElementsByTagName("nomeParlamentar");
-						MessageElement nomeText = (MessageElement) nomeTemp.item(0);
-						MessageElement presencaText = (MessageElement) presencaTemp.item(k);
-
-						if(presencaText.getFirstChild().getNodeValue().equals("Presença"))
-						{
-							String sql = "insert into sessao(idSessoes, deputadoPresente)values(?,?)";
-							PreparedStatement stmt = conexao.prepareStatement(sql);
-
-							stmt.setString(1, descricaoText.getFirstChild().getNodeValue());
-							stmt.setString(2, nomeText.getFirstChild().getNodeValue());
-
-							stmt.execute();
-							stmt.close();
-						}
-
-					}
-				}
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
+			stmt.execute();
 		}
+		stmt.close();
 	}
 
 	public int passarNumeroDeSessoes() throws SQLException
@@ -137,21 +70,21 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 
 		return i;		
 	}
-	
+
 	public ArrayList<String> procurarSessao(String descricao) throws SQLException {
 		String sql = "select * from sessao where idSessoes LIKE ?";
-		
+
 		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
-		
+
 		stmt.setString(1, descricao);
 		ResultSet rs = stmt.executeQuery();
-		
+
 		ArrayList<String> lista = new ArrayList<String>();
-		
+
 		while(rs.next()) {
 			lista.add(rs.getString("deputadoPresente"));
 		}
-		
+
 		return lista;
 	}
 }
