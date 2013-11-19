@@ -27,7 +27,7 @@
 		</div><!-- Fim da div topo -->
 		
 		<h1>${sessao.descricao }</h1>
-		
+		<h2>Deputados Presentes:</h2>
 		<c:forEach var = "deputado" items= "${sessao.deputadosPresentes }">
 			<p>${deputado }</p>
 		</c:forEach>
