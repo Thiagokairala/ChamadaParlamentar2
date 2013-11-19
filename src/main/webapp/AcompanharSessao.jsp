@@ -13,6 +13,7 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaAcompanharSessao.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -30,7 +31,7 @@
 			<h1>Sessoes:</h1>
 				<c:forEach var = "dia" items = "${dias }">
 					<h2>Data: ${dia.data }</h2>
-					<c:forEach var = "sessao" items = "${dia.listaSessoes }">
+					<c:forEach var = "sessao" items = "${dia.listaSessoes}">
 						<td><a href = "sessaoPorNome?descricao=${sessao.descricaoCompleta}">
 							${sessao.descricao }</a></td>
 					</c:forEach>

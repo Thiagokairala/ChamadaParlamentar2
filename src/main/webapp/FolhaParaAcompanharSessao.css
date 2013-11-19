@@ -4,3 +4,17 @@
 	bottom: 0;
 	clear: both;
 }
+
+#principal h2{
+	background-color:#E6E8FA;
+	margin-left: 20px;
+	font-family: "Century Gothic";
+	color: #000;
+	
+}
+
+#principal a { 
+	text-decoration:none;
+	color: #000;
+	margin-left: 20px;
+}
