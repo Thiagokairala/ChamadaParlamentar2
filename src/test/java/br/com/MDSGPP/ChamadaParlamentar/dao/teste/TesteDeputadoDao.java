@@ -80,7 +80,6 @@ public class TesteDeputadoDao {
 	public void testAdicionaDeputado() throws SQLException {
 		ArrayList<Deputados> deputados = criaLista();
 		deputadoDao.adicionaDeputado(deputados);
-		assertNotNull(criaLista());
 	}
 	@Test
 	public void testInstancia1() throws SQLException {
