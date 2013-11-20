@@ -1,10 +1,10 @@
 package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public class TesteDeputados {
