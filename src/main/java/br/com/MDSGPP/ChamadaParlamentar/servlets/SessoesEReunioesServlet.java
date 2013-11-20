@@ -22,7 +22,7 @@ public class SessoesEReunioesServlet extends HttpServlet {
 		
 		try {		
 			int pagina = 1;
-			int datasPorPagina = 5;
+			int datasPorPagina = 10;
 			
 			
 			if(request.getParameter("pagina") != null) {

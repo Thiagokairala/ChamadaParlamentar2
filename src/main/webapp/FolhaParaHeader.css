@@ -62,7 +62,7 @@
 
 .menu li  ul {
 	position: absolute;
-	top: 105%;
+	top: 100%;
 	left: 0;
 	background-color: #f8f8ff;
 	display: none;
@@ -81,4 +81,8 @@
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+.menu ul li ul{
+	margin: 0;
 }
