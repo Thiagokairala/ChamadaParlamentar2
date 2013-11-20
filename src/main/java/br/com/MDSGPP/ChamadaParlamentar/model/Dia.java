@@ -25,7 +25,12 @@ public class Dia {
 	}
 	public void setListaSessoes(ArrayList<SessoesEReunioes> listaSessoes) {
 		this.listaSessoes = listaSessoes;
-		this.numeroSessoes = listaSessoes.size();
+		if(listaSessoes != null) {
+			this.numeroSessoes = listaSessoes.size();
+		}
+		else {
+			this.numeroSessoes = 0;
+		}
 	}
 	public int getNumeroSessoes() {
 		return numeroSessoes;
