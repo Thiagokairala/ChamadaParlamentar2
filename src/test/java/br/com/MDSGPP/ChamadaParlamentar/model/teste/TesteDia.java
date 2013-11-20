@@ -56,4 +56,8 @@ public class TesteDia {
 		assertNotNull(dia2.getListaSessoes());
 	}
 
+	@Test
+	public void testGetNumeroSessoes() {
+		assertTrue(dia2.getListaSessoes().size()== dia2.getNumeroSessoes());
+	}
 }
