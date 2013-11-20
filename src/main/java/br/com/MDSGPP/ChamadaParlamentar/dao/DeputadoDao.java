@@ -52,12 +52,10 @@ public class DeputadoDao extends ConnectionFactory {
 		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
+			String nomeCivil = rs.getString("nomeCivil");
 			String nomeTratamento = rs.getString("nomeDeTratamento");
-			String partido = rs.getString("partido");
-			String uf = rs.getString("uf");
-
-			String montar = nomeTratamento + "-" + partido + "/" + uf;
-			lista.add(montar);
+			lista.add(nomeCivil);
+			lista.add(nomeTratamento);
 		}
 
 		stmt.close();
