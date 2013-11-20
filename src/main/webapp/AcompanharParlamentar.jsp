@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +31,12 @@
                 <form name ="selecaoDeputado" id = "selecaoDeputado" 
                                 action ="parlamentarRecebido" method= "POST">
                                 
-                        <input type = "text" name= "nome" id="nome" />
+                        <input type = "text" name= "nome" id="nome" list = "deputados" autocomplete= "off"/>
+                        <datalist id = "deputados" >
+                        	<c:forEach var = "deputado" items = "${lista}">
+                        		<option value = "${deputado}">
+                        	</c:forEach> 
+                        </datalist>
                       <input type=image src="pesquisa_lupa.png" id = "lupa"> 
             </form>
                 </div><!-- fim da id principal -->
