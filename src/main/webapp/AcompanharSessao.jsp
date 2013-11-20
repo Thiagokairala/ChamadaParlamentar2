@@ -31,7 +31,7 @@
 			<h1>Sessoes:</h1>
 				<form name="selecaoData" id="selecaoData" action="sessaoPorData"
 					method="POST">
-					<input type="text" name="datas" id="datas" list="datasAuto" />
+					<input type="text" name="datas" id="datas" list="datasAuto" autocomplete= "off" />
 					<datalist id="datasAuto">
 						<c:forEach var="datas"	items="${diasAuto}">
 							<option value="${datas.data}">
