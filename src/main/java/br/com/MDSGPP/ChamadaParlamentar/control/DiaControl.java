@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DiaDao;
+import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
-import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class DiaControl {
 
@@ -40,5 +40,15 @@ public class DiaControl {
 		}
 		
 		return listaPassar;
+	}
+	
+	public static Dia passarData(String data) throws ClassNotFoundException, SQLException{
+		Dia dia = new SessoesEReunioesDao().procuraDia(data);
+		dia.setData(data);
+		if(dia.getListaSessoes().size() == 0){
+			dia = null;
+		}
+		
+		return dia;
 	}
 }

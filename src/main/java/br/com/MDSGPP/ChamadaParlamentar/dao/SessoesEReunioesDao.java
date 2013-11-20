@@ -4,18 +4,12 @@ import java.net.MalformedURLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.xml.rpc.ServiceException;
 
-import org.apache.axis.message.MessageElement;
-import org.w3c.dom.NodeList;
-
-import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReunioes;
-import br.gov.camara.www.SitCamaraWS.SessoesReunioes.ListarPresencasParlamentarResponseListarPresencasParlamentarResult;
+import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
+import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class SessoesEReunioesDao extends ConnectionFactory {
 
@@ -86,6 +80,26 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		}
 
 		return lista;
+	}
+	
+	public Dia procuraDia(String data) throws SQLException{
+		Dia dia = new Dia();
+		String sql = "select * from datas where datas LIKE ?";
+	
+		PreparedStatement stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, data);
+		ResultSet rs = stmt.executeQuery();
+		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();
+
+		while(rs.next()){
+			SessoesEReunioes sessoes = new SessoesEReunioes();
+			sessoes.setDescricao(rs.getString("sessao"));
+			sessoes.setDescricaoCompleta(sessoes.getDescricao());
+			lista.add(sessoes);
+		}
+		
+		dia.setListaSessoes(lista);
+		return dia;
 	}
 }
 

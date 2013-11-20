@@ -29,6 +29,16 @@
 		<div id = "principal">
 			
 			<h1>Sessoes:</h1>
+				<form name="selecaoData" id="selecaoData" action="sessaoPorData"
+					method="POST">
+					<input type="text" name="datas" id="datas" list="datasAuto" />
+					<datalist id="datasAuto">
+						<c:forEach var="datas"	items="${diasAuto}">
+							<option value="${datas.data}">
+						</c:forEach>
+					</datalist>
+					<input type=image src="pesquisa_lupa.png" id="lupa">
+				</form>
 				<c:forEach var = "dia" items = "${dias }">
 					<h2>Data: ${dia.data }</h2>
 					<c:forEach var = "sessao" items = "${dia.listaSessoes}">

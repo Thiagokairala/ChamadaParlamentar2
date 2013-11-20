@@ -41,6 +41,7 @@ public class SessoesEReunioesServlet extends HttpServlet {
 			request.setAttribute("noDePaginas", noDePaginas);
 			request.setAttribute("paginaAtual", pagina);
 			request.setAttribute("dias", diaPassar);
+			request.setAttribute("diasAuto", dia);
 					
 			rd = request.getRequestDispatcher("AcompanharSessao.jsp");
 		} catch (ClassNotFoundException e) {

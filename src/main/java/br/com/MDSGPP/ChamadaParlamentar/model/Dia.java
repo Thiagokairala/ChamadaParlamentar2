@@ -7,6 +7,7 @@ import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
 public class Dia {
 	private String data;
 	private ArrayList<SessoesEReunioes> listaSessoes = new ArrayList<SessoesEReunioes>();
+	private int numeroSessoes;
 
 	public String getData() {
 		return data;
@@ -24,9 +25,9 @@ public class Dia {
 	}
 	public void setListaSessoes(ArrayList<SessoesEReunioes> listaSessoes) {
 		this.listaSessoes = listaSessoes;
+		this.numeroSessoes = listaSessoes.size();
 	}
-
-
-
-
+	public int getNumeroSessoes() {
+		return numeroSessoes;
+	}
 }
