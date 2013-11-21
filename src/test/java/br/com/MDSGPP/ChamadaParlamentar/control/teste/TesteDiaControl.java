@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
@@ -61,6 +62,12 @@ public class TesteDiaControl {
 			}
 		}
 	
+	}
+	@Test
+	public void testPassarData() throws ClassNotFoundException, SQLException{
+		Dia dia = new Dia();
+		String data = "11/12/12";
+		assertNotNull(dia);
 	}
 
 }
