@@ -11,6 +11,7 @@
 		<jsp:include page="FolhaParaTudo.css"/>
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
+		<jsp:include page="FolhaParaMostrarDia.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
