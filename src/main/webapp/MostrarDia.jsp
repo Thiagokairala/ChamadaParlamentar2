@@ -30,12 +30,12 @@
 		<c:if test="${dia.numeroSessoes>1 }">
 			<h2>Sessões:</h2>
 		</c:if>
-
+		<div id = "mostra">
 		<c:forEach var="sessao" items="${dia.listaSessoes}">
 			<td><a href="sessaoPorNome?descricao=${sessao.descricaoCompleta}">
 					${sessao.descricao }</a></td>
 		</c:forEach>
-
+		</div><!-- Fim da div mostra -->
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
