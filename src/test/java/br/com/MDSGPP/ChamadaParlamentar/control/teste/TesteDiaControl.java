@@ -65,9 +65,13 @@ public class TesteDiaControl {
 	}
 	@Test
 	public void testPassarData() throws ClassNotFoundException, SQLException{
-		Dia dia = new Dia();
-		String data = "11/12/12";
-		assertNotNull(dia);
+		Dia dia1 = control.passarData("20/11/2011"); //esse deve retornar um dia null
+		Dia dia2 = control.passarData("22/11/2011"); //esse deve passar normalmente
+		Dia dia3 = control.passarData("nao deve passar"); //esse espera uma data null
+		
+		
+		assertTrue(dia1 == null);		
+		assertTrue(dia2.getListaSessoes().size() > 0);
+		assertTrue(dia3 == null);
 	}
-
 }
