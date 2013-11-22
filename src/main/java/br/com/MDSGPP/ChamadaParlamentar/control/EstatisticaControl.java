@@ -29,8 +29,8 @@ public class EstatisticaControl {
 
 		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
 		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
-		
 
+		
 		return estatistica;
 	}
 	
