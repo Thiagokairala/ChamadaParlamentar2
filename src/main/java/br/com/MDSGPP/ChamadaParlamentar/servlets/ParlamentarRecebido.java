@@ -2,6 +2,7 @@ package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,13 +27,15 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 		try {
 			deputado = DeputadosControl.verificaExistencia(nome);
 			
+			
 			if(deputado != null) {
+				ArrayList<String> lista = DeputadosControl.getDeputados();
 				Estatistica estatistica = EstatisticaControl.
 						gerarEstatisticas(EstatisticaControl.
 								arrumarNomePesquisa(deputado));
-
+				
+				request.setAttribute("lista", lista);
 				request.setAttribute("estatistica", estatistica);
-
 				rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
 			}
 			else {

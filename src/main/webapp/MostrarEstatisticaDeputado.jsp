@@ -42,9 +42,20 @@
 			</c:forEach>
 		</div><!-- fim da id principal -->
 		
-		<div id="exemplo-2" style="width: 493px;height: 493px;"></div>
-		
-			
+		<div id="novoDeputado">
+			<form name ="selecaoDeputado" id = "selecaoDeputado" 
+                                action ="segundoParlamentar?primeiroParlamentar=${estatistica.nome }" method= "POST">
+                                
+                        <input type = "text" name= "nome" id="nome" list = "deputados" autocomplete= "off"/>
+                        <datalist id = "deputados" >
+                        	<c:forEach var = "deputado" items = "${lista}">
+                        		<option value = "${deputado}">
+                        	</c:forEach> 
+                        </datalist>
+                        
+                      <input type=image src="pesquisa_lupa.png" id = "lupa"> 
+            </form>
+		</div><!-- fim da div novoDeputado -->
 		
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>

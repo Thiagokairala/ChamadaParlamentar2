@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+#primeiro, #segundo{
+	background-color:#E6E8FA;
+	width:35%;
+}
+
+#primeiro {
+	float: left;
+	margin-left: 12%;
+	margin-top: 10%;
+}
+
+#segundo {
+	float: right;
+	margin-top: 10%;
+	margin-right: 12%;	
+}
+
+#primeiro h1, #segundo h1{
+	font-size: 120%;
+	margin-left: 2%;
+}
+
+#primeiro p, #segundo p{
+	margin-left: 2%;
+}
+
+#primeiro h2, #segundo h2{
+	margin-left: 2%;
+	font-size: 120%;
+}
