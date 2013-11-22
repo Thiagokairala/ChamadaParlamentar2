@@ -15,6 +15,15 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Arrumar nome do sessaoPorNome</servlet-name>
+		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.ArrumarNomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Arrumar nome do sessaoPorNome</servlet-name>
+		<url-pattern>/arrumarNome</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Sessoes por Data</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SessoesPorData</servlet-class>
 	</servlet>

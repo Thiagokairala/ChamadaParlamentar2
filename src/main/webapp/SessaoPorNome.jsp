@@ -28,9 +28,12 @@
 		
 		<h1>${sessao.descricao }</h1>
 		<h2>Deputados Presentes:</h2>
+		<div id = "arrumar">
 		<c:forEach var = "deputado" items= "${sessao.deputadosPresentes }">
-			<p>${deputado }</p>
+			<td><a href="arrumarNome?nome=${deputado }">${deputado}<br><br></a></td>
 		</c:forEach>
+		</div><!-- fim da div arrumar -->
+		
 </div><!--fim da div tudo-->
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>

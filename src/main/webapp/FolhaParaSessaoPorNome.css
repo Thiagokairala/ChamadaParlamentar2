@@ -7,8 +7,10 @@
 	width: 600px;
 }
 
-#tudo p{
-	margin-left: 150px;
+#arrumar a{
+	margin-left: 7%;
+	text-decoration: none;
+	color: #000;
 }
 
 #tudo h2{

@@ -38,7 +38,8 @@
 
 			<h2><b>Sessoes:</b></h2>  
 			<p><c:forEach var= "sessao" items = "${estatistica.lista }">
-				<p>${sessao }</p>
+				<td><a href = "sessaoPorNome?descricao=${sessao}">
+						${sessao }</a></td><br><br>
 			</c:forEach>
 		</div><!-- fim da id principal -->
 		

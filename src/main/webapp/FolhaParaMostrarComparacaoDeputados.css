@@ -26,6 +26,12 @@
 	margin-left: 2%;
 }
 
+#primeiro a, #segundo a{
+	margin-left: 2%;
+	text-decoration: none;
+	color: #000;
+}
+
 #primeiro h2, #segundo h2{
 	margin-left: 2%;
 	font-size: 120%;
