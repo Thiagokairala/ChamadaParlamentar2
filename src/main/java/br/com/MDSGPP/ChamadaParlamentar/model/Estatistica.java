@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Estatistica {
 
 	private String nome;
-	private String nomePassado;
 	private String NumeroSessao;
 	private String TotalSessao;
 	private String porcentagem;
@@ -57,19 +56,6 @@ public class Estatistica {
 	public void setLista(ArrayList<String> lista) {
 		Lista = lista;
 	}
-
-
-	public String getNomePassado() {
-		return nomePassado;
-	}
-
-
-	public void setNomePassado(String nomePassado) {
-		this.nomePassado = nomePassado;
-	}
-
-	
-	
 }
 
 

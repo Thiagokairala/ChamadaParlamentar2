@@ -34,10 +34,6 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 			}
 			deputado = DeputadosControl.verificaExistencia(nome);
 			
-			
-			
-			System.out.println(nome);
-			
 			if(deputado != null) {
 				ArrayList<String> lista = DeputadosControl.getDeputados();
 				Estatistica estatistica = EstatisticaControl.
@@ -47,7 +43,6 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 				int numeroSessoes = estatistica.getLista().size();
 				int noDePaginas = ((int) Math.ceil(numeroSessoes * 1.0 / sessoesPorPagina))-1;
 				
-				estatistica.setNomePassado(nome);
 				estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
 				
 				request.setAttribute("noDePaginas", noDePaginas);

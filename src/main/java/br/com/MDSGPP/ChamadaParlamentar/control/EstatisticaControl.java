@@ -84,6 +84,7 @@ public class EstatisticaControl {
 	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> lista ) {
 		ArrayList<String> listaPassar = new ArrayList<String>();
 		lista = ordenarLista(lista);
+		
 		for(int i = 0; i< sessoesPorPagina; i++) {
 			if(pagina == 0) {
 				listaPassar.add(lista.get(i));
@@ -93,10 +94,7 @@ public class EstatisticaControl {
 					listaPassar.add(lista.get(i+ (pagina*sessoesPorPagina)));
 				}
 			}
-		}
-		
-		
-		
+		}		
 		return listaPassar;
 	}
 	
