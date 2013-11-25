@@ -26,6 +26,7 @@ public class EstatisticaDao extends ConnectionFactory {
 		}
 		stmt.close();
 
+		rs.close();
 		return lista;
 	}
 }

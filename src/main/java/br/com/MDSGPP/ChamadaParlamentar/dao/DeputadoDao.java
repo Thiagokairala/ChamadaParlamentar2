@@ -60,6 +60,7 @@ public class DeputadoDao extends ConnectionFactory {
 
 		stmt.close();
 
+		rs.close();
 		return lista;
 
 	}
@@ -80,6 +81,7 @@ public class DeputadoDao extends ConnectionFactory {
 		}
 
 
+		rs.close();
 		return lista;
 	}
 
@@ -110,6 +112,7 @@ public class DeputadoDao extends ConnectionFactory {
 			lista.add(deputado);
 		}
 
+		rs.close();
 		return lista;
 	}
 }

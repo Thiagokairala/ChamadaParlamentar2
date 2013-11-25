@@ -62,6 +62,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 			i++;
 		}
 
+		rs.close();
 		return i;		
 	}
 
@@ -79,6 +80,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 			lista.add(rs.getString("deputadoPresente"));
 		}
 
+		rs.close();
 		return lista;
 	}
 	
@@ -99,6 +101,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		}
 		
 		dia.setListaSessoes(lista);
+		rs.close();
 		return dia;
 	}
 }

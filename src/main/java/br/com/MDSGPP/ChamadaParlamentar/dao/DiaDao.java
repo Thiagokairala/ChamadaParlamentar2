@@ -27,6 +27,7 @@ public class DiaDao extends ConnectionFactory {
 
 		lista = popularListaDia(rs2, lista);
 
+		rs.close();
 		return lista;
 	}
 
@@ -48,6 +49,7 @@ public class DiaDao extends ConnectionFactory {
 			lista.get(cont).getListaSessoes().add(passar);
 		}
 
+		rs.close();
 		return lista;
 	}
 
@@ -73,6 +75,7 @@ public class DiaDao extends ConnectionFactory {
 			}
 		}
 
+		rs.close();
 		return lista;
 	}
 
