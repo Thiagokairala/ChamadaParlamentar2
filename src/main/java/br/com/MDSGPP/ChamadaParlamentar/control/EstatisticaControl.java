@@ -13,11 +13,8 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class EstatisticaControl {
 	
-	public static final double passarPorcentagem = 100.0;
-
-	public EstatisticaControl() {
-		// TODO Auto-generated constructor stub
-	}
+	public static final double PASSAR_PORCENTAGEM = 100.0;
+	
 	public static Estatistica gerarEstatisticas(String nome)
 			throws ClassNotFoundException, SQLException	{
 		Estatistica estatistica = new Estatistica();
@@ -65,7 +62,7 @@ public class EstatisticaControl {
 			DecimalFormat df = new DecimalFormat("###.00");  
 			estatistica.setPorcentagem(df.format(
 					(((double)estatistica.getLista().size())/
-							((double)numeroTotalSessao))*passarPorcentagem) + "%");
+							((double)numeroTotalSessao))*PASSAR_PORCENTAGEM) + "%");
 		}
 		else {
 			estatistica.getLista().add("Dados não disponiveis");

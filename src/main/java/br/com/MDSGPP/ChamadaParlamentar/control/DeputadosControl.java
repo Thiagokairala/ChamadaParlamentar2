@@ -8,10 +8,6 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public class DeputadosControl {
 
-	public DeputadosControl() {
-
-	}
-
 	public static ArrayList<String> getDeputados() throws ClassNotFoundException, SQLException {
 
 		DeputadoDao deputado;

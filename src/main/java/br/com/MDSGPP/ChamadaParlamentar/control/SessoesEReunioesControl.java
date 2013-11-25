@@ -8,10 +8,6 @@ import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class SessoesEReunioesControl {
 
-	public SessoesEReunioesControl() {
-
-	}
-
 	public static SessoesEReunioes passarSessao(String descricao) 
 			throws ClassNotFoundException, SQLException {
 		SessoesEReunioesDao dao = new SessoesEReunioesDao();

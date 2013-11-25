@@ -10,10 +10,6 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingControl {
 	private static final int tamanhoRankings = 5;
-	
-	public RankingControl() {
-
-	}
 
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
 

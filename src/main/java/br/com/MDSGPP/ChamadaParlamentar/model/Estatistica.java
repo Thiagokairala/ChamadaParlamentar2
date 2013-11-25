@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Estatistica {
 
 	private String nome;
-	private String NumeroSessao;
-	private String TotalSessao;
+	private String numeroSessao;
+	private String totalSessao;
 	private String porcentagem;
-	private ArrayList<String> Lista = new ArrayList<String>(); 
+	private ArrayList<String> lista = new ArrayList<String>(); 
 
 //construtor
 	
@@ -18,19 +18,19 @@ public class Estatistica {
 
 
 	public String getNumeroSessao() {
-		return NumeroSessao;
+		return numeroSessao;
 	}
 
 	public void setNumeroSessao(String numeroSessao) {
-		NumeroSessao = numeroSessao;
+		this.numeroSessao = numeroSessao;
 	}
 
 	public String getTotalSessao() {
-		return TotalSessao;
+		return totalSessao;
 	}
 
 	public void setTotalSessao(String totalSessao) {
-		TotalSessao = totalSessao;
+		this.totalSessao = totalSessao;
 	}
 
 	public String getNome() {
@@ -50,11 +50,11 @@ public class Estatistica {
 	}
 
 	public ArrayList<String> getLista() {
-		return Lista;
+		return lista;
 	}
 
 	public void setLista(ArrayList<String> lista) {
-		Lista = lista;
+		this.lista = lista;
 	}
 }
 
