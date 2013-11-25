@@ -2,11 +2,13 @@ package br.com.MDSGPP.ChamadaParlamentar.control;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.EstatisticaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
+import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public class EstatisticaControl {
@@ -77,5 +79,22 @@ public class EstatisticaControl {
 		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
 				"-" + deputado.getPartido() + "/" + deputado.getUf();
 		return montar.toUpperCase();
+	}
+	
+	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> lista ) {
+		ArrayList<String> listaPassar = new ArrayList<String>();
+
+		for(int i = 0; i< sessoesPorPagina; i++) {
+			if(pagina == 0) {
+				listaPassar.add(lista.get(i));
+			}
+			else {
+				if(i+(pagina*sessoesPorPagina) < lista.size()) {
+					listaPassar.add(lista.get(i+ (pagina*sessoesPorPagina)));
+				}
+			}
+		}
+
+		return listaPassar;
 	}
 }

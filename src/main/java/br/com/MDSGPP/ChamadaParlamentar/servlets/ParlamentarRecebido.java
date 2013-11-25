@@ -27,13 +27,25 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 		try {
 			deputado = DeputadosControl.verificaExistencia(nome);
 			
+			int pagina = 1;
+			int sessoesPorPagina = 10;
 			
+			if(request.getParameter("pagina") != null) {
+				pagina = Integer.parseInt(request.getParameter("pagina"));
+			}
 			if(deputado != null) {
 				ArrayList<String> lista = DeputadosControl.getDeputados();
 				Estatistica estatistica = EstatisticaControl.
 						gerarEstatisticas(EstatisticaControl.
 								arrumarNomePesquisa(deputado));
 				
+				int numeroSessoes = estatistica.getLista().size();
+				int noDePaginas = ((int) Math.ceil(numeroSessoes * 1.0 / sessoesPorPagina))-1;
+				
+				estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
+				
+				request.setAttribute("noDePaginas", noDePaginas);
+				request.setAttribute("paginaAtual", pagina);
 				request.setAttribute("lista", lista);
 				request.setAttribute("estatistica", estatistica);
 				rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
