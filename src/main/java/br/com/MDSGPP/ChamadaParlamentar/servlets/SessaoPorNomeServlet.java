@@ -25,7 +25,7 @@ public class SessaoPorNomeServlet extends HttpServlet{
 		String descricao = request.getParameter("descricao");
 		try {
 			int pagina = 1;
-			int deputadosPorPagina = 15;
+			int deputadosPorPagina = 20;
 			
 			if(request.getParameter("pagina") != null) {
 				pagina = Integer.parseInt(request.getParameter("pagina"));
