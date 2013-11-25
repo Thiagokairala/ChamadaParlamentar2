@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
@@ -65,9 +64,9 @@ public class TesteDiaControl {
 	}
 	@Test
 	public void testPassarData() throws ClassNotFoundException, SQLException{
-		Dia dia1 = control.passarData("20/11/2011"); //esse deve retornar um dia null
-		Dia dia2 = control.passarData("22/11/2011"); //esse deve passar normalmente
-		Dia dia3 = control.passarData("nao deve passar"); //esse espera uma data null
+		Dia dia1 = DiaControl.passarData("20/11/2011"); //esse deve retornar um dia null
+		Dia dia2 = DiaControl.passarData("22/11/2011"); //esse deve passar normalmente
+		Dia dia3 = DiaControl.passarData("nao deve passar"); //esse espera uma data null
 		
 		
 		assertTrue(dia1 == null);		
