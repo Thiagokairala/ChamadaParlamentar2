@@ -20,7 +20,7 @@ public class TesteDiaControl {
 		control = new DiaControl();
 	}
 	
-	//@Test
+	@Test
 	public void testDiaControl() {
 		assertNotNull(control);
 	}
@@ -62,7 +62,7 @@ public class TesteDiaControl {
 		}
 	
 	}
-	@Test
+	//@Test
 	public void testPassarData() throws ClassNotFoundException, SQLException{
 		Dia dia1 = DiaControl.passarData("20/11/2011"); //esse deve retornar um dia null
 		Dia dia2 = DiaControl.passarData("22/11/2011"); //esse deve passar normalmente
