@@ -21,7 +21,7 @@ public class DeputadoDao extends ConnectionFactory {
 				"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
-		PreparedStatement stmt = conexao.prepareStatement(sql);
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
 		for(int i = 0; i<deputados.size(); i++) {
 
 			stmt.setInt(1, deputados.get(i).getIdDoParlamentar());
@@ -48,7 +48,7 @@ public class DeputadoDao extends ConnectionFactory {
 
 		ArrayList<String> lista = new ArrayList<String>();
 
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.getConexao().prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
@@ -72,7 +72,7 @@ public class DeputadoDao extends ConnectionFactory {
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
 		//criando o prepared statement q é o que vai conetar com o banco
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.getConexao().prepareStatement(sql);
 		//executando o stmt para buscar os dados
 		ResultSet rs = stmt.executeQuery();
 
@@ -89,7 +89,7 @@ public class DeputadoDao extends ConnectionFactory {
 		String sql = "Select * from deputado";
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 
-		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt = ConnectionFactory.getConexao().prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();
 

@@ -18,7 +18,7 @@ public class DiaDao extends ConnectionFactory {
 		ArrayList<Dia> lista = new ArrayList<Dia>();
 		String sql = "Select * from datas";
 
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.getConexao().prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 
 		lista = criarDias(rs);

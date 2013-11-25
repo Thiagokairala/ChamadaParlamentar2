@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-	protected static Connection conexao;
-	
+	private static Connection conexao;
+
 	public ConnectionFactory() {
-		
+
 	}
-	
+
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		if(ConnectionFactory.conexao == null) {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -20,5 +20,9 @@ public class ConnectionFactory {
 					("jdbc:mysql://localhost/projetoMDS", "root", "12345");
 		}
 		return ConnectionFactory.conexao;
-	 }
+	}
+
+	public static Connection getConexao() {
+		return conexao;
+	}	
 }

@@ -25,7 +25,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 
 			PreparedStatement stmt;
 
-			stmt = conexao.prepareStatement(sql);
+			stmt = getConexao().prepareStatement(sql);
 			stmt.setString(1, insert.get(i));
 			stmt.setString(2, insert.get(i+1));
 
@@ -38,7 +38,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 			throws SQLException, ClassNotFoundException, MalformedURLException, ServiceException {
 
 		String sql = "insert into sessao(idSessoes, deputadoPresente)values(?,?)";
-		PreparedStatement stmt = conexao.prepareStatement(sql);
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
 
 		for(int i = 0; i<insert.size(); i=i+2) {
 			stmt.setString(1, insert.get(i));
@@ -53,7 +53,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 	{
 		String sql = "select * from datas";
 
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.getConexao().prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery(); 
 		int i = 0;
 
@@ -69,7 +69,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 	public ArrayList<String> procurarSessao(String descricao) throws SQLException {
 		String sql = "select * from sessao where idSessoes LIKE ?";
 
-		PreparedStatement stmt = ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt = ConnectionFactory.getConexao().prepareStatement(sql);
 
 		stmt.setString(1, descricao);
 		ResultSet rs = stmt.executeQuery();
@@ -88,7 +88,7 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 		Dia dia = new Dia();
 		String sql = "select * from datas where datas LIKE ?";
 	
-		PreparedStatement stmt = conexao.prepareStatement(sql);
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
 		stmt.setString(1, data);
 		ResultSet rs = stmt.executeQuery();
 		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();

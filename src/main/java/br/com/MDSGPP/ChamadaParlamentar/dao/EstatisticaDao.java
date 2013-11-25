@@ -16,7 +16,7 @@ public class EstatisticaDao extends ConnectionFactory {
 		String sql = "select * from sessao where deputadoPresente LIKE ?"; 
 
 		ArrayList<String> lista = new ArrayList<String>();
-		PreparedStatement stmt= ConnectionFactory.conexao.prepareStatement(sql);
+		PreparedStatement stmt= ConnectionFactory.getConexao().prepareStatement(sql);
 		stmt.setString(1, nome);
 
 		ResultSet rs = stmt.executeQuery(); 
