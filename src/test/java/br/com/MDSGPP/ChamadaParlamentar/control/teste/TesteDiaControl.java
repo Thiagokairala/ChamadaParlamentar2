@@ -20,7 +20,7 @@ public class TesteDiaControl {
 		control = new DiaControl();
 	}
 	
-	@Test
+	//@Test
 	public void testDiaControl() {
 		assertNotNull(control);
 	}
