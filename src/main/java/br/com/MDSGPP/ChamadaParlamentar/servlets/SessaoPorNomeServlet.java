@@ -24,9 +24,24 @@ public class SessaoPorNomeServlet extends HttpServlet{
 
 		String descricao = request.getParameter("descricao");
 		try {
+			int pagina = 1;
+			int deputadosPorPagina = 15;
+			
+			if(request.getParameter("pagina") != null) {
+				pagina = Integer.parseInt(request.getParameter("pagina"));
+			}
 			sessao = SessoesEReunioesControl.passarSessao(descricao);
 			
 			if(sessao.getDeputadosPresentes().size() != 0) {
+								
+				int numeroDeputados = sessao.getDeputadosPresentes().size();	
+				int noDePaginas = ((int) Math.ceil(numeroDeputados * 1.0 / deputadosPorPagina))-1;
+				
+				sessao.setDeputadosPresentes(SessoesEReunioesControl.
+						arrumarListaDeputados(pagina-1, deputadosPorPagina, sessao.getDeputadosPresentes()));
+				
+				request.setAttribute("noDePaginas", noDePaginas);
+				request.setAttribute("paginaAtual", pagina);				
 				request.setAttribute("sessao", sessao);
 				rd = request.getRequestDispatcher("SessaoPorNome.jsp");
 			}
