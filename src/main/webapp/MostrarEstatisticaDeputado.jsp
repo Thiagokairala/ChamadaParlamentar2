@@ -58,6 +58,29 @@
             </form>
 		</div><!-- fim da div novoDeputado -->
 		
+		<div id = "paginas">
+		
+			<c:if test="${paginaAtual != 1}">
+				<td><a href="parlamentarRecebido?pagina=${paginaAtual - 1}&nome=${estatistica.nome }">Anterior</a></td>
+			</c:if>
+			
+			<c:forEach begin="1" end="${noDePaginas}" var="i">
+				<c:choose>
+					<c:when test="${paginaAtual eq i}">
+						<td>${i}</td>
+					</c:when>
+					<c:otherwise>
+						<td><a href="parlamentarRecebido?pagina=${i}&nome=${estatistica.nome }">${i}</a></td>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<c:if test="${paginaAtual != noDePaginas }">
+				<td><a href="parlamentarRecebido?pagina=${paginaAtual + 1}&nome=${estatistica.nome }">Proximo</a></td>
+			</c:if>
+		
+		</div><!-- fim da id paginas -->
+		
 		<div id="rodape">
 			<jsp:include page = 'Footer.html'/>
 		</div> <!-- Fim da div rodapé -->
