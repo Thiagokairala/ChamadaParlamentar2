@@ -9,7 +9,19 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public class DeputadoDao extends ConnectionFactory {
 
-	
+	private final int UM = 1;
+	private final int DOIS = 2;
+	private final int TRES = 3;
+	private final int QUATRO = 4;
+	private final int CINCO = 5;
+	private final int SEIS = 6;
+	private final int SETE = 7;
+	private final int OITO = 8;
+	private final int NOVE = 9;
+	private final int DEZ = 10;
+	private final int ONZE = 11;
+	private final int DOZE = 12;
+		
 	public DeputadoDao() throws ClassNotFoundException, SQLException {
 		new ConnectionFactory().getConnection();
 	}
@@ -19,19 +31,6 @@ public class DeputadoDao extends ConnectionFactory {
 				+ "nomeCivil, nomeDeTratamento, sexo, uf, partido"
 				+ ", numeroDoGabinete, anexo, telefone, email)" +
 				"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
-		int UM = 1;
-		int DOIS = 2;
-		int TRES = 3;
-		int QUATRO = 4;
-		int CINCO = 5;
-		int SEIS = 6;
-		int SETE = 7;
-		int OITO = 8;
-		int NOVE = 9;
-		int DEZ = 10;
-		int ONZE = 11;
-		int DOZE = 12;
 
 		PreparedStatement stmt = getConexao().prepareStatement(sql);
 		for(int i = 0; i<deputados.size(); i++) {
