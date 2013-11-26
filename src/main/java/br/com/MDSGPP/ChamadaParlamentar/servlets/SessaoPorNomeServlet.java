@@ -34,12 +34,14 @@ public class SessaoPorNomeServlet extends HttpServlet{
 			
 			if(sessao.getDeputadosPresentes().size() != 0) {
 								
-				int numeroDeputados = sessao.getDeputadosPresentes().size();	
+				int numeroDeputados = sessao.getDeputadosPresentes().size();
 				int noDePaginas = ((int) Math.ceil(numeroDeputados * 1.0 / deputadosPorPagina))-1;
 				
 				sessao.setDeputadosPresentes(SessoesEReunioesControl.
 						arrumarListaDeputados(pagina-1, deputadosPorPagina, sessao.getDeputadosPresentes()));
 				
+				
+				request.setAttribute("quantosDeputados", numeroDeputados);
 				request.setAttribute("noDePaginas", noDePaginas);
 				request.setAttribute("paginaAtual", pagina);				
 				request.setAttribute("sessao", sessao);

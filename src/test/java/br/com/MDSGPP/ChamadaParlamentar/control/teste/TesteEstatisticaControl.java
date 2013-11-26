@@ -72,6 +72,13 @@ public class TesteEstatisticaControl {
 		assertTrue(listaParaTeste2.size() < 10);
 	}
 	
+	@Test(expected= IndexOutOfBoundsException.class)
+	public void testPassarListaCertaExcessao() {
+		ArrayList<String> listaParaTeste = new ArrayList<String>();
+		
+		listaParaTeste = EstatisticaControl.passarListaCerta(5, 9, listaParaTeste);
+	}
+	
 	@Test
 	public void testOrdenarLista() {
 		ArrayList<String> listaParaTeste = new ArrayList<String>();

@@ -58,6 +58,8 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 			rd = request.getRequestDispatcher("/Erro.jsp");
 		} catch (SQLException e) {
 			rd = request.getRequestDispatcher("/Erro.jsp");
+		} catch (IndexOutOfBoundsException e) {
+			rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
 		}
 
 

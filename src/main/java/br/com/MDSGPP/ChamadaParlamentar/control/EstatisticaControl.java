@@ -80,6 +80,8 @@ public class EstatisticaControl {
 	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> lista ) {
 		ArrayList<String> listaPassar = new ArrayList<String>();
 		lista = ordenarLista(lista);
+		if(lista.size() == 0) 
+			throw new IndexOutOfBoundsException();
 		
 		for(int i = 0; i< sessoesPorPagina; i++) {
 			if(pagina == 0) {

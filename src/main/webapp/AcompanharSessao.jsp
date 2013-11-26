@@ -41,6 +41,8 @@
 					<input type=image src="pesquisa_lupa.png" id="lupa">
 				</form>
 				
+				<p>${paginaAtual }</p>
+				
 				<c:forEach var = "dia" items = "${dias }">
 					<h2>Data: ${dia.data }</h2>
 					<c:forEach var = "sessao" items = "${dia.listaSessoes}">
