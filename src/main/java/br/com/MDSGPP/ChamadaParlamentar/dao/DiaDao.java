@@ -44,7 +44,7 @@ public class DiaDao extends ConnectionFactory {
 
 			boolean teste = lista.get(cont).getData().equalsIgnoreCase(rs.getString(DATAS));
 
-			if(teste == false) {
+			if(!teste) {
 				cont++;
 			}
 			SessoesEReunioes passar = new SessoesEReunioes();
