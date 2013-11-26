@@ -7,6 +7,10 @@ import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public final class DeputadosControl {
+	
+	private DeputadosControl() {
+		
+	}
 
 	public static ArrayList<String> getDeputados() throws ClassNotFoundException, SQLException {
 

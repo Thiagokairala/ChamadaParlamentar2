@@ -44,6 +44,7 @@ public class DiaDao extends ConnectionFactory {
 
 			boolean teste = lista.get(cont).getData().equalsIgnoreCase(rs.getString(DATAS));
 
+			//esse if é igual if(teste == false)
 			if(!teste) {
 				cont++;
 			}
@@ -70,7 +71,8 @@ public class DiaDao extends ConnectionFactory {
 			}
 			else {
 				boolean teste = lista.get(controle).getData().equals(rs.getString(DATAS));
-				if(teste == false) {
+				//esse if é equivalente if(teste == false)
+				if(!teste) {
 					Dia diaAux = new Dia();
 					diaAux.setData(rs.getString(DATAS));
 					lista.add(diaAux);
