@@ -19,23 +19,35 @@ public class DeputadoDao extends ConnectionFactory {
 				+ "nomeCivil, nomeDeTratamento, sexo, uf, partido"
 				+ ", numeroDoGabinete, anexo, telefone, email)" +
 				"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+		
+		int UM = 1;
+		int DOIS = 2;
+		int TRES = 3;
+		int QUATRO = 4;
+		int CINCO = 5;
+		int SEIS = 6;
+		int SETE = 7;
+		int OITO = 8;
+		int NOVE = 9;
+		int DEZ = 10;
+		int ONZE = 11;
+		int DOZE = 12;
 
 		PreparedStatement stmt = getConexao().prepareStatement(sql);
 		for(int i = 0; i<deputados.size(); i++) {
 
-			stmt.setInt(1, deputados.get(i).getIdDoParlamentar());
-			stmt.setInt(2, deputados.get(i).getMatricula());
-			stmt.setInt(3, deputados.get(i).getIdeCadastro());
-			stmt.setString(4, deputados.get(i).getNomeCivilDoParlamentar());
-			stmt.setString(5, deputados.get(i).getNomeDeTratamentoDoParlamentar());
-			stmt.setString(6, deputados.get(i).getSexo());
-			stmt.setString(7, deputados.get(i).getUf());
-			stmt.setString(8, deputados.get(i).getPartido());
-			stmt.setString(9, deputados.get(i).getNumeroDoGabinete());
-			stmt.setString(10, deputados.get(i).getAnexo());
-			stmt.setString(11, deputados.get(i).getTelefone());
-			stmt.setString(12, deputados.get(i).getEmail());
+			stmt.setInt(UM, deputados.get(i).getIdDoParlamentar());
+			stmt.setInt(DOIS, deputados.get(i).getMatricula());
+			stmt.setInt(TRES, deputados.get(i).getIdeCadastro());
+			stmt.setString(QUATRO, deputados.get(i).getNomeCivilDoParlamentar());
+			stmt.setString(CINCO, deputados.get(i).getNomeDeTratamentoDoParlamentar());
+			stmt.setString(SEIS, deputados.get(i).getSexo());
+			stmt.setString(SETE, deputados.get(i).getUf());
+			stmt.setString(OITO, deputados.get(i).getPartido());
+			stmt.setString(NOVE, deputados.get(i).getNumeroDoGabinete());
+			stmt.setString(DEZ, deputados.get(i).getAnexo());
+			stmt.setString(ONZE, deputados.get(i).getTelefone());
+			stmt.setString(DOZE, deputados.get(i).getEmail());
 
 			stmt.execute();
 
