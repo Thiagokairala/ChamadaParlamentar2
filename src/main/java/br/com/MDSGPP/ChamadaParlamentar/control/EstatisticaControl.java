@@ -77,9 +77,9 @@ public class EstatisticaControl {
 		return montar.toUpperCase();
 	}
 	
-	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> lista ) {
+	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> listaPassada ) {
 		ArrayList<String> listaPassar = new ArrayList<String>();
-		lista = ordenarLista(lista);
+		ArrayList<String> lista = ordenarLista(listaPassada);
 		if(lista.size() == 0) {
 			throw new IndexOutOfBoundsException();
 		}

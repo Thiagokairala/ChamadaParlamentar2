@@ -22,9 +22,9 @@ public class RankingControl {
 			ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
 			ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
 
-			lista = recebido.get(0);
+			ArrayList<Estatistica> listaRecebida = recebido.get(0);
 
-			lista = ordenacao(lista);
+			ArrayList<Estatistica> listaOrdenada = ordenacao(listaRecebida);
 
 			for(int i = 0; i<TAMANHO_RANKINGS; i++) {
 				melhores.add(lista.get(i));
@@ -33,7 +33,7 @@ public class RankingControl {
 			
 			ranking.setMelhores(melhores);
 			ranking.setPiores(piores);
-			ranking.setLista(lista);
+			ranking.setLista(listaOrdenada);
 			ranking.setRemovidos(removidos);
 		}
 		else {
