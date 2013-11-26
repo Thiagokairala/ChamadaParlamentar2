@@ -58,9 +58,10 @@ public class DeputadoDao extends ConnectionFactory {
 			lista.add(nomeTratamento);
 		}
 
+		rs.close();
 		stmt.close();
 
-		rs.close();
+		
 		return lista;
 
 	}
