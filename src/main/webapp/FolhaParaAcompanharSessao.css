@@ -24,9 +24,20 @@
 	text-decoration:none;
 	color: #000;
 	margin-left: 20px;
+	margin-right: 10px;
 }
 
 #principal h1{
 	background-color:#E6E8FA;
 	width: 180px;
+}
+
+#principal a:hover{
+	background-color: #333333;
+	color: #f8f8ff;
+	
+}
+
+#principal{
+	width: auto;
 }
