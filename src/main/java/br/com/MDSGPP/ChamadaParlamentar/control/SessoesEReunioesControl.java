@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
-public class SessoesEReunioesControl {
+public final class SessoesEReunioesControl {
 
 	public static SessoesEReunioes passarSessao(String descricao) 
 			throws ClassNotFoundException, SQLException {

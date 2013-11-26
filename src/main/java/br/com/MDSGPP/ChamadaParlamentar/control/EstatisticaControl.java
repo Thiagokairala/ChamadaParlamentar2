@@ -10,7 +10,7 @@ import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
-public class EstatisticaControl {
+public final class EstatisticaControl {
 	
 	public static final double PASSAR_PORCENTAGEM = 100.0;
 	

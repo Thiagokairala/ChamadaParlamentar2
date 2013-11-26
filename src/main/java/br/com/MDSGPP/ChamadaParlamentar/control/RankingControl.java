@@ -8,7 +8,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
-public class RankingControl {
+public final class RankingControl {
 	private static final int TAMANHO_RANKINGS = 5;
 
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {

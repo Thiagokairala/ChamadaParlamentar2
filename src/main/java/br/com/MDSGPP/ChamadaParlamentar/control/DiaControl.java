@@ -8,7 +8,7 @@ import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
-public class DiaControl {
+public final class DiaControl {
 
 	public static ArrayList<Dia> getDias() throws ClassNotFoundException, SQLException {
 		ArrayList<Dia> lista;

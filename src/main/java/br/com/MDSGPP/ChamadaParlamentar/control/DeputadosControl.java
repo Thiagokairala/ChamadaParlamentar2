@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
-public class DeputadosControl {
+public final class DeputadosControl {
 
 	public static ArrayList<String> getDeputados() throws ClassNotFoundException, SQLException {
 
