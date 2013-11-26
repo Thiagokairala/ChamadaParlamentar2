@@ -42,7 +42,9 @@ public class DiaDao extends ConnectionFactory {
 			String descAux = descricao;
 			descricao = descricao.split(" -")[0];
 
-			if(lista.get(cont).getData().equalsIgnoreCase(rs.getString(DATAS))== false) {
+			boolean teste = lista.get(cont).getData().equalsIgnoreCase(rs.getString(DATAS));
+
+			if(teste == false) {
 				cont++;
 			}
 			SessoesEReunioes passar = new SessoesEReunioes();
@@ -66,12 +68,14 @@ public class DiaDao extends ConnectionFactory {
 				dia.setData(rs.getString(DATAS));
 				lista.add(dia);
 			}
-			else if(lista.get(controle).getData().equalsIgnoreCase
-					(rs.getString(DATAS)) == false) {
-				Dia diaAux = new Dia();
-				diaAux.setData(rs.getString(DATAS));
-				lista.add(diaAux);
-				controle++;
+			else {
+				boolean teste = lista.get(controle).getData().equals(rs.getString(DATAS));
+				if(teste == false) {
+					Dia diaAux = new Dia();
+					diaAux.setData(rs.getString(DATAS));
+					lista.add(diaAux);
+					controle++;
+				}
 			}
 		}
 
