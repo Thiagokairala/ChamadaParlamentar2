@@ -9,7 +9,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingControl {
-	private static final int tamanhoRankings = 5;
+	private static final int TAMANHO_RANKINGS = 5;
 
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
 
@@ -26,7 +26,7 @@ public class RankingControl {
 
 			lista = ordenacao(lista);
 
-			for(int i = 0; i<tamanhoRankings; i++) {
+			for(int i = 0; i<TAMANHO_RANKINGS; i++) {
 				melhores.add(lista.get(i));
 				piores.add(lista.get(lista.size() -1 -i));
 			}

@@ -11,7 +11,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 public class DiaDao extends ConnectionFactory {
 
 	private final static String DATAS = "datas";
-	
+
 	public DiaDao() throws ClassNotFoundException, SQLException {
 		new ConnectionFactory().getConnection();
 	}
@@ -66,14 +66,12 @@ public class DiaDao extends ConnectionFactory {
 				dia.setData(rs.getString(DATAS));
 				lista.add(dia);
 			}
-			else {
-				if(lista.get(controle).getData().equalsIgnoreCase
-						(rs.getString(DATAS)) == false) {
-					Dia diaAux = new Dia();
-					diaAux.setData(rs.getString(DATAS));
-					lista.add(diaAux);
-					controle++;
-				}			
+			else if(lista.get(controle).getData().equalsIgnoreCase
+					(rs.getString(DATAS)) == false) {
+				Dia diaAux = new Dia();
+				diaAux.setData(rs.getString(DATAS));
+				lista.add(diaAux);
+				controle++;
 			}
 		}
 
