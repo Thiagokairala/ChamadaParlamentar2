@@ -10,7 +10,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
 public class DiaDao extends ConnectionFactory {
 
-	private final static String DATAS = "datas";
+	private static final String DATAS = "datas";
 
 	public DiaDao() throws ClassNotFoundException, SQLException {
 		new ConnectionFactory().getConnection();

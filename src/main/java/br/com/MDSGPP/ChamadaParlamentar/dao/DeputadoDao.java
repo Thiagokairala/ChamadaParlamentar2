@@ -9,18 +9,18 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 
 public class DeputadoDao extends ConnectionFactory {
 
-	private final int UM = 1;
-	private final int DOIS = 2;
-	private final int TRES = 3;
-	private final int QUATRO = 4;
-	private final int CINCO = 5;
-	private final int SEIS = 6;
-	private final int SETE = 7;
-	private final int OITO = 8;
-	private final int NOVE = 9;
-	private final int DEZ = 10;
-	private final int ONZE = 11;
-	private final int DOZE = 12;
+	private static final int UM = 1;
+	private static final int DOIS = 2;
+	private static final int TRES = 3;
+	private static final int QUATRO = 4;
+	private static final int CINCO = 5;
+	private static final int SEIS = 6;
+	private static final int SETE = 7;
+	private static final int OITO = 8;
+	private static final int NOVE = 9;
+	private static final int DEZ = 10;
+	private static final int ONZE = 11;
+	private static final int DOZE = 12;
 		
 	public DeputadoDao() throws ClassNotFoundException, SQLException {
 		new ConnectionFactory().getConnection();
