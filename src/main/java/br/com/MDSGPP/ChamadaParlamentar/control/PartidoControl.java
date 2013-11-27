@@ -10,21 +10,20 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
 public final class PartidoControl {
 
-	public static ArrayList<String> passarListaPartidos() 
+	public static ArrayList<ArrayList<String>> passarListaPartidos() 
 			throws ClassNotFoundException, SQLException {
-		ArrayList<String> listaPassar = new PartidoDao().pegarPartidos();
-
-		return listaPassar;
+		ArrayList<ArrayList<String>> lista = new PartidoDao().pegarPartidos();	
+		return lista;
 	}
 
-	public static String verificaExistencia(String partido)
+	public static ArrayList<String> verificaExistencia(String partido)
 			throws ClassNotFoundException, SQLException {
 		
-		ArrayList<String> listaComDados = passarListaPartidos();
+		ArrayList<ArrayList<String>> listaComDados = passarListaPartidos();
 
-		System.out.println(partido);
 		for(int i = 0; i<listaComDados.size(); i++) {
-			if(partido.equalsIgnoreCase(listaComDados.get(i))) {
+			if(listaComDados.get(i).get(0).equalsIgnoreCase(partido)
+					||listaComDados.get(i).get(1).equalsIgnoreCase(partido)) {
 				return listaComDados.get(i);
 			}
 		}
@@ -36,24 +35,22 @@ public final class PartidoControl {
 		Partidos partido = new Partidos();
 		partido.setDeputadosDoPartido(null);
 		
-		String nomePartidoCerto = verificaExistencia(nomePartido);
+		ArrayList<String> nomePartidoCerto = verificaExistencia(nomePartido);
 		
 		ArrayList<Deputados> todosDeputados = new DeputadoDao().getDeputados();
 		ArrayList<Deputados> deputadosDoPartido = new ArrayList<Deputados>();
 
-		if(nomePartidoCerto != null) {
-			
-			
+		if(nomePartidoCerto != null) {			
 			for(int i = 0; i<todosDeputados.size(); i++) {
-				if(nomePartidoCerto.equalsIgnoreCase(
+				if(nomePartidoCerto.get(0).equalsIgnoreCase(
 						todosDeputados.get(i).getPartido())) {
-					
 					deputadosDoPartido.add(todosDeputados.get(i));
 				}
 			}
 		}
 		
-		partido.setNomePartido(nomePartidoCerto);
+		partido.setSigla(nomePartidoCerto.get(0));
+		partido.setNomePartido(nomePartidoCerto.get(1));
 		
 		partido.setDeputadosDoPartido(deputadosDoPartido);
 		return partido;

@@ -34,8 +34,10 @@
 						autocomplete="off" />
 					
 					<datalist id="partido">
-						<c:forEach var="partido" items="${lista}">
-							<option value="${partido}">
+						<c:forEach var="Partido" items="${lista}">
+							<c:forEach var="partido" items="${Partido }">
+								<option value="${partido}">
+							</c:forEach>
 						</c:forEach> 
 					</datalist>
 						

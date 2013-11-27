@@ -20,7 +20,7 @@ public class PartidoAutoCompleteServlet extends javax.servlet.http.HttpServlet {
 		RequestDispatcher rd = null;
 		
 		try {
-			ArrayList<String> listaAutoComplete = PartidoControl.passarListaPartidos();
+			ArrayList<ArrayList<String>> listaAutoComplete = PartidoControl.passarListaPartidos();
 			
 			request.setAttribute("lista", listaAutoComplete);
 			
@@ -34,5 +34,4 @@ public class PartidoAutoCompleteServlet extends javax.servlet.http.HttpServlet {
 		
 		rd.forward(request, response);
 	}
-	
 }
