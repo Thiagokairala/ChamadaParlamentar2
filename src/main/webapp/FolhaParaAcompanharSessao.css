@@ -43,3 +43,19 @@
 #principal{
 	width: auto;
 }
+
+#datas{
+	margin-left: 10px;
+}
+
+#principal h3{
+	font-size: 25px;
+}
+
+#lupa{
+	width: 18px;
+}
+
+#principal p{
+	margin-left: 20px;
+}

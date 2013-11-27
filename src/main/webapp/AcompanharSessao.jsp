@@ -32,6 +32,7 @@
 				
 				<form name="selecaoData" id="selecaoData" action="sessaoPorData"
 					method="POST">
+					<h3>Digite o dia que deseja pesquisar:
 					<input type="text" name="datas" id="datas" list="datasAuto" autocomplete= "off" />
 					<datalist id="datasAuto">
 						<c:forEach var="datas"	items="${diasAuto}">
@@ -39,9 +40,10 @@
 						</c:forEach>
 					</datalist>
 					<input type=image src="pesquisa_lupa.png" id="lupa">
+					</h3>
 				</form>
 				
-				<p>${paginaAtual }</p>
+				<p>Página ${paginaAtual }</p>
 				
 				<c:forEach var = "dia" items = "${dias }">
 					<h2>Data: ${dia.data }</h2>
