@@ -46,7 +46,7 @@
 		<div id="novoDeputado">
 			<form name ="selecaoDeputado" id = "selecaoDeputado" 
                                 action ="segundoParlamentar?primeiroParlamentar=${estatistica.nome }" method= "POST">
-                                
+                        <h1>Deseja compará-lo com outro deputado?</h1>
                         <input type = "text" name= "nome" id="nome" list = "deputados" autocomplete= "off"/>
                         <datalist id = "deputados" >
                         	<c:forEach var = "deputado" items = "${lista}">
