@@ -30,3 +30,29 @@
 	margin-left: 2%;
 	font-size: 120%;
 }
+#dados a:hover{
+	background-color: #333333;
+	color: #f8f8ff;
+	-moz-box-shadow: 0 3px 10px 0 #333333;
+	-webkit-box-shadow: 0 3px 10px 0 #333333;
+	text-shadow: 0px 0px 5px #fff;
+}
+
+#paginas {
+	bottom: 0;
+	clear: both;
+	background-color:#E6E8FA;
+	float: right;
+	margin-right: 4px;
+}
+#paginas a{
+	text-decoration:none;
+	color: #000;
+}
+#paginas a:hover{
+	background-color: #333333;
+	color: #f8f8ff;
+	-moz-box-shadow: 0 3px 10px 0 #333333;
+	-webkit-box-shadow: 0 3px 10px 0 #333333;
+	text-shadow: 0px 0px 5px #fff;
+}
