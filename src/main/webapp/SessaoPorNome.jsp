@@ -26,8 +26,8 @@
 			<jsp:include page='Header.html'/>
 		</div><!-- Fim da div topo -->
 		
-		<h1>${quantosDeputados} presentes na ${sessao.descricao }</h1>
-		<h2>Deputados Presentes:</h2>
+		<h1> ${sessao.descricao }</h1>
+		<h2>${quantosDeputados} Deputados Presentes:</h2>
 		<div id="arrumar">
 			<c:forEach var="deputado" items="${sessao.deputadosPresentes }">
 				<td><a href="arrumarNome?nome=${deputado }">${deputado}<br>
