@@ -1,6 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.model.teste;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
@@ -48,6 +48,7 @@ public class TestePartidos {
 	@Test
 	public void testGetDeputadosDoPartido() {
 		assertTrue(partido.getDeputadosDoPartido().size() == 0);
+		
 	}
 
 	@Test

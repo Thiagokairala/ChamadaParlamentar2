@@ -32,7 +32,7 @@
                                 action ="parlamentarRecebido" method= "POST">
                                 
                         <input type = "text" name= "nome" id="nome" list = "deputados" autocomplete= "off"/>
-                        <datalist id = "deputados" >
+                        <datalist id = "deputados">
                         	<c:forEach var = "deputado" items = "${lista}">
                         		<option value = "${deputado}">
                         	</c:forEach> 
