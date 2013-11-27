@@ -2,6 +2,7 @@ package br.com.MDSGPP.ChamadaParlamentar.dao.teste;
 
 import static org.junit.Assert.*;
 
+import java.awt.List;
 import java.net.MalformedURLException;
 import java.net.UnknownHostException;
 import java.sql.PreparedStatement;
@@ -77,6 +78,17 @@ public class TestePartidoDao {
 			}
 			assertTrue(partido.get(i).getSigla().equals(siglas.get(j)));
 		}
+	}
+	
+	@Test
+	public void testPegarPartidos() throws SQLException {
+		ArrayList<String> listaDeTeste = partidoDao.pegarPartidos();
+		
+		for(int i = 0; i<listaDeTeste.size(); i++) {
+			assertNotNull(listaDeTeste.get(i));
+		}
+		
+		assertTrue(listaDeTeste.size() >0);
 	}
 	
 	@After

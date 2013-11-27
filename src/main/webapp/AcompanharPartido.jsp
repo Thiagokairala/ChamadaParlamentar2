@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,11 +26,22 @@
 		
 		<div id = "arrumar">
 		<div id = "principal">
-			
-			<h1>Em construção</h1>
-            
 
-		</div><!-- fim da id principal -->
+			<div id="autoComplete">
+				<input type="text" name="nome" id="nome" list="partido"
+					autocomplete="off" />
+				
+				<datalist id="partido">
+					<c:forEach var="partido" items="${lista}">
+						<option value="${partido}">
+					</c:forEach> 
+				</datalist>
+					
+				<input type=image src="pesquisa_lupa.png" id="lupa">
+			</div>
+
+
+			</div><!-- fim da id principal -->
 		
 		
 		</div><!-- fim da div arrumar -->

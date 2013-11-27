@@ -1,6 +1,7 @@
 package br.com.MDSGPP.ChamadaParlamentar.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,5 +30,22 @@ public class PartidoDao extends ConnectionFactory {
 		}
 
 		stmt.close();
+	}
+	
+	public ArrayList<String> pegarPartidos() throws SQLException {
+		ArrayList<String> listaPassar = new ArrayList<String>();
+		
+		String sql = "Select * from partido";
+		
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			listaPassar.add(rs.getString("sigla"));
+			listaPassar.add(rs.getString("nomePartido"));
+		}
+		
+		return listaPassar;
 	}
 }
