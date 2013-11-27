@@ -4,8 +4,9 @@
 	bottom: 0;
 	clear: both;
 	background-color:#E6E8FA;
-	float: right;
-	margin-right: 4px;
+	float: left;
+	width: 36%;
+	margin-left: 13.2%;
 }
 #paginas a{
 	text-decoration:none;
@@ -14,7 +15,7 @@
 
 #principal h2{
 	background-color:#E6E8FA;
-	margin-left: 20px;
+	margin-left: 3.2%;
 	font-family: "Century Gothic";
 	color: #000;
 	
@@ -23,8 +24,7 @@
 #principal a { 
 	text-decoration:none;
 	color: #000;
-	margin-left: 20px;
-	margin-right: 10px;
+	margin-left: 3.2%;
 }
 
 #principal h1{
@@ -41,7 +41,7 @@
 }
 
 #principal{
-	width: auto;
+	width: 40%;
 }
 
 #datas{
