@@ -26,27 +26,13 @@
 		
 		<div id = "arrumar">
 		<div id = "principal">
-
-			<div id="autoComplete">
-				<form name ="selecaoPartido" id = "selecaoPartido" 
-	                                action ="partidoRecebido" method= "POST">
-					<input type="text" name="nome" id="nome" list="partido"
-						autocomplete="off" />
-					
-					<datalist id="partido">
-						<c:forEach var="partido" items="${lista}">
-							<option value="${partido}">
-						</c:forEach> 
-					</datalist>
-						
-					<input type=image src="pesquisa_lupa.png" id="lupa">
-				</form>
-			</div>
-
-
-			</div><!-- fim da id principal -->
-		
-		
+			<h1>${partido.nomePartido }</h1>
+			
+			<c:forEach var = "deputado" items="${partido.deputadosDoPartido }">
+				<p>${deputado.nomeCivilDoParlamentar }</p>
+			</c:forEach>
+	
+		</div><!-- fim da id principal -->
 		</div><!-- fim da div arrumar -->
 		
 		<div id="rodape">
