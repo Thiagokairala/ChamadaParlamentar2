@@ -58,8 +58,7 @@ public final class DeputadosControl {
 	
 	public static JFreeChart criarGrafico(Estatistica estatistica) {
 		PieDataset dataset = criarDataset(estatistica);
-		JFreeChart grafico = ChartFactory.createPieChart(estatistica.getNome(),
-				dataset, true, false, false);
+		JFreeChart grafico = ChartFactory.createPieChart(null, dataset, true, false, false);
 		
 		return grafico;
 	}

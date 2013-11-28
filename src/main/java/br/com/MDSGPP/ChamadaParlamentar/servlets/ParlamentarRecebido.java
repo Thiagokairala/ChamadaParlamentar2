@@ -55,9 +55,9 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
 					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado.png");
-					
-					ChartUtilities.saveChartAsPNG(arquivo, grafico, 200, 200, info);
-					
+
+					ChartUtilities.saveChartAsPNG(arquivo, grafico, 300, 200, info);
+
 
 					estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
 
@@ -66,6 +66,8 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					request.setAttribute("lista", lista);
 					request.setAttribute("estatistica", estatistica);
 					rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
+
+					Thread.sleep(2000);
 				}
 				else {
 					rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
@@ -76,6 +78,9 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (IndexOutOfBoundsException e) {
 				rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		else {
