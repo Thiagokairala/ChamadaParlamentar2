@@ -54,7 +54,7 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					JFreeChart grafico = DeputadosControl.criarGrafico(estatistica);
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado.png");
+					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado1.png");
 
 					ChartUtilities.saveChartAsPNG(arquivo, grafico, 300, 200, info);
 
@@ -67,7 +67,7 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					request.setAttribute("estatistica", estatistica);
 					rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
 
-					Thread.sleep(2000);
+					Thread.sleep(6000);
 				}
 				else {
 					rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");

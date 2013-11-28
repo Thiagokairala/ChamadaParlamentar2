@@ -76,7 +76,6 @@
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-			
 			<c:if test="${paginaAtual != noDePaginas }">
 				<td><a href="parlamentarRecebido?pagina=${paginaAtual + 1}&nome=${estatistica.nome }">Proximo</a></td>
 			</c:if>

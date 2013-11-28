@@ -13,7 +13,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Parlamentar Recebido</servlet-name>
 		<url-pattern>/parlamentarRecebido</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Partido Recebido</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.PartidoRecebidoServlet</servlet-class>
@@ -22,7 +22,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Partido Recebido</servlet-name>
 		<url-pattern>/partidoRecebido</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Partido AutoComplete</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.PartidoAutoCompleteServlet</servlet-class>
@@ -31,7 +31,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Partido AutoComplete</servlet-name>
 		<url-pattern>/autoCompletePartido</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Arrumar nome do sessaoPorNome</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.ArrumarNomeServlet</servlet-class>
@@ -40,7 +40,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Arrumar nome do sessaoPorNome</servlet-name>
 		<url-pattern>/arrumarNome</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Sessoes por Data</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SessoesPorData</servlet-class>
@@ -49,7 +49,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Sessoes por Data</servlet-name>
 		<url-pattern>/sessaoPorData</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Segundo Parlamentar</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SegundoParlamentarServlet</servlet-class>
@@ -58,8 +58,8 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Segundo Parlamentar</servlet-name>
 		<url-pattern>/segundoParlamentar</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>Acompanhar Parlamentar</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.PegarListaDeputados</servlet-class>
@@ -68,7 +68,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Acompanhar Parlamentar</servlet-name>
 		<url-pattern>/acompanharParlamentar</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Sessao Por Nome</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SessaoPorNomeServlet</servlet-class>
@@ -86,7 +86,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Ranking</servlet-name>
 		<url-pattern>/ranking</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Ranking Completo</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.RankingCompleto</servlet-class>
@@ -95,8 +95,8 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>Ranking Completo</servlet-name>
 		<url-pattern>/rankingCompleto</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>Acompanhar Sessao</servlet-name>
 		<servlet-class>br.com.MDSGPP.ChamadaParlamentar.servlets.SessoesEReunioesServlet</servlet-class>
