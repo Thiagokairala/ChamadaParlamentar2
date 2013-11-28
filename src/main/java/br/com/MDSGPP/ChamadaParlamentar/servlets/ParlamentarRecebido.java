@@ -1,5 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
@@ -44,6 +50,14 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 
 					int numeroSessoes = estatistica.getLista().size();
 					int noDePaginas = ((int) Math.ceil(numeroSessoes * 1.0 / sessoesPorPagina))-1;
+
+					JFreeChart grafico = DeputadosControl.criarGrafico(estatistica);
+
+					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado.png");
+					
+					ChartUtilities.saveChartAsPNG(arquivo, grafico, 200, 200, info);
+					
 
 					estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
 
