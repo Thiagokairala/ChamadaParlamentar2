@@ -50,12 +50,12 @@ public final class PartidoControl {
 					deputadosDoPartido.add(todosDeputados.get(i));
 				}
 			}
+			
+			partido.setSigla(nomePartidoCerto.get(0));
+			partido.setNomePartido(nomePartidoCerto.get(1));
+			partido.setDeputadosDoPartido(deputadosDoPartido);	
 		}
 
-		partido.setSigla(nomePartidoCerto.get(0));
-		partido.setNomePartido(nomePartidoCerto.get(1));
-
-		partido.setDeputadosDoPartido(deputadosDoPartido);
 		return partido;
 	}
 

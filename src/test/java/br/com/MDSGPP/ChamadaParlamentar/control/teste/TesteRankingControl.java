@@ -71,7 +71,7 @@ public class TesteRankingControl {
 		
 		for(int i=0; i < lista.size() -1; i++)
 		{
-			assertTrue(Integer.parseInt(lista.get(i).getNumeroSessao()) < Integer.parseInt(lista.get(i+1).getNumeroSessao()));
+			assertTrue(Integer.parseInt(lista.get(i).getNumeroSessao()) > Integer.parseInt(lista.get(i+1).getNumeroSessao()));
 		}
 	}
 	

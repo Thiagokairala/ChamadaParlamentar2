@@ -10,7 +10,7 @@ import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
 public class TesteEstatisticaPartido {
 
-	EstatisticaPartido estatisticaPartido; 
+	EstatisticaPartido estatisticaPartido;
 	
 	@Before
 	public void setUp()
@@ -22,6 +22,7 @@ public class TesteEstatisticaPartido {
 	@Test
 	public void testGetPartido() {
 		Partidos partido = new Partidos();
+		estatisticaPartido.setPartido(partido);
 		assertTrue(estatisticaPartido.getPartido().equals(partido));
 	}
 
@@ -35,6 +36,7 @@ public class TesteEstatisticaPartido {
 	@Test
 	public void testGetQuantidadeDeSessoes() {
 		int testQuantidade = 9;
+		estatisticaPartido.setQuantidadeDeSessoes(testQuantidade);
 		assertTrue(estatisticaPartido.getQuantidadeDeSessoes() == testQuantidade);
 	}
 
@@ -48,7 +50,9 @@ public class TesteEstatisticaPartido {
 
 	@Test
 	public void testGetSessoesAssistidas() {
-		assertTrue(estatisticaPartido.getSessoesAssistidas() == 9);
+		int testQuantidade = 1;
+		estatisticaPartido.setSessoesAssistidas(testQuantidade);
+		assertTrue(estatisticaPartido.getSessoesAssistidas() == testQuantidade);
 	}
 
 	@Test
@@ -60,6 +64,7 @@ public class TesteEstatisticaPartido {
 	@Test
 	public void testGetPorcentagem() {
 		String testString = "teste";
+		estatisticaPartido.setPorcentagem(testString);
 		assertTrue(estatisticaPartido.getPorcentagem().equalsIgnoreCase(testString));
 	}
 

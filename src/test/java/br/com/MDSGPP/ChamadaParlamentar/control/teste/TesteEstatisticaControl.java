@@ -43,6 +43,21 @@ public class TesteEstatisticaControl {
 	}
 	
 	@Test
+	public void testGerarEstatisticas2() throws ClassNotFoundException, SQLException {
+		Estatistica estatisticaTeste1 = null;
+		Estatistica estatisticaTeste2 = null;
+		Estatistica estatisticaTeste3 = null;
+		
+		estatisticaTeste1 = EstatisticaControl.gerarEstatisticas("naoDevePassar", 3);
+		estatisticaTeste2 = EstatisticaControl.gerarEstatisticas("abelardo lupion-dem/pr", 4);
+		estatisticaTeste3 = EstatisticaControl.gerarEstatisticas("ABELARDO LUPION-DEM/PR", 5);
+		
+		assertTrue(estatisticaTeste1.getLista().get(0).equals("Dados não disponiveis"));
+		assertTrue(estatisticaTeste2 != null);
+		assertTrue(estatisticaTeste3 != null);
+	}
+	
+	@Test
 	public void testArrumarNomePesquisa() {
 		Deputados deputado1 = new Deputados();
 		

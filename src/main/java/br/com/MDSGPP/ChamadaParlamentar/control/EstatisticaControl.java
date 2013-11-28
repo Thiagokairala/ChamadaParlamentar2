@@ -14,6 +14,7 @@ public final class EstatisticaControl {
 	
 	public static final double PASSAR_PORCENTAGEM = 100.0;
 	
+	
 	public static Estatistica gerarEstatisticas(String nome)
 			throws ClassNotFoundException, SQLException	{
 		Estatistica estatistica = new Estatistica();
@@ -31,6 +32,7 @@ public final class EstatisticaControl {
 		
 		return estatistica;
 	}
+	
 	
 	public static Estatistica gerarEstatisticas(String nome, int numeroTotalSessao) 
 			throws ClassNotFoundException, SQLException {
