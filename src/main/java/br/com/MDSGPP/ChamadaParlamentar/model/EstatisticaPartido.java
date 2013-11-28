@@ -5,7 +5,7 @@ public class EstatisticaPartido {
 	private Partidos partido;
 	private int quantidadeDeSessoes;
 	private int sessoesAssistidas;
-	private float porcentagem;
+	private String porcentagem;
 	public Partidos getPartido() {
 		return partido;
 	}
@@ -24,10 +24,10 @@ public class EstatisticaPartido {
 	public void setSessoesAssistidas(int sessoesAssistidas) {
 		this.sessoesAssistidas = sessoesAssistidas;
 	}
-	public float getPorcentagem() {
+	public String getPorcentagem() {
 		return porcentagem;
 	}
-	public void setPorcentagem(float porcentagem) {
+	public void setPorcentagem(String porcentagem) {
 		this.porcentagem = porcentagem;
 	}	
 }
