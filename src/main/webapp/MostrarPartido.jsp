@@ -27,16 +27,17 @@
 		<div id = "principal">
 			<h1>${partido.nomePartido } - ${partido.sigla }</h1>
 			
-			<h2>Presença de seus deputados: ${estatisticaPartido.porcentagem }%</h2>
+			<h2>Média de presença: ${estatisticaPartido.porcentagem }%</h2>
 			
 			<c:forEach var = "deputado" items="${partido.estatisticaDosDeputados}">
-				<td><a href="arrumarNome?nome=${deputado.nome }">${deputado.nome }  -  ${deputado.porcentagem }<br>
-					<br></a>
+				<td><a href="arrumarNome?nome=${deputado.nome }"> ${deputado.nome} -  ${deputado.porcentagem }<br>
+				<br></a></td>
 			</c:forEach>
 		</div><!-- fim da id principal -->
+		
 		<div id="semDados">	
 			<c:if test="${numeroSemDados > 0 }">
-				<h2>deputados Sem Dados disponiveis</h2>
+				<h2>Deputados sem dados disponiveis:</h2>
 				
 				<c:forEach var = "deputado" items="${partido.deputadosSemDados }">
 					<p>${deputado.nome }</p>
