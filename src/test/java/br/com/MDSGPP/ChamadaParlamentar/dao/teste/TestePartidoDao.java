@@ -82,10 +82,12 @@ public class TestePartidoDao {
 	
 	@Test
 	public void testPegarPartidos() throws SQLException {
-		ArrayList<String> listaDeTeste = partidoDao.pegarPartidos();
+		ArrayList<ArrayList<String>> listaDeTeste = partidoDao.pegarPartidos();
 		
 		for(int i = 0; i<listaDeTeste.size(); i++) {
-			assertNotNull(listaDeTeste.get(i));
+			for(int j = 0; j<listaDeTeste.get(i).size(); j++) {
+				assertNotNull(listaDeTeste.get(i).get(j));
+			}
 		}
 		
 		assertTrue(listaDeTeste.size() >0);
