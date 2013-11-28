@@ -1,5 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -58,8 +59,9 @@ public final class DeputadosControl {
 	
 	public static JFreeChart criarGrafico(Estatistica estatistica) {
 		PieDataset dataset = criarDataset(estatistica);
-		JFreeChart grafico = ChartFactory.createPieChart(null, dataset, true, false, false);
+		JFreeChart grafico = ChartFactory.createPieChart3D(null, dataset, true, false, false);
 		
+		grafico.setBackgroundPaint(Color.gray);
 		return grafico;
 	}
 }

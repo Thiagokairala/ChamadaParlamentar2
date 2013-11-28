@@ -54,9 +54,9 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					JFreeChart grafico = DeputadosControl.criarGrafico(estatistica);
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado.png");
+					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado1.png");
 
-					ChartUtilities.saveChartAsPNG(arquivo, grafico, 300, 200, info);
+					ChartUtilities.saveChartAsPNG(arquivo, grafico, 400, 200, info);
 
 
 					estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
