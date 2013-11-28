@@ -1,5 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -8,6 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
@@ -42,10 +48,19 @@ public class SegundoParlamentarServlet extends HttpServlet {
 					Estatistica estatisticaSegundo = EstatisticaControl.
 							gerarEstatisticas(EstatisticaControl.
 									arrumarNomePesquisa(segundoDeputado));
+					
+					JFreeChart grafico = DeputadosControl.criarGrafico(estatisticaSegundo);
+
+					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado2.png");
+
+					ChartUtilities.saveChartAsPNG(arquivo, grafico, 400, 200, info);
+					
+					Thread.sleep(2000);
 
 					request.setAttribute("estatisticaPrimeiro", estatisticaPrimeiro);
 					request.setAttribute("estatisticaSegundo", estatisticaSegundo);
-
+					
 					rd = request.getRequestDispatcher("/MostrarComparacaoDeputados.jsp");
 				}
 				else {
@@ -57,6 +72,9 @@ public class SegundoParlamentarServlet extends HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (NumberFormatException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		else {

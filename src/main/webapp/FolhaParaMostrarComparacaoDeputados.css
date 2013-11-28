@@ -51,3 +51,19 @@
 	-webkit-box-shadow: 0 3px 10px 0 #333333;
 	text-shadow: 0px 0px 5px #fff;
 }
+
+#grafico1{
+	background-image: url("deputado1.png");
+	height: 200px;
+	background-repeat: no-repeat;
+	margin-left: 10%;
+	width: auto;
+}
+
+#grafico2{
+	background-image: url("deputado2.png");
+	height: 200px;
+	background-repeat: no-repeat;
+	margin-left: 10%;
+	width: auto;
+}

@@ -88,7 +88,6 @@ public final class RankingControl {
 						break;
 					}		
 				}
-				System.out.println(lista.get(j).getNumeroSessao());
 				j++;
 			}
 		}
