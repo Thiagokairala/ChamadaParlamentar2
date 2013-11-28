@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
-public class ExceptionRanking {
+public final class ExceptionRanking {
 
 	public static ArrayList<ArrayList<Estatistica>> limparLista(ArrayList<Estatistica> lista){
 		ArrayList<ArrayList<Estatistica>> passar = new ArrayList<ArrayList<Estatistica>>();

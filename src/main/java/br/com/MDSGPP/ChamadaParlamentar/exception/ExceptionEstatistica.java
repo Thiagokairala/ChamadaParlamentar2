@@ -5,12 +5,8 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 
-public class ExceptionEstatistica {
+public final class ExceptionEstatistica {
 
-	public ExceptionEstatistica() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public static boolean verificaNome(String nome) {
 		boolean passar = false;
 		

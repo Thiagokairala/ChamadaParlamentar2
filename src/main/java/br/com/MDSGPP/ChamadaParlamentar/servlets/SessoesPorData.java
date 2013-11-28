@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionDia;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public class SessoesPorData extends HttpServlet {
@@ -20,23 +22,28 @@ public class SessoesPorData extends HttpServlet {
 
 
 		String data = request.getParameter("datas");
-		try {
-			Dia dia = new DiaControl().passarData(data);
+		if(ExceptionSqlInjection.testeSqlInjection(data)) {
+			try {
+				Dia dia = new DiaControl().passarData(data);
 
-			if(ExceptionDia.verificaData(dia.getListaSessoes().size())){
+				if(ExceptionDia.verificaData(dia.getListaSessoes().size())){
 
-				request.setAttribute("dia", dia);
-				rd = request.getRequestDispatcher("/MostrarDia.jsp");
-			}else{
-				rd = request.getRequestDispatcher("/DataNaoEncontrada.jsp");
+					request.setAttribute("dia", dia);
+					rd = request.getRequestDispatcher("/MostrarDia.jsp");
+				}else{
+					rd = request.getRequestDispatcher("/DataNaoEncontrada.jsp");
+				}
+
+			} catch (ClassNotFoundException e) {
+				rd = request.getRequestDispatcher("/Erro.jsp");
+			} catch (SQLException e) {
+				rd = request.getRequestDispatcher("/Erro.jsp");
 			}
-
-		} catch (ClassNotFoundException e) {
-			rd = request.getRequestDispatcher("/Erro.jsp");
-		} catch (SQLException e) {
-			rd = request.getRequestDispatcher("/Erro.jsp");
 		}
-		
+		else {
+			rd = request.getRequestDispatcher("SqlDetectado.jsp");
+		}
+
 		rd.forward(request, response);
 
 	}

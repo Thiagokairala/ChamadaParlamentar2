@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ExceptionSessoesEReunioes {
+public final class ExceptionSessoesEReunioes {
 
 	public static boolean validaData(String data) {
 
