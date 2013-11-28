@@ -42,6 +42,8 @@ public class PartidoRecebidoServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("Erro.jp");
 		} catch (SQLException e) {
 			rd = request.getRequestDispatcher("Erro.jp");
+		} catch (NullPointerException e) {
+			rd = request.getRequestDispatcher("PartidoNaoEncontrado.jsp");
 		}
 		
 		rd.forward(request, response);

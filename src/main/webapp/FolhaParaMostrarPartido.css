@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+#principal {
+	float: left;
+	width: auto;
+	margin-left: 12%;
+	margin-top: 5%;
+}
+
+#semDados {
+	float: left;
+	margin-top: 9.2%;
+	margin-left: 2%
+	
+}

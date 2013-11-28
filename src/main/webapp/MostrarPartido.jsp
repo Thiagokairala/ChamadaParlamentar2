@@ -9,10 +9,9 @@
 <style type="text/css">
 		<jsp:include page="FolhaParaHeader.css"/>
 		<jsp:include page="FolhaParaTudo.css"/>
-		<jsp:include page="FolhaParaPrincipal.css"/>
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
-		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaMostrarPartido.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -33,7 +32,8 @@
 			<c:forEach var = "deputado" items="${partido.estatisticaDosDeputados}">
 				<p>${deputado.nome }  -  ${deputado.porcentagem }</p>
 			</c:forEach>
-			
+		</div><!-- fim da id principal -->
+		<div id="semDados">	
 			<c:if test="${numeroSemDados > 0 }">
 				<h2>deputados Sem Dados disponiveis</h2>
 				
@@ -42,7 +42,7 @@
 				</c:forEach>
 			</c:if>
 	
-		</div><!-- fim da id principal -->
+		</div><!-- fim da div semDados -->
 		</div><!-- fim da div arrumar -->
 		
 		<div id="rodape">
