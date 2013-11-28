@@ -12,6 +12,8 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaDeputadoNaoEncontrado.css"/>
+		<jsp:include page="FolhaParaSqlDetectado.css"/>
+		
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -29,7 +31,6 @@
 			<h2>Promete se comportar??</h2>
 			<p><a href="Index.jsp">Sim!!</a></p>
 			<p><a href="http://www.dpf.gov.br/">Nao!!</a></p>
-		
 		</div><!-- fim da id principal -->
 		
 		<div id="rodape">
