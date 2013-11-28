@@ -4,12 +4,13 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.PartidoNaoEncontradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.EstatisticaPartido;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
 public class EstatisticaPartidoControl {
 	public static EstatisticaPartido gerarEstatisticaPartido(String nome) 
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, PartidoNaoEncontradoException {
 		EstatisticaPartido estatistica = new EstatisticaPartido();
 		
 		Partidos partido = PartidoControl.passarPartidoComDadosCompletos(nome);

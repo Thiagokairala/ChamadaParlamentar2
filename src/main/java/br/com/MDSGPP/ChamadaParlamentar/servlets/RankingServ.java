@@ -16,7 +16,7 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void service (HttpServletRequest request, HttpServletResponse response) {
+	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Ranking ranking = null;
 		RequestDispatcher rd = null;
 
@@ -28,20 +28,9 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 
 		} catch (ClassNotFoundException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
-			e.printStackTrace();
 		} catch (SQLException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
-			e.printStackTrace();
 		}
-
-		try {
-			rd.forward(request, response);
-		} catch (ServletException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		rd.forward(request, response);
 	}
 }

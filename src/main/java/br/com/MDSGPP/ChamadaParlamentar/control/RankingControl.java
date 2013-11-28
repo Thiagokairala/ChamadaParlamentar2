@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
@@ -47,7 +48,15 @@ public final class RankingControl {
 
 		ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
 		String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(0));
-		devolver.add(EstatisticaControl.gerarEstatisticas(nome));
+		
+		try {
+			devolver.add(EstatisticaControl.gerarEstatisticas(nome));
+		} catch (ListaVaziaException e1) {
+			Estatistica estatistica = new Estatistica();
+			estatistica.setNome(nome);
+			devolver.add(estatistica);
+			System.out.println(estatistica.getNome());
+		}
 		
 		int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
 		

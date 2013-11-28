@@ -6,22 +6,22 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.EstatisticaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
-import br.com.MDSGPP.ChamadaParlamentar.exception.ValidaDadosWS;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public final class EstatisticaControl {
-	
+
 	public static final double PASSAR_PORCENTAGEM = 100.0;
-	
-	
+
+
 	public static Estatistica gerarEstatisticas(String nome)
-			throws ClassNotFoundException, SQLException	{
+			throws ClassNotFoundException, SQLException, ListaVaziaException	{
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao = new EstatisticaDao();	
 		SessoesEReunioesDao sessoes = new SessoesEReunioesDao();
 		int numeroTotalSessao = sessoes.passarNumeroDeSessoes();
-		
+
 		estatistica.setLista(dao.getEstatisticaDeputados(nome));
 
 		estatistica.setNome(nome);
@@ -29,56 +29,59 @@ public final class EstatisticaControl {
 		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
 		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
 
-		
+
 		return estatistica;
 	}
-	
-	
+
+
 	public static Estatistica gerarEstatisticas(String nome, int numeroTotalSessao) 
 			throws ClassNotFoundException, SQLException {
-		
+
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao = new EstatisticaDao();	
 		SessoesEReunioesDao sessoes = new SessoesEReunioesDao();
-		
+
 		estatistica.setLista(dao.getEstatisticaDeputados(nome));
 
 		estatistica.setNome(nome);
 
-		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
+		try {
+			estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
+		} catch (ListaVaziaException e) {
+			return estatistica;
+		}
 		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
-		
+
 
 		return estatistica;
-		
+
 	}
-	
-	
+
+
 	public static Estatistica calcularEstatistica
-		(Estatistica estatistica, SessoesEReunioesDao sessoes, 
-				int numeroTotalSessao) {
-		if(ValidaDadosWS.validaLista(estatistica.getLista())) {
-			estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
-
-			DecimalFormat df = new DecimalFormat("###.00");  
-			estatistica.setPorcentagem(df.format(
-					(((double)estatistica.getLista().size())/
-							((double)numeroTotalSessao))*PASSAR_PORCENTAGEM) + "%");
-		}
-		else {
-			estatistica.getLista().add("Dados não disponiveis");
-		}
+	(Estatistica estatistica, SessoesEReunioesDao sessoes, 
+			int numeroTotalSessao) throws ListaVaziaException {
+		if(estatistica.getLista().size() == 0)
+			throw new ListaVaziaException();
 		
+		estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
+
+		DecimalFormat df = new DecimalFormat("###.00");  
+		estatistica.setPorcentagem(df.format(
+				(((double)estatistica.getLista().size())/
+						((double)numeroTotalSessao))*PASSAR_PORCENTAGEM) + "%");
+
+
 		return estatistica;
 	}
-	
-	
+
+
 	public static String arrumarNomePesquisa(Deputados deputado) {
 		String montar = deputado.getNomeDeTratamentoDoParlamentar() +
 				"-" + deputado.getPartido() + "/" + deputado.getUf();
 		return montar.toUpperCase();
 	}
-	
+
 	public static ArrayList<String> passarListaCerta(int pagina, int sessoesPorPagina, ArrayList<String> listaPassada ) {
 		ArrayList<String> listaPassar = new ArrayList<String>();
 		ArrayList<String> lista = ordenarLista(listaPassada);
@@ -97,14 +100,14 @@ public final class EstatisticaControl {
 		}		
 		return listaPassar;
 	}
-	
+
 	public static ArrayList<String> ordenarLista(ArrayList<String> lista) {
 		ArrayList<String> ordenada = new ArrayList<String>();
-		
+
 		for(int i = 0; i<lista.size(); i++) {
 			ordenada.add(lista.get(lista.size() -1 - i));
 		}
-		
+
 		return ordenada;
 	}
 }

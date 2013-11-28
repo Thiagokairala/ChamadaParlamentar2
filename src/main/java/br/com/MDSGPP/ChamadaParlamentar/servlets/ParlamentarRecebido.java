@@ -18,6 +18,7 @@ import org.jfree.chart.entity.StandardEntityCollection;
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
@@ -81,6 +82,8 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 			} catch (InterruptedException e) {
 				
 			} catch (NumberFormatException e) {
+				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
+			} catch (ListaVaziaException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
 			}
 		}
