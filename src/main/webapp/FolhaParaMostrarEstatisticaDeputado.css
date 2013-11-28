@@ -61,3 +61,10 @@
 #novoDeputado h1{
 	font-size: 20px;
 }
+
+#grafico{
+	background-image: url("deputado.png");
+	height: 200px;
+	background-repeat: no-repeat;
+	margin-left: 10%;
+}

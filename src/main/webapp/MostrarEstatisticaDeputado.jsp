@@ -29,7 +29,9 @@
 		
 		<div id = "dados">
 			<h1>Nome: ${estatistica.nome }</h1>
-	
+			
+			<div id = "grafico">
+			</div>
 	  		<h2><b>Sessoes assistidas:</b></h2> <p>${estatistica.numeroSessao }</p>
 
 			<h2><b>Sessoes totais:</b></h2> <p>${estatistica.totalSessao }</p>
