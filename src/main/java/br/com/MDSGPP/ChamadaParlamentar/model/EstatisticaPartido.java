@@ -6,6 +6,7 @@ public class EstatisticaPartido {
 	private int quantidadeDeSessoes;
 	private int sessoesAssistidas;
 	private String porcentagem;
+	
 	public Partidos getPartido() {
 		return partido;
 	}

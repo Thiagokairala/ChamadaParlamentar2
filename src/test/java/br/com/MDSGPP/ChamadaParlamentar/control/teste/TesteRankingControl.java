@@ -57,9 +57,29 @@ public class TesteRankingControl {
 	public void testOrdenacao() {
 		ArrayList<Estatistica> lista = new ArrayList<Estatistica>();
 		
+		Estatistica primeiro = new Estatistica();
+		Estatistica segundo = new Estatistica();
+		Estatistica terceiro = new Estatistica();
+		primeiro.setNumeroSessao("10");
+		segundo.setNumeroSessao("20");
+		terceiro.setNumeroSessao("15");
+		
+		lista.add(primeiro);
+		lista.add(segundo);
+		lista.add(terceiro);
 		lista = RankingControl.ordenacao(lista);
 		
-		assertNotNull(lista);
+		for(int i=0; i < lista.size() -1; i++)
+		{
+			assertTrue(Integer.parseInt(lista.get(i).getNumeroSessao()) < Integer.parseInt(lista.get(i+1).getNumeroSessao()));
+		}
+	}
+	
+	@Test
+	public void testOrdenacaoListaNull() {
+		ArrayList<Estatistica> lista = new ArrayList<Estatistica>();
+		lista = RankingControl.ordenacao(lista);
+		assertTrue(lista.size() == 0 );
 	}
 
 }
