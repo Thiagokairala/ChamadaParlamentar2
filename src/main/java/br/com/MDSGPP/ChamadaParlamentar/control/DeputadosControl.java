@@ -1,10 +1,13 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
@@ -58,7 +61,21 @@ public final class DeputadosControl {
 	
 	public static JFreeChart criarGrafico(Estatistica estatistica) {
 		PieDataset dataset = criarDataset(estatistica);
-		JFreeChart grafico = ChartFactory.createPieChart(null, dataset, true, false, false);
+		JFreeChart grafico = ChartFactory.createPieChart3D(null, dataset, true, false, false);
+		
+		grafico.setBackgroundPaint(Color.gray);
+		
+		int numeroSessao = Integer.parseInt(estatistica.getNumeroSessao());
+		int numeroTotal = Integer.parseInt(estatistica.getTotalSessao());
+		
+		double presenca = (((double) numeroSessao) / ((double) numeroTotal))*100;
+		double falta = 100 - presenca;
+		
+		final PiePlot3D plot = (PiePlot3D) grafico.getPlot();
+		plot.setStartAngle(270);
+		plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({2})"));
+		plot.setSectionPaint(1, Color.RED);
+		plot.setSectionPaint(0, Color.GREEN);
 		
 		return grafico;
 	}

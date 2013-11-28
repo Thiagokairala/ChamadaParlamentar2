@@ -63,8 +63,9 @@
 }
 
 #grafico{
-	background-image: url("deputado.png");
+	background-image: url("deputado1.png");
 	height: 200px;
 	background-repeat: no-repeat;
 	margin-left: 10%;
+	width: auto;
 }
