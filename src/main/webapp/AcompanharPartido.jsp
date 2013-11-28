@@ -13,6 +13,7 @@
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
 		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaAcompanharPartido.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -28,8 +29,10 @@
 		<div id = "principal">
 
 			<div id="autoComplete">
+			
 				<form name ="selecaoPartido" id = "selecaoPartido" 
 	                                action ="partidoRecebido" method= "POST">
+	            <p>Digite o nome do partido:
 					<input type="text" name="nome" id="nome" list="partido"
 						autocomplete="off" />
 					
@@ -42,7 +45,9 @@
 					</datalist>
 						
 					<input type=image src="pesquisa_lupa.png" id="lupa">
+				</p>
 				</form>
+				
 			</div>
 
 

@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+
+#principal h1{
+	background-color:#E6E8FA;
+	font-size: 200%;
+}
+
+#principal h2{
+	background-color:#E6E8FA;
+	font-size: 150%;
+}
+#principal a{
+	margin-left: 7%;
+	text-decoration: none;
+	color: #000;
+}
+#principal a:hover {
+	background-color: #333333;
+	color: #f8f8ff;
+	-moz-box-shadow: 0 3px 10px 0 #333333;
+	-webkit-box-shadow: 0 3px 10px 0 #333333;
+	text-shadow: 0px 0px 5px #fff;
+}
+
+#principal p{
+	margin-left: 7%;
+}

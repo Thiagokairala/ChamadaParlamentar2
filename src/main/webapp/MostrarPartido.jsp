@@ -12,7 +12,7 @@
 		<jsp:include page="FolhaParaPrincipal.css"/>
 		<jsp:include page="FolhaParaBody.css"/>
 		<jsp:include page="FolhaParaFooter.css"/>
-		<jsp:include page="FolhaParaAuxiliar.css"/>
+		<jsp:include page="FolhaParaMostrarPartido.css"/>
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -28,14 +28,15 @@
 		<div id = "principal">
 			<h1>${partido.nomePartido } - ${partido.sigla }</h1>
 			
-			<h2>Presença de seus deputados: ${estatisticaPartido.porcentagem }%</h2>
+			<h2>Média de presença: ${estatisticaPartido.porcentagem }%</h2>
 			
 			<c:forEach var = "deputado" items="${partido.estatisticaDosDeputados}">
-				<p>${deputado.nome }  -  ${deputado.porcentagem }</p>
+				<td><a href="arrumarNome?nome=${deputado.nome }"> ${deputado.nome} -  ${deputado.porcentagem }<br>
+				<br></a></td>
 			</c:forEach>
 			
 			<c:if test="${numeroSemDados > 0 }">
-				<h2>deputados Sem Dados disponiveis</h2>
+				<h2>Deputados sem dados disponiveis:</h2>
 				
 				<c:forEach var = "deputado" items="${partido.deputadosSemDados }">
 					<p>${deputado.nome }</p>
