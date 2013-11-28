@@ -32,8 +32,9 @@ public class PartidoDao extends ConnectionFactory {
 		stmt.close();
 	}
 	
-	public ArrayList<String> pegarPartidos() throws SQLException {
-		ArrayList<String> listaPassar = new ArrayList<String>();
+	public ArrayList<ArrayList<String>> pegarPartidos() throws SQLException {
+		
+		ArrayList<ArrayList<String>> listaPassar = new ArrayList<ArrayList<String>>();
 		
 		String sql = "Select * from partido";
 		
@@ -42,8 +43,10 @@ public class PartidoDao extends ConnectionFactory {
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()) {
-			listaPassar.add(rs.getString("sigla"));
-			listaPassar.add(rs.getString("nomePartido"));
+			ArrayList<String> adicionar = new ArrayList<String>();
+			adicionar.add(rs.getString("sigla"));
+			adicionar.add(rs.getString("nomePartido"));
+			listaPassar.add(adicionar);
 		}
 		
 		return listaPassar;

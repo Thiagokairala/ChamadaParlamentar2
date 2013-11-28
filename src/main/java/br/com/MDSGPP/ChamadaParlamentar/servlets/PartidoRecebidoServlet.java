@@ -2,6 +2,7 @@ package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.MDSGPP.ChamadaParlamentar.control.PartidoControl;
+import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaPartidoControl;
+import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
+import br.com.MDSGPP.ChamadaParlamentar.model.EstatisticaPartido;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
 public class PartidoRecebidoServlet extends HttpServlet {
@@ -21,17 +24,20 @@ public class PartidoRecebidoServlet extends HttpServlet {
 		
 		String nomePartido = request.getParameter("nome");
 		try {
-			Partidos partido = PartidoControl.passarPartido(nomePartido);
+			EstatisticaPartido estatistica = 
+					EstatisticaPartidoControl.gerarEstatisticaPartido(nomePartido);
+	
+			ArrayList<Estatistica> semDados = estatistica.getPartido().getDeputadosSemDados();
 			
-			if(partido != null) {
-				request.setAttribute("partido", partido);
-				
-				rd = request.getRequestDispatcher("MostrarPartido.jsp");
-			}
-			else {
-				rd = request.getRequestDispatcher("PartidoNaoEcontrado.jsp");
-			}	
-			
+			Partidos partido = estatistica.getPartido();
+			int quantosSemDados = partido.getDeputadosSemDados().size();
+			System.out.println(quantosSemDados);
+			request.setAttribute("numeroSemDados", quantosSemDados);
+			request.setAttribute("semDados", semDados);
+			request.setAttribute("estatisticaPartido", estatistica);
+			request.setAttribute("partido", partido);
+			rd = request.getRequestDispatcher("MostrarPartido.jsp");
+		
 		} catch (ClassNotFoundException e) {
 			rd = request.getRequestDispatcher("Erro.jp");
 		} catch (SQLException e) {

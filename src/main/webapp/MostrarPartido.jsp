@@ -26,11 +26,21 @@
 		
 		<div id = "arrumar">
 		<div id = "principal">
-			<h1>${partido.nomePartido }</h1>
+			<h1>${partido.nomePartido } - ${partido.sigla }</h1>
 			
-			<c:forEach var = "deputado" items="${partido.deputadosDoPartido }">
-				<p>${deputado.nomeCivilDoParlamentar }</p>
+			<h2>Presença de seus deputados: ${estatisticaPartido.porcentagem }%</h2>
+			
+			<c:forEach var = "deputado" items="${partido.estatisticaDosDeputados}">
+				<p>${deputado.nome }  -  ${deputado.porcentagem }</p>
 			</c:forEach>
+			
+			<c:if test="${numeroSemDados > 0 }">
+				<h2>deputados Sem Dados disponiveis</h2>
+				
+				<c:forEach var = "deputado" items="${partido.deputadosSemDados }">
+					<p>${deputado.nome }</p>
+				</c:forEach>
+			</c:if>
 	
 		</div><!-- fim da id principal -->
 		</div><!-- fim da div arrumar -->
