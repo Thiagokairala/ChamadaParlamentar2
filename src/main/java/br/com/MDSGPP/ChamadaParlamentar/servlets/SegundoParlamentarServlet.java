@@ -2,7 +2,6 @@ package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,6 +55,8 @@ public class SegundoParlamentarServlet extends HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (SQLException e) {
 				rd = request.getRequestDispatcher("/Erro.jsp");
+			} catch (NumberFormatException e) {
+				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
 			}
 		}
 		else {
