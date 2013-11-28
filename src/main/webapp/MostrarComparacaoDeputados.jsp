@@ -27,6 +27,9 @@
 		<div id="primeiro">
 			<h1>Nome: ${estatisticaPrimeiro.nome }</h1>
 
+			<div id = "grafico1">
+			</div>
+			
 			<h2>
 				<b>Sessoes assistidas:</b>
 			</h2>
@@ -55,6 +58,9 @@
 
 		<div id="segundo">
 			<h1>Nome: ${estatisticaSegundo.nome }</h1>
+			
+			<div id = "grafico2">
+			</div>
 
 			<h2>
 				<b>Sessoes assistidas:</b>
