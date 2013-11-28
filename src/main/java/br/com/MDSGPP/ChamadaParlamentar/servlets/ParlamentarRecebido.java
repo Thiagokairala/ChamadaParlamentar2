@@ -79,8 +79,9 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 			} catch (IndexOutOfBoundsException e) {
 				rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+			} catch (NumberFormatException e) {
+				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
 			}
 		}
 		else {
