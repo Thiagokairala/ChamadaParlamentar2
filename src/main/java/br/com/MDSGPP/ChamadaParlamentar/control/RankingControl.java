@@ -62,28 +62,37 @@ public final class RankingControl {
 	}
 
 	public static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
-		// bubble sort outer loop
-		for (int i=0; i< lista.size(); i++) {
-			int verifica = 0;
-			for (int j=0; j < lista.size() - i - 1 ; j++) {
-
-				int primeiro = Integer.parseInt(lista.get(j).getNumeroSessao());
-				int segundo = Integer.parseInt(lista.get(j+1).getNumeroSessao());
-
-				if ( primeiro < segundo ) {
-					Estatistica temp;
-
-					temp = lista.get(j);
-
-					lista.set(j, lista.get(j+1));
-					lista.set(j+1, temp);
-					verifica++;
+		//Insertion Sort
+		int i = 1, j = 1;
+		if(lista.size() > 0)
+		{
+			while(j<lista.size())
+			{
+				i=j;
+				while(i>0)
+				{
+					int primeiro = Integer.parseInt(lista.get(i-1).getNumeroSessao());
+					int segundo = Integer.parseInt(lista.get(i).getNumeroSessao());
+		
+					if ( primeiro < segundo ) {
+						Estatistica temp;
+		
+						temp = lista.get(i-1);
+		
+						lista.set(i-1, lista.get(i));
+						lista.set(i, temp);
+						i--;
+					}
+					else
+					{
+						break;
+					}		
 				}
-			}
-			if(verifica == 0) {
-				break;
+				System.out.println(lista.get(j).getNumeroSessao());
+				j++;
 			}
 		}
+		
 		return lista;
 	}
 }
