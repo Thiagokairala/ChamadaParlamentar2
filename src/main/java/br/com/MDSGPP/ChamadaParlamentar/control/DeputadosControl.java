@@ -3,8 +3,14 @@ package br.com.MDSGPP.ChamadaParlamentar.control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
+import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
 public final class DeputadosControl {
 	
@@ -33,5 +39,28 @@ public final class DeputadosControl {
 		}
 
 		return deputado;
+	}
+	
+	public static PieDataset criarDataset(Estatistica estatistica) {
+		DefaultPieDataset grafico = new DefaultPieDataset();
+		
+		int numeroSessao = Integer.parseInt(estatistica.getNumeroSessao());
+		int numeroTotal = Integer.parseInt(estatistica.getTotalSessao());
+		
+		double presenca = (((double) numeroSessao) / ((double) numeroTotal))*100;
+		double falta = 100 - presenca;
+		
+		grafico.setValue("presenca", presenca);
+		grafico.setValue("falta", falta);
+		
+		return grafico;
+	}
+	
+	public static JFreeChart criarGrafico(Estatistica estatistica) {
+		PieDataset dataset = criarDataset(estatistica);
+		JFreeChart grafico = ChartFactory.createPieChart(estatistica.getNome(),
+				dataset, true, false, false);
+		
+		return grafico;
 	}
 }
