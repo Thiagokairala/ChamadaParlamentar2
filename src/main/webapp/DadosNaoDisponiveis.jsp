@@ -13,6 +13,8 @@
                 <jsp:include page="FolhaParaBody.css"/>
                 <jsp:include page="FolhaParaFooter.css"/>
                 <jsp:include page="FolhaParaAcompanharParlamentar.css"/>
+                <jsp:include page="FolhaParaDadosNaoDisponiveis.css"/>
+                
 </style>
 
 <title>Chamada Parlamentar</title>
@@ -27,8 +29,11 @@
                 <div id = "principal">
                
                 </div><!-- fim da id principal -->
-                	<h1>Desculpe</h1>
-                	<p>Desculpe os dados deste deputado nao estao disponiveis</p>
+                <div id = "mensagem">
+                	<h1>Desculpe os dados deste deputado nao estao disponiveis!</h1>
+                	<p>Clique <a href="acompanharParlamentar">AQUI </a> para pesquisar outro parlamentar.</p>
+                	
+                </div><!-- Fim da id mensagem -->
                 <div id="rodape">
                         <jsp:include page = 'Footer.html'/>
                 </div> <!-- Fim da div rodapé -->
