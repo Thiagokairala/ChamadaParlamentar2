@@ -61,9 +61,9 @@ public class AtualizarBanco {
 	 * Método que contém as tarefas agendadas que serão executadas.
 	 */
 	class tarefasDiarias extends TimerTask {
-
 		public void run() {
 			try {
+				System.out.println("teste");
 				Dao.truncateTables();
 				
 				SessoesEReunioesDao sessoesDao = new SessoesEReunioesDao();
@@ -71,7 +71,6 @@ public class AtualizarBanco {
 				
 				sessoesDao.adcionarDataNaTable(ConexaoComWsSessoesEReunioes.adcionarDataNaTable("20/11/2011", "440"));
 				sessoesDao.adcionarSessaoNaTable(ConexaoComWsSessoesEReunioes.adcionarSessaoNaTable("20/11/2011"));
-				deputadoDao.adicionaDeputado(ConexaoComWsDeputados.criaLista());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -82,9 +81,6 @@ public class AtualizarBanco {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
