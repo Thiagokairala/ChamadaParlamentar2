@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
+import br.com.MDSGPP.ChamadaParlamentar.util.VerificarData;
 
 public class SessoesEReunioes {
 
@@ -20,14 +21,9 @@ public class SessoesEReunioes {
 			String descricao, ArrayList<Deputados> deputados,
 			String descricaoCompleta) throws DataFormatoErradoException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-		sdf.setLenient(false);
-
-		try {
-			Date greg = sdf.parse(data);
-		} catch (ParseException e) {
+		if(!VerificarData.verificaData(data)) {
 			throw new DataFormatoErradoException();
-		}	
+		}
 
 
 		this.data = data;
@@ -46,14 +42,9 @@ public class SessoesEReunioes {
 	}
 
 	public void setData(String data) throws DataFormatoErradoException {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-		sdf.setLenient(false);
-
-		try {
-			Date greg = sdf.parse(data);
-		} catch (ParseException e) {
+		if(!VerificarData.verificaData(data)) {
 			throw new DataFormatoErradoException();
-		}	
+		}
 
 		this.data = data;
 	}

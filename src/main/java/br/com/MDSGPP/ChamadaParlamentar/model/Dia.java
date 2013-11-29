@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
+import br.com.MDSGPP.ChamadaParlamentar.util.VerificarData;
 
 public class Dia {
 	private String data;
@@ -16,15 +17,9 @@ public class Dia {
 		return data;
 	}
 	public void setData(String data) throws DataFormatoErradoException {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-		sdf.setLenient(false);
-
-		try {
-			Date greg = sdf.parse(data);
-		} catch (ParseException e) {
+		if(!VerificarData.verificaData(data)) {
 			throw new DataFormatoErradoException();
-		}	
+		}
 		
 		this.data = data;
 	}
