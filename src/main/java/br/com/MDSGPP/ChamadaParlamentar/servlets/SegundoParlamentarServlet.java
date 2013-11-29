@@ -55,7 +55,7 @@ public class SegundoParlamentarServlet extends HttpServlet {
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
 					final File arquivo = new File(getServletContext().getRealPath(".") + "/comparacaoDeputado.png");
 
-					ChartUtilities.saveChartAsPNG(arquivo, grafico, 500, 300, info);
+					ChartUtilities.saveChartAsPNG(arquivo, grafico, 500, 200, info);
 					
 					Thread.sleep(2000);
 
