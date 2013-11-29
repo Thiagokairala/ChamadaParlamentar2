@@ -7,6 +7,11 @@ import org.junit.Test;
 import br.com.MDSGPP.ChamadaParlamentar.util.VerificarData;
 
 public class TesteVerificarData {
+	
+	@Test
+	public void testVerificarData() {
+		assertNotNull(new VerificarData());
+	}
 
 	@Test
 	public void testVerificaData() {
