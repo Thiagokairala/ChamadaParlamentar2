@@ -40,7 +40,7 @@
 	
 	<div id="paginas">
 			<c:if test="${paginaAtual != 1}">
-				<td><a href="sessaoPorNome?pagina=${paginaAtual - 1}&descricao=${sessao.descricao }">Anterior</a></td>
+				<td><a href="sessaoPorNome?pagina=${paginaAtual - 1}&descricao=${sessao.descricao }">&larr;</a></td>
 			</c:if>
 
 			<c:forEach begin="1" end="${noDePaginas}" var="i">
@@ -55,7 +55,7 @@
 			</c:forEach>
 
 			<c:if test="${paginaAtual != noDePaginas }">
-				<td><a href="sessaoPorNome?pagina=${paginaAtual + 1}&descricao=${sessao.descricao }">Proximo</a></td>
+				<td><a href="sessaoPorNome?pagina=${paginaAtual + 1}&descricao=${sessao.descricao }">&rarr;</a></td>
 			</c:if>
 
 		</div>
