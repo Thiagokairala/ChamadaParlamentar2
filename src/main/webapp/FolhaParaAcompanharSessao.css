@@ -7,10 +7,19 @@
 	float: left;
 	width: 36%;
 	margin-left: 13.2%;
+	margin-top:2%;
 }
 #paginas a{
 	text-decoration:none;
 	color: #000;
+	font-size: 120%;
+}
+#paginas a:hover{
+	background-color: #333333;
+	color: #f8f8ff;
+	-moz-box-shadow: 0 3px 10px 0 #333333;
+	-webkit-box-shadow: 0 3px 10px 0 #333333;
+	text-shadow: 0px 0px 5px #fff;
 }
 
 #principal h2{
