@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
@@ -64,6 +65,24 @@ public class SessoesEReunioesDao extends ConnectionFactory {
 
 		rs.close();
 		return i;		
+	}
+	
+	public ArrayList<SessoesEReunioes> pegarSessoes() throws SQLException, DataFormatoErradoException {
+		String sql = "Select * from datas";
+		
+		PreparedStatement stmt = ConnectionFactory.getConexao().prepareStatement(sql);
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();
+		
+		while(rs.next()) {
+			SessoesEReunioes sessao = new SessoesEReunioes();
+			sessao.setData(rs.getString("datas"));
+			lista.add(sessao);
+		}
+		
+		return lista;		
 	}
 
 	public ArrayList<String> procurarSessao(String descricao) throws SQLException {

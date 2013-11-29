@@ -110,7 +110,7 @@ public class ConexaoComWsSessoesEReunioes {
 		return foi;
 	}
 
-	public ArrayList<String> adcionarDataNaTable(String data, String matricula) 
+	public static ArrayList<String> adcionarDataNaTable(String data, String matricula) 
 			throws SQLException, MalformedURLException, ServiceException {			 
 		ArrayList<String> passar = new ArrayList<String>();
 
