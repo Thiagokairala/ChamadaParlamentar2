@@ -8,6 +8,9 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
@@ -77,6 +80,34 @@ public final class DeputadosControl {
 		plot.setSectionPaint(1, Color.RED);
 		plot.setSectionPaint(0, Color.GREEN);
 		
+		return grafico;		
+	}
+		
+	public CategoryDataset criarDatasetComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		int totalDeSessoes = Integer.parseInt(estatisticaPrimeiro.getTotalSessao());
+		int sessoesAssistidasPrimeiro = Integer.parseInt(estatisticaPrimeiro.getNumeroSessao());
+		int sessoesAssistidasSegundo = Integer.parseInt(estatisticaSegundo.getNumeroSessao());
+		
+		double porcentagemPrimeiro = ((((double)sessoesAssistidasPrimeiro) / (double)totalDeSessoes)*100);
+		double porcentagemSegundo = ((((double)sessoesAssistidasSegundo) / (double)totalDeSessoes)*100);		
+		
+		dataset.addValue(porcentagemPrimeiro, estatisticaPrimeiro.getNome(), "Deputados");
+		dataset.addValue(porcentagemSegundo, estatisticaSegundo.getNome(), "Deputados");
+		return dataset; 
+	}
+
+	public JFreeChart gerarGraficoComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
+		
+		CategoryDataset dataset = criarDatasetComparacao(estatisticaPrimeiro, estatisticaSegundo);
+		
+		JFreeChart grafico = ChartFactory.createBarChart3D(null, null, "porcentagem"
+				, dataset, PlotOrientation.VERTICAL, true, true, false);
+		
+		grafico.setBackgroundPaint(Color.GRAY);
 		return grafico;
+		
+		
 	}
 }
