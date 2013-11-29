@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DiaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public final class DiaControl {
@@ -46,14 +47,14 @@ public final class DiaControl {
 
 	public static Dia passarData(String data) 
 			throws ClassNotFoundException, SQLException, 
-			DataFormatoErradoException{
+			DataFormatoErradoException, ListaVaziaException{
 		
 		Dia dia = null;
 		dia = new SessoesEReunioesDao().procuraDia(data);
 		dia.setData(data);
+		
 		if(dia.getListaSessoes().size() == 0){
-			dia = null;
-
+			throw new ListaVaziaException();
 		}
 
 		return dia;
