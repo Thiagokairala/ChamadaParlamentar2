@@ -95,7 +95,7 @@ public final class DeputadosControl {
 		
 		dataset.addValue(porcentagemPrimeiro, estatisticaPrimeiro.getNome(), "Deputados");
 		dataset.addValue(porcentagemSegundo, estatisticaSegundo.getNome(), "Deputados");
-		dataset.addValue(100.0, "total", "Ddeputados");
+		dataset.addValue(100.0, "total", "Deputados");
 		return dataset; 
 	}
 
@@ -106,9 +106,7 @@ public final class DeputadosControl {
 		JFreeChart grafico = ChartFactory.createBarChart3D(null, null, "porcentagem"
 				, dataset, PlotOrientation.VERTICAL, true, true, false);
 		
-		grafico.setBackgroundPaint(Color.GRAY);
+		grafico.setBackgroundPaint(Color.gray);
 		return grafico;
-		
-		
 	}
 }
