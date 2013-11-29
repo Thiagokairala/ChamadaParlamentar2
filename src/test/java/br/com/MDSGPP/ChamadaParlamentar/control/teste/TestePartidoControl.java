@@ -99,5 +99,12 @@ public class TestePartidoControl {
 		assertTrue(partido1.getSigla().equalsIgnoreCase(partido2.getSigla()));
 		
 		assertNotNull(partido3);
+		
+		assertTrue(partido1.getSigla().equalsIgnoreCase(partido3.getSigla()));
+	}
+	
+	@Test(expected=ListaVaziaException.class)
+	public void testPassarPartidoComDadosCompletosListaVazia() throws ClassNotFoundException, SQLException, ListaVaziaException {
+		Partidos partido1 = PartidoControl.passarPartidoComDadosCompletos("nao pode passar");
 	}
 }
