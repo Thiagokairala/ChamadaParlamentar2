@@ -7,7 +7,6 @@ import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.PartidoDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
-import br.com.MDSGPP.ChamadaParlamentar.exception.PartidoNaoEncontradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
@@ -51,7 +50,7 @@ public final class PartidoControl {
 					deputadosDoPartido.add(todosDeputados.get(i));
 				}
 			}
-			
+
 			partido.setSigla(nomePartidoCerto.get(0));
 			partido.setNomePartido(nomePartidoCerto.get(1));
 			partido.setDeputadosDoPartido(deputadosDoPartido);	
@@ -61,7 +60,7 @@ public final class PartidoControl {
 	}
 
 	public static Partidos gerarEstatisticaDoPartido(String nome) 
-			throws ClassNotFoundException, SQLException, PartidoNaoEncontradoException {
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		Partidos partido = passarPartido(nome);
 
 		ArrayList<Estatistica> estatisticas = new ArrayList<Estatistica>();
@@ -72,7 +71,7 @@ public final class PartidoControl {
 				estatistica = EstatisticaControl.gerarEstatisticas(
 						EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
 			} catch (ListaVaziaException e) {
-				throw new PartidoNaoEncontradoException();
+				estatistica.setNome(EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
 			}
 			estatisticas.add(estatistica);
 		}
@@ -83,18 +82,15 @@ public final class PartidoControl {
 	}
 
 	public static Partidos passarPartidoComDadosCompletos(String nome) 
-			throws ClassNotFoundException, SQLException, PartidoNaoEncontradoException {
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 
 		Partidos partido;
-		try {
-			partido = gerarEstatisticaDoPartido(nome);
-		} catch (PartidoNaoEncontradoException e) {
-			throw new PartidoNaoEncontradoException();
-		}
+		partido = gerarEstatisticaDoPartido(nome);
+
 
 		ArrayList<ArrayList<Estatistica>> listaRecebida = ExceptionRanking.
 				limparLista(partido.getEstatisticaDosDeputados());
-		
+
 		partido.setEstatisticaDosDeputados(listaRecebida.get(0));
 		partido.setDeputadosSemDados(listaRecebida.get(1));
 

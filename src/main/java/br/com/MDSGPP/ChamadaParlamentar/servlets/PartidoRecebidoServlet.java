@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaPartidoControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
-import br.com.MDSGPP.ChamadaParlamentar.exception.PartidoNaoEncontradoException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.EstatisticaPartido;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
@@ -35,7 +35,8 @@ public class PartidoRecebidoServlet extends HttpServlet {
 
 				Partidos partido = estatistica.getPartido();
 				int quantosSemDados = partido.getDeputadosSemDados().size();
-				System.out.println(quantosSemDados);
+
+				
 				request.setAttribute("numeroSemDados", quantosSemDados);
 				request.setAttribute("semDados", semDados);
 				request.setAttribute("estatisticaPartido", estatistica);
@@ -48,8 +49,9 @@ public class PartidoRecebidoServlet extends HttpServlet {
 				rd = request.getRequestDispatcher("Erro.jp");
 			} catch (NullPointerException e) {
 				rd = request.getRequestDispatcher("PartidoNaoEncontrado.jsp");
-			} catch (PartidoNaoEncontradoException e) {
+			} catch (ListaVaziaException e) {
 				rd = request.getRequestDispatcher("PartidoNaoEncontrado.jsp");
+				e.printStackTrace();
 			}
 		}
 		else {
