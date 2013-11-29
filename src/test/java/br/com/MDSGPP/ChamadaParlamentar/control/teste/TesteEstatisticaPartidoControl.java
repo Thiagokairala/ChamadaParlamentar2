@@ -51,9 +51,9 @@ public class TesteEstatisticaPartidoControl {
 		String numeroPassado = EstatisticaPartidoControl.formatarNumeroDouble(numero);
 		String numeroPassado2 = EstatisticaPartidoControl.formatarNumeroDouble(numero2);
 
-		assertTrue(numeroPassado.equalsIgnoreCase("12,13"));
+		assertTrue(numeroPassado.equalsIgnoreCase("12.13"));
 		
-		assertTrue(numeroPassado2.equalsIgnoreCase("12,15"));
+		assertTrue(numeroPassado2.equalsIgnoreCase("12.15"));
 	}
 
 }

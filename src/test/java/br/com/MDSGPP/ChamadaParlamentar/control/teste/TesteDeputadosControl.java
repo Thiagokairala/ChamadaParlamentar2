@@ -6,7 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.sql.SQLException;
 
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.PieDataset;
+import org.jfree.data.xml.CategoryDatasetHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -62,14 +65,48 @@ public class TesteDeputadosControl {
 
 		Mockito.when(estatistica.getNumeroSessao()).thenReturn("50");
 		Mockito.when(estatistica.getTotalSessao()).thenReturn("100");;
-		
+
 		JFreeChart jfc = DeputadosControl.criarGrafico(estatistica);
-		
+
 		assertNotNull(jfc);
 	}
 
+	@Test
+	public void criarDatasetComparacao() {
+		Estatistica estatistica = Mockito.spy(new Estatistica());
+		Estatistica estatistica2 = Mockito.spy(new Estatistica());
 
+		Mockito.when(estatistica.getNumeroSessao()).thenReturn("50");
+		Mockito.when(estatistica.getTotalSessao()).thenReturn("100");
+		Mockito.when(estatistica.getNome()).thenReturn("nome do deputado");
 
+		Mockito.when(estatistica2.getNumeroSessao()).thenReturn("50");
+		Mockito.when(estatistica2.getTotalSessao()).thenReturn("100");
+		Mockito.when(estatistica2.getNome()).thenReturn("nome do deputado2");
+
+		CategoryDataset dataset = DeputadosControl.
+				criarDatasetComparacao(estatistica, estatistica2);
+		
+		assertNotNull(dataset);
+	}
+	
+	@Test
+	public void testCriarGraficoComparacao() {
+		Estatistica estatistica = Mockito.spy(new Estatistica());
+		Estatistica estatistica2 = Mockito.spy(new Estatistica());
+
+		Mockito.when(estatistica.getNumeroSessao()).thenReturn("50");
+		Mockito.when(estatistica.getTotalSessao()).thenReturn("100");
+		Mockito.when(estatistica.getNome()).thenReturn("nome do deputado");
+
+		Mockito.when(estatistica2.getNumeroSessao()).thenReturn("50");
+		Mockito.when(estatistica2.getTotalSessao()).thenReturn("100");
+		Mockito.when(estatistica2.getNome()).thenReturn("nome do deputado2");
+
+		JFreeChart jfc = DeputadosControl.gerarGraficoComparacao(estatistica, estatistica2);
+	
+		assertNotNull(jfc);
+	}
 
 
 }
