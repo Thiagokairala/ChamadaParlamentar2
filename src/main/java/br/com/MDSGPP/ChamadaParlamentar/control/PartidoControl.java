@@ -1,7 +1,15 @@
 package br.com.MDSGPP.ChamadaParlamentar.control;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer3D;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.PartidoDao;
@@ -66,16 +74,16 @@ public final class PartidoControl {
 		ArrayList<Estatistica> estatisticas = new ArrayList<Estatistica>();
 
 		try {
-		for(int i = 0; i<partido.getDeputadosDoPartido().size(); i++) {
-			Estatistica estatistica = new Estatistica();
-			try {
-				estatistica = EstatisticaControl.gerarEstatisticas(
-						EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
-			} catch (ListaVaziaException e) {
-				estatistica.setNome(EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
+			for(int i = 0; i<partido.getDeputadosDoPartido().size(); i++) {
+				Estatistica estatistica = new Estatistica();
+				try {
+					estatistica = EstatisticaControl.gerarEstatisticas(
+							EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
+				} catch (ListaVaziaException e) {
+					estatistica.setNome(EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
+				}
+				estatisticas.add(estatistica);
 			}
-			estatisticas.add(estatistica);
-		}
 		} catch (NullPointerException e) {
 			throw new ListaVaziaException();
 		}
@@ -100,4 +108,8 @@ public final class PartidoControl {
 
 		return partido;
 	}	
+
+	
+
+
 }

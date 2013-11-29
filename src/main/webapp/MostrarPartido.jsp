@@ -22,7 +22,7 @@
 		<div id = "topo">
 			<jsp:include page='Header.html'/>
 		</div><!-- Fim da div topo -->
-		
+
 		<div id = "arrumar">
 		<div id = "principal">
 			<h1>${partido.nomePartido } - ${partido.sigla }</h1>

@@ -36,9 +36,17 @@
 #semDados {
 	float: left;
 	margin-top: 9.2%;
-	margin-left: 4%
-	
+	margin-left: 4%;
+}
 
+#grafico{
+	background-image: url("partido.png");
+	height: 200px;
+	background-repeat: no-repeat;
+	margin-left: 10%;
+	width: auto;
+}
+	
 #principal p{
 	margin-left: 7%;
 }

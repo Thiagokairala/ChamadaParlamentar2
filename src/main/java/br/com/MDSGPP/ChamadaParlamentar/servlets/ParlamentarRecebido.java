@@ -21,6 +21,7 @@ import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
+import br.com.MDSGPP.ChamadaParlamentar.util.Graficos;
 
 
 public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
@@ -52,7 +53,7 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					int numeroSessoes = estatistica.getLista().size();
 					int noDePaginas = ((int) Math.ceil(numeroSessoes * 1.0 / sessoesPorPagina))-1;
 
-					JFreeChart grafico = DeputadosControl.criarGrafico(estatistica);
+					JFreeChart grafico = Graficos.criarGrafico(estatistica);
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
 					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado1.png");

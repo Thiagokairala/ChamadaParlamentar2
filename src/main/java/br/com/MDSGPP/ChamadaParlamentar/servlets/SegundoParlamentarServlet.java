@@ -3,6 +3,7 @@ package br.com.MDSGPP.ChamadaParlamentar.servlets;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
+import br.com.MDSGPP.ChamadaParlamentar.util.Graficos;
 
 public class SegundoParlamentarServlet extends HttpServlet {
 
@@ -49,8 +51,11 @@ public class SegundoParlamentarServlet extends HttpServlet {
 					Estatistica estatisticaSegundo = EstatisticaControl.
 							gerarEstatisticas(EstatisticaControl.
 									arrumarNomePesquisa(segundoDeputado));
+					ArrayList<Estatistica> lista = new ArrayList<Estatistica>();
+					lista.add(estatisticaPrimeiro);
+					lista.add(estatisticaSegundo);
 					
-					JFreeChart grafico = DeputadosControl.gerarGraficoComparacao(estatisticaPrimeiro, estatisticaSegundo);
+					JFreeChart grafico = Graficos.gerarGraficoComparacao(lista);
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
 					final File arquivo = new File(getServletContext().getRealPath(".") + "/comparacaoDeputado.png");
