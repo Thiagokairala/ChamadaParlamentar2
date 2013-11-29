@@ -1,8 +1,11 @@
 package br.com.MDSGPP.ChamadaParlamentar.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 
 public class Dia {
 	private String data;
@@ -12,13 +15,18 @@ public class Dia {
 	public String getData() {
 		return data;
 	}
-	public void setData(String data) {
-		if(ExceptionSessoesEReunioes.validaData(data)) {
-			this.data = data;
-		}
-		else {
-			this.data = null;
-		}
+	public void setData(String data) throws DataFormatoErradoException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		sdf.setLenient(false);
+
+		try {
+			Date greg = sdf.parse(data);
+		} catch (ParseException e) {
+			throw new DataFormatoErradoException();
+		}	
+		
+		this.data = data;
 	}
 	public ArrayList<SessoesEReunioes> getListaSessoes() {
 		return listaSessoes;

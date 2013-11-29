@@ -15,8 +15,7 @@ public final class RankingControl {
 	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
 
 		Ranking ranking = new Ranking();
-		
-		if(ExceptionRanking.verificaLista(lista)) {
+		try {
 			ArrayList<ArrayList<Estatistica>> recebido = 
 					ExceptionRanking.limparLista(lista);
 			ArrayList<Estatistica> removidos = recebido.get(1);
@@ -31,14 +30,14 @@ public final class RankingControl {
 				melhores.add(lista.get(i));
 				piores.add(lista.get(lista.size() -1 -i));
 			}
-			
+
 			ranking.setMelhores(melhores);
 			ranking.setPiores(piores);
 			ranking.setLista(listaOrdenada);
 			ranking.setRemovidos(removidos);
-		}
-		else {
-			ranking = null;
+
+		} catch (NullPointerException e) {
+
 		}
 
 		return ranking;
@@ -48,7 +47,7 @@ public final class RankingControl {
 
 		ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
 		String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(0));
-		
+
 		try {
 			devolver.add(EstatisticaControl.gerarEstatisticas(nome));
 		} catch (ListaVaziaException e1) {
@@ -57,9 +56,9 @@ public final class RankingControl {
 			devolver.add(estatistica);
 			System.out.println(estatistica.getNome());
 		}
-		
+
 		int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
-		
+
 		for(int i = 0; i< lista.size(); i++) {
 			nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
 
@@ -82,12 +81,12 @@ public final class RankingControl {
 				{
 					int primeiro = Integer.parseInt(lista.get(i-1).getNumeroSessao());
 					int segundo = Integer.parseInt(lista.get(i).getNumeroSessao());
-		
+
 					if ( primeiro < segundo ) {
 						Estatistica temp;
-		
+
 						temp = lista.get(i-1);
-		
+
 						lista.set(i-1, lista.get(i));
 						lista.set(i, temp);
 						i--;
@@ -100,7 +99,7 @@ public final class RankingControl {
 				j++;
 			}
 		}
-		
+
 		return lista;
 	}
 }

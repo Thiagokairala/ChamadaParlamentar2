@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionDia;
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public class SessoesPorData extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
@@ -24,7 +26,8 @@ public class SessoesPorData extends HttpServlet {
 		String data = request.getParameter("datas");
 		if(ExceptionSqlInjection.testeSqlInjection(data)) {
 			try {
-				Dia dia = new DiaControl().passarData(data);
+				new DiaControl();
+				Dia dia = DiaControl.passarData(data);
 
 				if(ExceptionDia.verificaData(dia.getListaSessoes().size())){
 
@@ -38,6 +41,8 @@ public class SessoesPorData extends HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (SQLException e) {
 				rd = request.getRequestDispatcher("/Erro.jsp");
+			} catch (DataFormatoErradoException e) {
+				rd = request.getRequestDispatcher("FormatoErrado.jsp");
 			}
 		}
 		else {

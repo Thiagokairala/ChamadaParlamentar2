@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public class SessoesEReunioesServlet extends HttpServlet {
@@ -48,6 +49,8 @@ public class SessoesEReunioesServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("Erro.jsp");
 		} catch (SQLException e) {
 			rd = request.getRequestDispatcher("Erro.jsp");
+		} catch (DataFormatoErradoException e) {
+			rd = request.getRequestDispatcher("FormatoErrado.jsp");
 		}
 		
 		try {

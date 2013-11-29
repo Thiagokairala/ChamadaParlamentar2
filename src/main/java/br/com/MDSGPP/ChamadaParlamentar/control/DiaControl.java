@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DiaDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 
 public final class DiaControl {
 
-	public static ArrayList<Dia> getDias() throws ClassNotFoundException, SQLException {
+	public static ArrayList<Dia> getDias() 
+			throws ClassNotFoundException, SQLException, DataFormatoErradoException {
 		ArrayList<Dia> lista;
 		DiaDao diaDao = new DiaDao();
 
@@ -43,14 +44,16 @@ public final class DiaControl {
 		return listaPassar;
 	}
 
-	public static Dia passarData(String data) throws ClassNotFoundException, SQLException{
+	public static Dia passarData(String data) 
+			throws ClassNotFoundException, SQLException, 
+			DataFormatoErradoException{
+		
 		Dia dia = null;
-		if(ExceptionSessoesEReunioes.validaData(data)){
-			dia = new SessoesEReunioesDao().procuraDia(data);
-			dia.setData(data);
-			if(dia.getListaSessoes().size() == 0){
-				dia = null;
-			}
+		dia = new SessoesEReunioesDao().procuraDia(data);
+		dia.setData(data);
+		if(dia.getListaSessoes().size() == 0){
+			dia = null;
+
 		}
 
 		return dia;

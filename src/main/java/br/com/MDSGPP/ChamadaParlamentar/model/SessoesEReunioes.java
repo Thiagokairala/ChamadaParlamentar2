@@ -1,8 +1,11 @@
 package br.com.MDSGPP.ChamadaParlamentar.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 
 public class SessoesEReunioes {
 
@@ -15,18 +18,23 @@ public class SessoesEReunioes {
 
 	public SessoesEReunioes(String data, 
 			String descricao, ArrayList<Deputados> deputados,
-			String descricaoCompleta) {
-		if(ExceptionSessoesEReunioes.validaData(data)) {
-			this.data = data;
-			this.descricao = descricao;
-			this.deputados = deputados;
-			this.descricaoCompleta = descricaoCompleta;
-		}
-		else {
-			this.data = null;
-			this.descricao = null;
-			this.deputados = null;
-		}
+			String descricaoCompleta) throws DataFormatoErradoException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		sdf.setLenient(false);
+
+		try {
+			Date greg = sdf.parse(data);
+		} catch (ParseException e) {
+			throw new DataFormatoErradoException();
+		}	
+
+
+		this.data = data;
+		this.descricao = descricao;
+		this.deputados = deputados;
+		this.descricaoCompleta = descricaoCompleta;
+
 	}
 
 	public SessoesEReunioes() {
@@ -37,13 +45,17 @@ public class SessoesEReunioes {
 		return data;
 	}
 
-	public void setData(String data) {
-		if(ExceptionSessoesEReunioes.validaData(data)){
-			this.data = data;
-		}
-		else {
-			this.data = null;
-		}
+	public void setData(String data) throws DataFormatoErradoException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		sdf.setLenient(false);
+
+		try {
+			Date greg = sdf.parse(data);
+		} catch (ParseException e) {
+			throw new DataFormatoErradoException();
+		}	
+
+		this.data = data;
 	}
 
 	public String getDescricao() {

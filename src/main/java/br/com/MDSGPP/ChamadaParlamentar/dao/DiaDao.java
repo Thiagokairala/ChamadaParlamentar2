@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
@@ -16,7 +17,7 @@ public class DiaDao extends ConnectionFactory {
 		new ConnectionFactory().getConnection();
 	}
 
-	public ArrayList<Dia> buscarTodasDescricoes() throws SQLException {
+	public ArrayList<Dia> buscarTodasDescricoes() throws SQLException, DataFormatoErradoException {
 		ArrayList<Dia> lista = new ArrayList<Dia>();
 		String sql = "Select * from datas";
 
@@ -58,7 +59,8 @@ public class DiaDao extends ConnectionFactory {
 		return lista;
 	}
 
-	public static ArrayList<Dia> criarDias(ResultSet rs) throws SQLException {
+	public static ArrayList<Dia> criarDias(ResultSet rs) 
+			throws SQLException, DataFormatoErradoException {
 		ArrayList<Dia> lista = new ArrayList<Dia>();
 
 		int controle = 0;
