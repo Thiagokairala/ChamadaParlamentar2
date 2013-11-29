@@ -50,10 +50,10 @@ public class SegundoParlamentarServlet extends HttpServlet {
 							gerarEstatisticas(EstatisticaControl.
 									arrumarNomePesquisa(segundoDeputado));
 					
-					JFreeChart grafico = DeputadosControl.criarGrafico(estatisticaSegundo);
+					JFreeChart grafico = DeputadosControl.gerarGraficoComparacao(estatisticaPrimeiro, estatisticaSegundo);
 
 					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado2.png");
+					final File arquivo = new File(getServletContext().getRealPath(".") + "/comparacaoDeputado.png");
 
 					ChartUtilities.saveChartAsPNG(arquivo, grafico, 400, 200, info);
 					

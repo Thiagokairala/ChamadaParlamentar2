@@ -83,7 +83,7 @@ public final class DeputadosControl {
 		return grafico;		
 	}
 		
-	public CategoryDataset criarDatasetComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
+	public static CategoryDataset criarDatasetComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
 		int totalDeSessoes = Integer.parseInt(estatisticaPrimeiro.getTotalSessao());
@@ -95,10 +95,11 @@ public final class DeputadosControl {
 		
 		dataset.addValue(porcentagemPrimeiro, estatisticaPrimeiro.getNome(), "Deputados");
 		dataset.addValue(porcentagemSegundo, estatisticaSegundo.getNome(), "Deputados");
+		dataset.addValue(100.0, "total", "Ddeputados");
 		return dataset; 
 	}
 
-	public JFreeChart gerarGraficoComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
+	public static JFreeChart gerarGraficoComparacao(Estatistica estatisticaPrimeiro, Estatistica estatisticaSegundo) {
 		
 		CategoryDataset dataset = criarDatasetComparacao(estatisticaPrimeiro, estatisticaSegundo);
 		

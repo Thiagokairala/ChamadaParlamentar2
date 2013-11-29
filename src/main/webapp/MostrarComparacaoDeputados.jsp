@@ -23,12 +23,12 @@
 			<jsp:include page='Header.html' />
 		</div>
 		<!-- Fim da div topo -->
+		
+		<div id="grafico">
+		</div>
 
 		<div id="primeiro">
 			<h1>Nome: ${estatisticaPrimeiro.nome }</h1>
-
-			<div id = "grafico1">
-			</div>
 			
 			<h2>
 				<b>Sessoes assistidas:</b>
@@ -58,10 +58,7 @@
 
 		<div id="segundo">
 			<h1>Nome: ${estatisticaSegundo.nome }</h1>
-			
-			<div id = "grafico2">
-			</div>
-
+		
 			<h2>
 				<b>Sessoes assistidas:</b>
 			</h2>
