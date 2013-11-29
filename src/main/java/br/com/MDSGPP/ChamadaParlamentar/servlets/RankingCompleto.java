@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.RankingControl;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingCompleto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service (HttpServletRequest request, HttpServletResponse response) {
+	protected void service (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Ranking ranking = null;
 		RequestDispatcher rd = null;
 
@@ -32,17 +34,12 @@ public class RankingCompleto extends HttpServlet {
 		} catch (SQLException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 			e.printStackTrace();
+		} catch (ListaRankingException e) {
+			rd= request.getRequestDispatcher("/Erro.jsp");
 		}
 
-		try {
-			rd.forward(request, response);
-		} catch (ServletException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
+		rd.forward(request, response);
 	}
 }
 

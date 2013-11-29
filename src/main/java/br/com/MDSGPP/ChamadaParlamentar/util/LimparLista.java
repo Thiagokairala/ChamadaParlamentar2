@@ -1,10 +1,10 @@
-package br.com.MDSGPP.ChamadaParlamentar.exception;
+package br.com.MDSGPP.ChamadaParlamentar.util;
 
 import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
-public final class ExceptionRanking {
+public final class LimparLista {
 
 	public static ArrayList<ArrayList<Estatistica>> limparLista(ArrayList<Estatistica> lista){
 		ArrayList<ArrayList<Estatistica>> passar = new ArrayList<ArrayList<Estatistica>>();

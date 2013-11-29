@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.DiaControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataNaoEncontradaException;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionDia;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
@@ -29,20 +30,25 @@ public class SessoesPorData extends HttpServlet {
 				new DiaControl();
 				Dia dia = DiaControl.passarData(data);
 
-				if(ExceptionDia.verificaData(dia.getListaSessoes().size())){
-
-					request.setAttribute("dia", dia);
-					rd = request.getRequestDispatcher("/MostrarDia.jsp");
-				}else{
-					rd = request.getRequestDispatcher("/DataNaoEncontrada.jsp");
+				try {
+					dia.getListaSessoes().size();
+				} catch (NullPointerException e1) {
+					throw new DataNaoEncontradaException();
 				}
+
+
+				request.setAttribute("dia", dia);
+				rd = request.getRequestDispatcher("/MostrarDia.jsp");
+
 
 			} catch (ClassNotFoundException e) {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (SQLException e) {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (DataFormatoErradoException e) {
-				rd = request.getRequestDispatcher("FormatoErrado.jsp");
+				rd = request.getRequestDispatcher("/FormatoErrado.jsp");
+			} catch (DataNaoEncontradaException e) {
+				rd = request.getRequestDispatcher("/DataNaoEncontrada.jsp");
 			}
 		}
 		else {

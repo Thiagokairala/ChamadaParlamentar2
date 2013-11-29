@@ -3,21 +3,23 @@ package br.com.MDSGPP.ChamadaParlamentar.control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
+import br.com.MDSGPP.ChamadaParlamentar.util.LimparLista;
 
 public final class RankingControl {
 	private static final int TAMANHO_RANKINGS = 5;
 
-	public static Ranking gerarRanking(ArrayList<Estatistica> lista) {
+	public static Ranking gerarRanking(ArrayList<Estatistica> lista) 
+			throws ListaRankingException {
 
 		Ranking ranking = new Ranking();
 		try {
 			ArrayList<ArrayList<Estatistica>> recebido = 
-					ExceptionRanking.limparLista(lista);
+					LimparLista.limparLista(lista);
 			ArrayList<Estatistica> removidos = recebido.get(1);
 			ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
 			ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
@@ -37,7 +39,7 @@ public final class RankingControl {
 			ranking.setRemovidos(removidos);
 
 		} catch (NullPointerException e) {
-
+			throw new ListaRankingException();
 		}
 
 		return ranking;

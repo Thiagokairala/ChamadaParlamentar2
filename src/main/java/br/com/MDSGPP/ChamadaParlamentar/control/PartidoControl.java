@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.PartidoDao;
-import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionRanking;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
+import br.com.MDSGPP.ChamadaParlamentar.util.LimparLista;
 
 public final class PartidoControl {
 
@@ -88,7 +88,7 @@ public final class PartidoControl {
 		partido = gerarEstatisticaDoPartido(nome);
 
 
-		ArrayList<ArrayList<Estatistica>> listaRecebida = ExceptionRanking.
+		ArrayList<ArrayList<Estatistica>> listaRecebida = LimparLista.
 				limparLista(partido.getEstatisticaDosDeputados());
 
 		partido.setEstatisticaDosDeputados(listaRecebida.get(0));

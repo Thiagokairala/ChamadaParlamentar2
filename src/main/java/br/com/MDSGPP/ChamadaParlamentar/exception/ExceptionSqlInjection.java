@@ -1,5 +1,8 @@
 package br.com.MDSGPP.ChamadaParlamentar.exception;
 
+/*mesmo não sendo uma exception em si, esse método *
+ * controla a inserção de sql, algo de extrema importancia *
+ */
 public final class ExceptionSqlInjection {
 	public static boolean testeSqlInjection(String aTestar) {		
 		
