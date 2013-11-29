@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.RankingControl;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
@@ -27,24 +29,31 @@ public class TesteRankingControl {
 	}
 
 	@Test
-	public void testGerarRanking() throws ClassNotFoundException, SQLException {
+	public void testGerarRanking()
+			throws ClassNotFoundException, SQLException, ListaRankingException {
 		Ranking ranking = RankingControl.gerarRanking
 				(RankingControl.gerarListaEstatistica
 						(new DeputadoDao().getDeputados()));
-		ArrayList<Estatistica> teste = new ArrayList<Estatistica>();
-		Ranking ranking2 = RankingControl.gerarRanking(teste);
 		
-		Ranking ranking3 = RankingControl.gerarRanking(null);
 		
 		assertNotNull(ranking.getLista());
 		assertNotNull(ranking.getMelhores());
 		assertNotNull(ranking.getPiores());
 		assertNotNull(ranking.getRemovidos());
-		
-		assertTrue(ranking2 == null);
-		
-		assertTrue(ranking3 == null);
 	}
+	
+	@Test(expected=ListaRankingException.class)
+	public void testGerarRankingListaRankingException() throws ListaRankingException{
+		ArrayList<Estatistica> teste = new ArrayList<Estatistica>();
+		Ranking ranking2 = RankingControl.gerarRanking(teste);
+	}
+	
+	@Test(expected=ListaRankingException.class)
+	public void testGerarRankingListaComParametroNull() throws ListaRankingException {
+
+		Ranking ranking3 = RankingControl.gerarRanking(null);
+	}
+	
 	
 	@Test
 	public void testGerarListaEstatistica() throws ClassNotFoundException, SQLException {

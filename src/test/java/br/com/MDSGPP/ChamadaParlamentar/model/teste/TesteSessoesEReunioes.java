@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
@@ -18,7 +19,7 @@ public class TesteSessoesEReunioes {
 	SessoesEReunioes sessoesTeste; 
 
 	@Before
-	public void setUp() {
+	public void setUp() throws DataFormatoErradoException {
 		ArrayList<Deputados> listaTeste = new ArrayList<Deputados>();
 		sessoes = new SessoesEReunioes();
 		sessoesTeste = new 
@@ -26,18 +27,22 @@ public class TesteSessoesEReunioes {
 	}
 
 	@Test
-	public void testSessoesEReunioesStringStringArrayListOfDeputados() {
+	public void testSessoesEReunioesStringStringArrayListOfDeputados() 
+			throws DataFormatoErradoException {
 		ArrayList<Deputados> lista = new ArrayList<Deputados>();
 		SessoesEReunioes sessoes2 = new 
 				SessoesEReunioes("11/12/2012", "descricaoDeTeste", lista,
 						"descricaoTeste");
-		SessoesEReunioes sessoes3 = new 
-				SessoesEReunioes("oioi", "não pode passar", lista, "descricaoTeste");
+		
 
 		assertNotNull(sessoes2);
-		assertTrue(sessoes3.getData() == null);
-		assertTrue(sessoes3.getDescricao() == null);
-		assertTrue(sessoes3.getDeputados() == null);
+	}
+	
+	@Test(expected=DataFormatoErradoException.class)
+	public void testSessoesEReunioesComException() throws DataFormatoErradoException {
+		ArrayList<Deputados> lista = new ArrayList<Deputados>();
+		SessoesEReunioes sessoes3 = new 
+				SessoesEReunioes("oioi", "não pode passar", lista, "descricaoTeste");
 	}
 
 	@Test
@@ -51,11 +56,14 @@ public class TesteSessoesEReunioes {
 	}
 
 	@Test
-	public void testSetData() {
+	public void testSetData() throws DataFormatoErradoException {
 		sessoes.setData("11/12/2012");
 		assertTrue(sessoes.getData().equals("11/12/2012"));
+	}
+	
+	@Test(expected=DataFormatoErradoException.class)
+	public void testSetDataFormatoErrado() throws DataFormatoErradoException {
 		sessoes.setData("nao deve passar");
-		assertTrue(sessoes.getData() == null);
 	}
 
 	@Test

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.MDSGPP.ChamadaParlamentar.exception.DataFormatoErradoException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Dia;
 import br.com.MDSGPP.ChamadaParlamentar.model.SessoesEReunioes;
 
@@ -15,7 +16,7 @@ public class TesteDia {
 	Dia dia2;
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws DataFormatoErradoException {
 		dia = new Dia();
 		dia.setData("10/10/2010");
 		ArrayList<SessoesEReunioes> lista = new ArrayList<SessoesEReunioes>();
@@ -33,12 +34,14 @@ public class TesteDia {
 	}
 
 	@Test
-	public void testSetData() {
-		dia2.setData("nao vai passar");
-		
-		assertTrue(dia2.getData() == null);
+	public void testSetData() throws DataFormatoErradoException {
 		dia2.setData("10/10/2010");
 		assertNotNull(dia2.getData());
+	}
+	
+	@Test(expected=DataFormatoErradoException.class) 
+	public void testSetDataFormatoErrado() throws DataFormatoErradoException {
+		dia2.setData("naoVaiPassar");	
 	}
 
 	@Test

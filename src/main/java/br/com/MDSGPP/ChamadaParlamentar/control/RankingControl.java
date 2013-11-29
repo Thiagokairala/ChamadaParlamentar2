@@ -26,6 +26,9 @@ public final class RankingControl {
 
 			ArrayList<Estatistica> listaRecebida = recebido.get(0);
 
+			if(listaRecebida.size() == 0) {
+				throw new ListaRankingException();
+			}
 			ArrayList<Estatistica> listaOrdenada = ordenacao(listaRecebida);
 
 			for(int i = 0; i<TAMANHO_RANKINGS; i++) {
