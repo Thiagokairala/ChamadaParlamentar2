@@ -8,7 +8,7 @@ import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.EstatisticaPartido;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
-public class EstatisticaPartidoControl {
+public final class EstatisticaPartidoControl {
 	public static EstatisticaPartido gerarEstatisticaPartido(String nome) 
 			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		EstatisticaPartido estatistica = new EstatisticaPartido();
