@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.MDSGPP.ChamadaParlamentar.control.RankingControl;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class RankingCompleto extends HttpServlet {
@@ -35,6 +36,8 @@ public class RankingCompleto extends HttpServlet {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 			e.printStackTrace();
 		} catch (ListaRankingException e) {
+			rd= request.getRequestDispatcher("/Erro.jsp");
+		} catch (ListaVaziaException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 		}
 

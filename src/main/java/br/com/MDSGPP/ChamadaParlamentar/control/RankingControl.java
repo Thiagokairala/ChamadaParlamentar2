@@ -48,35 +48,35 @@ public final class RankingControl {
 		return ranking;
 	}
 
-	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista) throws ClassNotFoundException, SQLException {
-
-		ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
-		String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(0));
+	public static ArrayList<Estatistica> gerarListaEstatistica(ArrayList<Deputados> lista)
+			throws ClassNotFoundException, SQLException, 
+			ListaRankingException, ListaVaziaException {
 
 		try {
+			ArrayList<Estatistica> devolver = new ArrayList<Estatistica>();
+			String nome = EstatisticaControl.arrumarNomePesquisa(lista.get(0));
+
 			devolver.add(EstatisticaControl.gerarEstatisticas(nome));
-		} catch (ListaVaziaException e1) {
-			Estatistica estatistica = new Estatistica();
-			estatistica.setNome(nome);
-			devolver.add(estatistica);
-		}
 
-		int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
 
-		for(int i = 0; i< lista.size(); i++) {
-			nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
+			int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
 
-			try {
-				devolver.add(EstatisticaControl.gerarEstatisticas(nome, 
-						totalSessao));
-			} catch (ListaVaziaException e) {
-				Estatistica estatistica = new Estatistica();
-				estatistica.setNome(nome);
-				devolver.add(estatistica);
+			for(int i = 0; i< lista.size(); i++) {
+				nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
+
+				try {
+					devolver.add(EstatisticaControl.gerarEstatisticas(nome, 
+							totalSessao));
+				} catch (ListaVaziaException e) {
+					Estatistica estatistica = new Estatistica();
+					estatistica.setNome(nome);
+					devolver.add(estatistica);
+				}
 			}
+			return devolver;
+		} catch (IndexOutOfBoundsException e2) {
+			throw new ListaRankingException();
 		}
-
-		return devolver;
 	}
 
 	public static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {

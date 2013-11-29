@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.PartidoControl;
-import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
-import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
 public class TestePartidoControl {
@@ -79,5 +77,27 @@ public class TestePartidoControl {
 	public void testGerarEstatisticasdoPartidoCertoListaVazia() throws ClassNotFoundException, SQLException, ListaVaziaException {
 		String nomePartido = "NaoEPraPassar";
 		PartidoControl.gerarEstatisticaDoPartido(nomePartido);
+	}
+	
+	@Test
+	public void testPassarPartidoComDadosCompletos() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
+		String nomePartido1 = "pt";
+		String nomePartido2 = "PT";
+		String nomePartido3 = "partido dos trabalhadores";
+		
+		Partidos partido1 = PartidoControl.passarPartidoComDadosCompletos(nomePartido1);
+		Partidos partido2 = PartidoControl.passarPartidoComDadosCompletos(nomePartido2);
+		Partidos partido3 = PartidoControl.passarPartidoComDadosCompletos(nomePartido3);
+		
+		assertNotNull(partido1);
+		assertTrue(partido1.getDeputadosDoPartido().size()>0);
+		
+		assertNotNull(partido2);
+		assertTrue(partido2.getDeputadosDoPartido().size()>0);
+		
+		assertTrue(partido1.getSigla().equalsIgnoreCase(partido2.getSigla()));
+		
+		assertNotNull(partido3);
 	}
 }
