@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.PartidoControl;
 import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
 
@@ -23,63 +24,60 @@ public class TestePartidoControl {
 	
 	@Test
 	public void testVerificaExistenciaRetornaNulo() throws ClassNotFoundException, SQLException {
-		PartidoControl control = new PartidoControl();
-		assertTrue(control.verificaExistencia("ronaldo") == null);
+		assertTrue(PartidoControl.verificaExistencia("ronaldo") == null);
 	}
 	
 	@Test
 	public void testVerificaExistenciaSigla() throws ClassNotFoundException, SQLException {
-		PartidoControl control = new PartidoControl();
-		
-		ArrayList<ArrayList<String>> listaComDados = control.passarListaPartidos();
+		ArrayList<ArrayList<String>> listaComDados = PartidoControl.passarListaPartidos();
 		String sigla = "PT";
 
 		for(int i = 0; i<listaComDados.size(); i++) {
 			if(listaComDados.get(i).get(1).equalsIgnoreCase(sigla)) {
-				assertTrue(control.verificaExistencia(sigla) == listaComDados.get(i));
+				assertTrue(PartidoControl.verificaExistencia(sigla) == listaComDados.get(i));
 			}
 		}
 	}
 	
 	@Test
 	public void testVerificaExistenciaNomePartido() throws ClassNotFoundException, SQLException {
-		PartidoControl control = new PartidoControl();
-		
-		ArrayList<ArrayList<String>> listaComDados = control.passarListaPartidos();
+		ArrayList<ArrayList<String>> listaComDados = PartidoControl.passarListaPartidos();
 		String partido = "Partido dos Trabalhadores";
 
 		for(int i = 0; i<listaComDados.size(); i++) {
 			if(listaComDados.get(i).get(0).equalsIgnoreCase(partido)) {
-				assertTrue(control.verificaExistencia(partido) == listaComDados.get(i));
+				assertTrue(PartidoControl.verificaExistencia(partido) == listaComDados.get(i));
 			}
 		}
 	}
 	
-	@Test
+	@Test//aqui ainda falta testar
 	public void testPassarPartidoCerto() throws ClassNotFoundException, SQLException {
 		PartidoControl control = new PartidoControl();
 		String nomePartido = "PT";
 		
-		ArrayList<String> nomePartidoCerto = control.verificaExistencia(nomePartido);
+		ArrayList<String> nomePartidoCerto = PartidoControl.verificaExistencia(nomePartido);
 		
-		assertNotNull(control.passarPartido(nomePartido));
+		assertNotNull(PartidoControl.passarPartido(nomePartido));
 	}
 	
 	@Test
 	public void testPassarPartidoIncorreto() throws ClassNotFoundException, SQLException {
-		PartidoControl control = new PartidoControl();
 		String nomePartido = "erro";
 		
-		assertNotNull(control.passarPartido(nomePartido));
+		assertNotNull(PartidoControl.passarPartido(nomePartido));
 	}
 	
 	@Test
-	public void testGerarEstatisticasdoPartidoCerto() throws ClassNotFoundException, SQLException {
-		PartidoControl control = new PartidoControl();
+	public void testGerarEstatisticasdoPartidoCerto() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		String nomePartido = "pt";
-		assertNotNull(control.gerarEstatisticaDoPartido(nomePartido));
+		assertNotNull(PartidoControl.gerarEstatisticaDoPartido(nomePartido));
+	}
+	
+	@Test(expected=ListaVaziaException.class)
+	public void testGerarEstatisticasdoPartidoCertoListaVazia() throws ClassNotFoundException, SQLException, ListaVaziaException {
+		String nomePartido = "NaoEPraPassar";
+		PartidoControl.gerarEstatisticaDoPartido(nomePartido);
 	}
 }
-
-
-	

@@ -65,6 +65,7 @@ public final class PartidoControl {
 
 		ArrayList<Estatistica> estatisticas = new ArrayList<Estatistica>();
 
+		try {
 		for(int i = 0; i<partido.getDeputadosDoPartido().size(); i++) {
 			Estatistica estatistica = new Estatistica();
 			try {
@@ -74,6 +75,9 @@ public final class PartidoControl {
 				estatistica.setNome(EstatisticaControl.arrumarNomePesquisa(partido.getDeputadosDoPartido().get(i)));
 			}
 			estatisticas.add(estatistica);
+		}
+		} catch (NullPointerException e) {
+			throw new ListaVaziaException();
 		}
 
 		partido.setEstatisticaDosDeputados(estatisticas);

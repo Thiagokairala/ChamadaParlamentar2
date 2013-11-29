@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 
@@ -28,33 +29,43 @@ public class TesteEstatisticaControl {
 	}
 
 	@Test
-	public void testGerarEstatisticas() throws ClassNotFoundException, SQLException {
-		Estatistica estatisticaTeste1 = null;
+	public void testGerarEstatisticas() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		Estatistica estatisticaTeste2 = null;
 		Estatistica estatisticaTeste3 = null;
 		
-		estatisticaTeste1 = EstatisticaControl.gerarEstatisticas("naoDevePassar");
 		estatisticaTeste2 = EstatisticaControl.gerarEstatisticas("abelardo lupion-dem/pr");
 		estatisticaTeste3 = EstatisticaControl.gerarEstatisticas("ABELARDO LUPION-DEM/PR");
 		
-		assertTrue(estatisticaTeste1.getLista().get(0).equals("Dados não disponiveis"));
 		assertTrue(estatisticaTeste2 != null);
 		assertTrue(estatisticaTeste3 != null);
 	}
 	
+	@Test(expected=ListaVaziaException.class)
+	public void testGerarEstatisticasListaVazia() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
+		Estatistica estatisticaTeste1 = 
+				EstatisticaControl.gerarEstatisticas("naoDevePassar");
+	}
+	
 	@Test
-	public void testGerarEstatisticas2() throws ClassNotFoundException, SQLException {
-		Estatistica estatisticaTeste1 = null;
+	public void testGerarEstatisticasComDoisParametros() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		Estatistica estatisticaTeste2 = null;
 		Estatistica estatisticaTeste3 = null;
 		
-		estatisticaTeste1 = EstatisticaControl.gerarEstatisticas("naoDevePassar", 3);
 		estatisticaTeste2 = EstatisticaControl.gerarEstatisticas("abelardo lupion-dem/pr", 4);
 		estatisticaTeste3 = EstatisticaControl.gerarEstatisticas("ABELARDO LUPION-DEM/PR", 5);
 		
-		assertTrue(estatisticaTeste1.getLista().get(0).equals("Dados não disponiveis"));
 		assertTrue(estatisticaTeste2 != null);
 		assertTrue(estatisticaTeste3 != null);
+		assertTrue(estatisticaTeste2.getNome().equalsIgnoreCase(estatisticaTeste3.getNome()));
+	}
+	
+	@Test(expected=ListaVaziaException.class)
+	public void testGerarEstatisticasComDoisParametrosListaVazia() 
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
+		Estatistica estatisticaTeste1 = EstatisticaControl.gerarEstatisticas("naoDevePassar", 3);
 	}
 	
 	@Test

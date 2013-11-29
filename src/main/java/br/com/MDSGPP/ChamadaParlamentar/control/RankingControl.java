@@ -56,7 +56,6 @@ public final class RankingControl {
 			Estatistica estatistica = new Estatistica();
 			estatistica.setNome(nome);
 			devolver.add(estatistica);
-			System.out.println(estatistica.getNome());
 		}
 
 		int totalSessao = Integer.parseInt(devolver.get(0).getTotalSessao());
@@ -64,8 +63,14 @@ public final class RankingControl {
 		for(int i = 0; i< lista.size(); i++) {
 			nome = EstatisticaControl.arrumarNomePesquisa(lista.get(i));
 
-			devolver.add(EstatisticaControl.gerarEstatisticas(nome, 
-					totalSessao));
+			try {
+				devolver.add(EstatisticaControl.gerarEstatisticas(nome, 
+						totalSessao));
+			} catch (ListaVaziaException e) {
+				Estatistica estatistica = new Estatistica();
+				estatistica.setNome(nome);
+				devolver.add(estatistica);
+			}
 		}
 
 		return devolver;

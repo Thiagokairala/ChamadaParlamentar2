@@ -16,7 +16,7 @@ public final class EstatisticaControl {
 
 
 	public static Estatistica gerarEstatisticas(String nome)
-			throws ClassNotFoundException, SQLException, ListaVaziaException	{
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao = new EstatisticaDao();	
 		SessoesEReunioesDao sessoes = new SessoesEReunioesDao();
@@ -33,9 +33,9 @@ public final class EstatisticaControl {
 		return estatistica;
 	}
 
-
+	//esse metodo nao possui o throws pois é realizado dentro de um for
 	public static Estatistica gerarEstatisticas(String nome, int numeroTotalSessao) 
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, ListaVaziaException {
 
 		Estatistica estatistica = new Estatistica();
 		EstatisticaDao dao = new EstatisticaDao();	
@@ -45,11 +45,8 @@ public final class EstatisticaControl {
 
 		estatistica.setNome(nome);
 
-		try {
-			estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
-		} catch (ListaVaziaException e) {
-			return estatistica;
-		}
+		estatistica = calcularEstatistica(estatistica, sessoes, numeroTotalSessao);
+
 		estatistica.setTotalSessao(Integer.toString(numeroTotalSessao));
 
 
@@ -63,7 +60,7 @@ public final class EstatisticaControl {
 			int numeroTotalSessao) throws ListaVaziaException {
 		if(estatistica.getLista().size() == 0)
 			throw new ListaVaziaException();
-		
+
 		estatistica.setNumeroSessao(Integer.toString(estatistica.getLista().size()));
 
 		DecimalFormat df = new DecimalFormat("###.00");  
