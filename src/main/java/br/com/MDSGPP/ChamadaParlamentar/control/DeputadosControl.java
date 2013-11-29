@@ -9,6 +9,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer3D;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
@@ -95,7 +96,7 @@ public final class DeputadosControl {
 		
 		dataset.addValue(porcentagemPrimeiro, estatisticaPrimeiro.getNome(), "Deputados");
 		dataset.addValue(porcentagemSegundo, estatisticaSegundo.getNome(), "Deputados");
-		dataset.addValue(100.0, "total", "Ddeputados");
+		dataset.addValue(100.0, "total", "Deputados");
 		return dataset; 
 	}
 
@@ -106,9 +107,11 @@ public final class DeputadosControl {
 		JFreeChart grafico = ChartFactory.createBarChart3D(null, null, "porcentagem"
 				, dataset, PlotOrientation.VERTICAL, true, true, false);
 		
-		grafico.setBackgroundPaint(Color.GRAY);
+		grafico.setBackgroundPaint(Color.WHITE.darker());
+		
+		BarRenderer3D alterar = (BarRenderer3D) grafico.getCategoryPlot().getRenderer();
+		
+		alterar.setMaximumBarWidth(0.1);
 		return grafico;
-		
-		
 	}
 }

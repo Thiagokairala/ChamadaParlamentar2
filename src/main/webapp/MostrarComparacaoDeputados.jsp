@@ -27,64 +27,69 @@
 		<div id="grafico">
 		</div>
 
-		<div id="primeiro">
-			<h1>Nome: ${estatisticaPrimeiro.nome }</h1>
-			
-			<h2>
-				<b>Sessoes assistidas:</b>
-			</h2>
-			<p>${estatisticaPrimeiro.numeroSessao }</p>
+		<div id="alinahr">
+			<div id="primeiro">
+				<h1>Nome: ${estatisticaPrimeiro.nome }</h1>
 
-			<h2>
-				<b>Sessoes totais:</b>
-			</h2>
-			<p>${estatisticaPrimeiro.totalSessao }</p>
+				<h2>
+					<b>Sessoes assistidas:</b>
+				</h2>
+				<p>${estatisticaPrimeiro.numeroSessao }</p>
 
-			<h2>
-				<b>Porcentagem:</b>
-			</h2>
-			<p>${estatisticaPrimeiro.porcentagem }</p>
+				<h2>
+					<b>Sessoes totais:</b>
+				</h2>
+				<p>${estatisticaPrimeiro.totalSessao }</p>
 
-			<h2>
-				<b>Sessoes:</b>
-			</h2>
+				<h2>
+					<b>Porcentagem:</b>
+				</h2>
+				<p>${estatisticaPrimeiro.porcentagem }</p>
 
-			<c:forEach var="sessao" items="${estatisticaPrimeiro.lista }">
-				<td><a href = "sessaoPorNome?descricao=${sessao}">
-						${sessao }</a></td><br><br>
-			</c:forEach>
+				<h2>
+					<b>Sessoes:</b>
+				</h2>
+
+				<c:forEach var="sessao" items="${estatisticaPrimeiro.lista }">
+					<td><a href="sessaoPorNome?descricao=${sessao}"> ${sessao }</a></td>
+					<br>
+					<br>
+				</c:forEach>
+			</div>
+			<!-- fim da div primeiro -->
+
+			<div id="segundo">
+				<h1>Nome: ${estatisticaSegundo.nome }</h1>
+
+				<h2>
+					<b>Sessoes assistidas:</b>
+				</h2>
+				<p>${estatisticaSegundo.numeroSessao }</p>
+
+				<h2>
+					<b>Sessoes totais:</b>
+				</h2>
+				<p>${estatisticaSegundo.totalSessao }</p>
+
+				<h2>
+					<b>Porcentagem:</b>
+				</h2>
+				<p>${estatisticaSegundo.porcentagem }</p>
+
+				<h2>
+					<b>Sessoes:</b>
+				</h2>
+
+				<c:forEach var="sessao" items="${estatisticaSegundo.lista }">
+					<td><a href="sessaoPorNome?descricao=${sessao}"> ${sessao }</a></td>
+					<br>
+					<br>
+				</c:forEach>
+
+			</div>
+			<!-- fim da div segundo -->
 		</div>
-		<!-- fim da div primeiro -->
-
-		<div id="segundo">
-			<h1>Nome: ${estatisticaSegundo.nome }</h1>
-		
-			<h2>
-				<b>Sessoes assistidas:</b>
-			</h2>
-			<p>${estatisticaSegundo.numeroSessao }</p>
-
-			<h2>
-				<b>Sessoes totais:</b>
-			</h2>
-			<p>${estatisticaSegundo.totalSessao }</p>
-
-			<h2>
-				<b>Porcentagem:</b>
-			</h2>
-			<p>${estatisticaSegundo.porcentagem }</p>
-
-			<h2>
-				<b>Sessoes:</b>
-			</h2>
-
-			<c:forEach var="sessao" items="${estatisticaSegundo.lista }">
-				<td><a href = "sessaoPorNome?descricao=${sessao}">
-						${sessao }</a></td><br><br>
-			</c:forEach>
-
-		</div>
-		<!-- fim da div segundo -->
+		<!-- fim da div alinhar -->
 
 
 
