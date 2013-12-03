@@ -8,6 +8,10 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	private static Connection conexao;
+	private static final String URL = "jdbc:mysql://mysql-ChamadaParlamentar"
+			+ ".jelastic.websolute.net.br/Chamada";
+	private static final String USER = "Chamada";
+	private static final String SENHA = "77jU8jaUbWAKayVC";
 
 	public ConnectionFactory() {
 
@@ -16,8 +20,8 @@ public class ConnectionFactory {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		if(ConnectionFactory.conexao == null) {
 			Class.forName("com.mysql.jdbc.Driver");
-			ConnectionFactory.conexao = DriverManager.getConnection
-					("jdbc:mysql://localhost/projetoMDS", "root", "12345");
+			conexao = DriverManager.getConnection
+					(URL, USER, SENHA);
 		}
 		return ConnectionFactory.conexao;
 	}

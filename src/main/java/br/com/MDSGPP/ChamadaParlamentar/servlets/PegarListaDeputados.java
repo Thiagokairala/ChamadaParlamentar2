@@ -25,6 +25,7 @@ public class PegarListaDeputados extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			rd = request.getRequestDispatcher("/Erro.jsp");
 		} catch (SQLException e) {
+			e.printStackTrace();
 			rd = request.getRequestDispatcher("/Erro.jsp");
 		}
 		
