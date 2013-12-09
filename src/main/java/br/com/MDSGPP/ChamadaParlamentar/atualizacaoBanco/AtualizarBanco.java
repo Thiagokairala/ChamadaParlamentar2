@@ -11,8 +11,14 @@ import java.util.TimerTask;
 import javax.xml.rpc.ServiceException;
 
 import br.com.MDSGPP.ChamadaParlamentar.classesDeConexao.ConexaoComWsSessoesEReunioes;
+import br.com.MDSGPP.ChamadaParlamentar.control.RankingControl;
 import br.com.MDSGPP.ChamadaParlamentar.dao.Dao;
+import br.com.MDSGPP.ChamadaParlamentar.dao.DeputadoDao;
+import br.com.MDSGPP.ChamadaParlamentar.dao.RankingDao;
 import br.com.MDSGPP.ChamadaParlamentar.dao.SessoesEReunioesDao;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
+import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
+import br.com.MDSGPP.ChamadaParlamentar.model.Ranking;
 
 public class AtualizarBanco {
 	Timer timer;
@@ -28,9 +34,9 @@ public class AtualizarBanco {
 }
 	
 	private final static long delayDiario = 1000*60*60*24;
-	private final static int fONE_DAY = 1;
-	private final static int fFOUR_AM = 6;
-	private final static int fZERO_MINUTES = 0;
+	private final static int fONE_DAY = 0;
+	private final static int fFOUR_AM = 13;
+	private final static int fZERO_MINUTES = 18;
 
 	private static Date getAmanha6Am(){
 	  Calendar tomorrow = new GregorianCalendar();
@@ -68,6 +74,11 @@ public class AtualizarBanco {
 				
 				sessoesDao.adcionarDataNaTable(ConexaoComWsSessoesEReunioes.adcionarDataNaTable("20/11/2011", "440"));
 				sessoesDao.adcionarSessaoNaTable(ConexaoComWsSessoesEReunioes.adcionarSessaoNaTable("20/11/2011"));
+				RankingDao rankingDao = new RankingDao();
+				Ranking ranking =  RankingControl.gerarRanking
+						(RankingControl.gerarListaEstatistica(new DeputadoDao().getDeputados()));
+		
+				rankingDao.adicionarRankingNaTable(ranking);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -78,6 +89,12 @@ public class AtualizarBanco {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ListaRankingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ListaVaziaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -1,8 +1,8 @@
 @CHARSET "ISO-8859-1";
 
 #melhores {
-	background: -webkit-gradient(linear, left top, left bottom, from(#00CD66), to(#f8f8ff)) repeat-X;
-	background: -moz-linear-gradient(top, #00CD66, #f8f8ff) repeat-X;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FA8072), to(#f8f8ff)) repeat-X;
+	background: -moz-linear-gradient(top, #FA8072, #f8f8ff) repeat-X;
 	float: left;
 	width: auto;
 	height: auto;
@@ -10,8 +10,8 @@
 }
 
 #piores {
-	background: -webkit-gradient(linear, left top, left bottom, from(#8E2323), to(#f8f8ff)) repeat-X;
-	background: -moz-linear-gradient(top, #8E2323, #f8f8ff) repeat-X;
+	background: -webkit-gradient(linear, left top, left bottom, from(#90EE90), to(#f8f8ff)) repeat-X;
+	background: -moz-linear-gradient(top, #90EE90, #f8f8ff) repeat-X;
 	float: right;
 	width: auto;
 	height: auto;

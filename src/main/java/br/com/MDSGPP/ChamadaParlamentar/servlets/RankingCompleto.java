@@ -24,8 +24,7 @@ public class RankingCompleto extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		try {
-			ranking = RankingControl.gerarRanking
-					(RankingControl.gerarListaEstatistica(new DeputadoDao().getDeputados()));
+			ranking = RankingControl.passarRankingCompleto();
 			request.setAttribute("ranking", ranking);
 			rd= request.getRequestDispatcher("/RankingCompleto.jsp");
 
@@ -35,12 +34,7 @@ public class RankingCompleto extends HttpServlet {
 		} catch (SQLException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 			e.printStackTrace();
-		} catch (ListaRankingException e) {
-			rd= request.getRequestDispatcher("/Erro.jsp");
-		} catch (ListaVaziaException e) {
-			rd= request.getRequestDispatcher("/Erro.jsp");
 		}
-
 
 		rd.forward(request, response);
 	}

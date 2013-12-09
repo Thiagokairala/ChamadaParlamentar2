@@ -23,18 +23,13 @@ public class RankingServ extends javax.servlet.http.HttpServlet {
 		RequestDispatcher rd = null;
 
 		try {
-			ranking = RankingControl.gerarRanking
-					(RankingControl.gerarListaEstatistica(new DeputadoDao().getDeputados()));
+			ranking = RankingControl.passarRankingTop5();
 			request.setAttribute("ranking", ranking);
 			rd= request.getRequestDispatcher("/Ranking.jsp");
 
 		} catch (ClassNotFoundException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 		} catch (SQLException e) {
-			rd= request.getRequestDispatcher("/Erro.jsp");
-		} catch (ListaRankingException e) {
-			rd= request.getRequestDispatcher("/Erro.jsp");
-		} catch (ListaVaziaException e) {
 			rd= request.getRequestDispatcher("/Erro.jsp");
 		}
 		
