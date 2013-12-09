@@ -80,7 +80,7 @@ public final class RankingControl {
 		}
 	}
 	
-	public static Ranking passarRanking() throws ClassNotFoundException, SQLException {
+	public static Ranking passarRankingTop5() throws ClassNotFoundException, SQLException {
 		RankingDao rankingDao = new RankingDao();
 		Ranking ranking = rankingDao.retornaRanking();
 		ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
@@ -129,5 +129,15 @@ public final class RankingControl {
 			}
 		}
 		return lista;
+	}
+
+	public static Ranking passarRankingCompleto() 
+			throws SQLException, ClassNotFoundException {
+		RankingDao rankingDao = new RankingDao();
+		Ranking ranking = rankingDao.retornaRanking();
+		
+		ranking.setLista(ordenacao(ranking.getLista()));
+		
+		return ranking;
 	}
 }
