@@ -3,6 +3,7 @@ package br.com.MDSGPP.ChamadaParlamentar.control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.MDSGPP.ChamadaParlamentar.dao.RankingDao;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaRankingException;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
@@ -78,9 +79,27 @@ public final class RankingControl {
 			throw new ListaRankingException();
 		}
 	}
+	
+	public static Ranking passarRanking() throws ClassNotFoundException, SQLException {
+		RankingDao rankingDao = new RankingDao();
+		Ranking ranking = rankingDao.retornaRanking();
+		ArrayList<Estatistica> melhores = new ArrayList<Estatistica>();
+		ArrayList<Estatistica> piores = new ArrayList<Estatistica>();
+		
+		ranking.setLista(ordenacao(ranking.getLista()));
+		
+		for(int i = 0; i<5; i++) {
+			melhores.add(ranking.getLista().get(i));
+			piores.add(ranking.getLista().get(ranking.getLista().size() -1 -i));
+		}
+		ranking.setMelhores(melhores);
+		ranking.setPiores(piores);
+		return ranking;
+	}
 
 	public static ArrayList<Estatistica> ordenacao(ArrayList<Estatistica> lista) {
 		//Insertion Sort
+		
 		int i = 1, j = 1;
 		if(lista.size() > 0)
 		{
@@ -109,7 +128,6 @@ public final class RankingControl {
 				j++;
 			}
 		}
-
 		return lista;
 	}
 }

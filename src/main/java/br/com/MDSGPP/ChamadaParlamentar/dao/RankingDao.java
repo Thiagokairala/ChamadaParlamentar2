@@ -17,13 +17,15 @@ public class RankingDao extends ConnectionFactory {
 	}
 
 	public void adicionarRankingNaTable(Ranking ranking) throws SQLException {
-		String sql =  "insert into ranking(nomeParlamentar, porcentagem)values (?, ?)";
+		String sql =  "insert into ranking(nomeParlamentar, porcentagem, numeroSessoes)values (?, ?, ?)";
 		PreparedStatement stmt = ConnectionFactory.getConexao().prepareStatement(sql);
 
 		for(int i = 0; i < ranking.getLista().size(); i++) {
 			try {
 				stmt.setString(1, ranking.getLista().get(i).getNome());
 				stmt.setString(2, ranking.getLista().get(i).getPorcentagem());
+				stmt.setString(3, ranking.getLista().get(i).getNumeroSessao());
+				
 				stmt.execute();
 			} catch (MySQLIntegrityConstraintViolationException e) {
 				System.out.println(ranking.getLista().get(i).getNome());
@@ -56,6 +58,7 @@ public class RankingDao extends ConnectionFactory {
 			} 
 			else {
 				estatistica.setPorcentagem(rs.getString("porcentagem"));
+				estatistica.setNumeroSessao(rs.getString("numeroSessoes"));
 				lista.add(estatistica);
 			}
 		}

@@ -10,6 +10,7 @@ public class Dao extends ConnectionFactory {
 	}
 
 	public static void truncateTables() throws SQLException, ClassNotFoundException{
+		Dao dao = new Dao();
 		
 		String sql1 = "truncate table datas";
 		String sql2 = "truncate table ranking";

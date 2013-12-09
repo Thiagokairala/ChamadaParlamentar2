@@ -35,8 +35,8 @@ public class AtualizarBanco {
 	
 	private final static long delayDiario = 1000*60*60*24;
 	private final static int fONE_DAY = 0;
-	private final static int fFOUR_AM = 12;
-	private final static int fZERO_MINUTES = 23;
+	private final static int fFOUR_AM = 13;
+	private final static int fZERO_MINUTES = 18;
 
 	private static Date getAmanha6Am(){
 	  Calendar tomorrow = new GregorianCalendar();
