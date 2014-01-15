@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	private static Connection conexao;
-	private static final String URL = "jdbc:mysql://mysql-ChamadaParlamentar"
+	private static final String URL = "jdbc:mysql://mysql-chamadaparlamentar"
 			+ ".jelastic.websolute.net.br/Chamada";
 	private static final String USER = "Chamada";
 	private static final String SENHA = "77jU8jaUbWAKayVC";
