@@ -17,7 +17,7 @@ public class ConnectionFactory {
 		if(ConnectionFactory.conexao == null) {
 			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionFactory.conexao = DriverManager.getConnection
-					("jdbc:mysql://localhost/projetoMDS", "root", "12345");
+					("jdbc:mysql://localhost/chamada", "root", "12345");
 		}
 		return ConnectionFactory.conexao;
 	}

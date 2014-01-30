@@ -19,6 +19,59 @@
 
 <title>Chamada Parlamentar</title>
 
+<script type="text/javascript" src = "jquery.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script>
+$(function () {
+    	// Radialize the colors
+		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+		    return {
+		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+		        stops: [
+		            [0, color],
+		            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+		        ]
+		    };
+		});
+		
+		// Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: "#f8f8ff",
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'presenca do parlamentar.'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#333333',
+                        connectorColor: '#333333',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'presença parlamentar',
+                data: [
+                    ['presenca',   ${presenca}],
+                    ['falta', (100-${presenca})]
+                ]
+            }]
+        });
+    });
+</script>
+    
+
 </head>
 <body>
 	<div id = "tudo">
@@ -27,11 +80,11 @@
 			<jsp:include page='Header.html'/>
 		</div><!-- Fim da div topo -->
 		
+		<div id="container"></div>
+		
 		<div id = "dados">
 			<h1>Nome: ${estatistica.nome }</h1>
 			
-			<div id = "grafico">
-			</div>
 	  		<h2><b>Sessoes assistidas:</b></h2> <p>${estatistica.numeroSessao }</p>
 
 			<h2><b>Sessoes totais:</b></h2> <p>${estatistica.totalSessao }</p>
