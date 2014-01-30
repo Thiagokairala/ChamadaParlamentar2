@@ -5,13 +5,14 @@
 	float: left;
 	width: 40%;
 	margin-left: 12%;
-	margin-top: 9%;
+	margin-top: 3%;
 	margin-right: 30px;
+	z-index: 9999;
 }
 
 #novoDeputado {
 	float: left;
-	margin-top: 9%;
+	margin-top: -30%;
 }
 
 #dados h1 {
@@ -64,11 +65,9 @@
 	font-size: 20px;
 }
 
-#grafico{
-	background-image: url("deputado1.png");
-	height: 200px;
-	background-repeat: no-repeat;
-	margin-left: 14%;
-	width: auto;
-	margin-top: 7%;
+#container {
+	margin-top: 10%;
+	width: 40%;
+	margin-left: 12%;
+	z-index: 1;
 }

@@ -14,6 +14,62 @@
                 <jsp:include page="FolhaParaMostrarComparacaoDeputados.css"/>
 </style>
 
+<script type="text/javascript" src = "jquery.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script>
+$(function () {
+    $('#grafico').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Comparação dos deputados'
+        },
+        xAxis: {
+            categories: [
+                '${estatisticaPrimeiro.nome}',
+                '${estatisticaSegundo.nome}',
+                'Total',
+            ]
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Porcentagem de Presença'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '${estatisticaPrimeiro.nome}',
+            data: [${presencaPrimeiro}]
+
+        }, {
+            name: '${estatisticaSegundo.nome}',
+            data: [${presencaSegundo}]
+
+        }, {
+            name: 'Total',
+            data: [100]
+        }]
+    });
+});
+</script>
+
+
 <title>Chamada Parlamentar</title>
 </head>
 <body>

@@ -51,10 +51,8 @@
 }
 
 #grafico{
-	background-image: url("comparacaoDeputado.png");
-	height: 300px;
-	background-repeat: no-repeat;
-	margin-left: 28%;
-	width: auto;
-	margin-top: 7%;
+	width: 50%;
+	margin-left: 23%;
+	margin-top: 8%; 
+	
 }

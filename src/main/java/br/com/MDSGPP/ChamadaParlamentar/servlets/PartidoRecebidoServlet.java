@@ -1,6 +1,6 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,18 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jfree.chart.ChartRenderingInfo;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.entity.StandardEntityCollection;
-
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaPartidoControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
 import br.com.MDSGPP.ChamadaParlamentar.model.EstatisticaPartido;
 import br.com.MDSGPP.ChamadaParlamentar.model.Partidos;
-import br.com.MDSGPP.ChamadaParlamentar.util.Graficos;
 
 public class PartidoRecebidoServlet extends HttpServlet {
 

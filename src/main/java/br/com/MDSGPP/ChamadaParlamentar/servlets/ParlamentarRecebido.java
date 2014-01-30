@@ -1,6 +1,5 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,18 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jfree.chart.ChartRenderingInfo;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.entity.StandardEntityCollection;
-
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
-import br.com.MDSGPP.ChamadaParlamentar.util.Graficos;
 
 
 public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
@@ -53,23 +46,21 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 					int numeroSessoes = estatistica.getLista().size();
 					int noDePaginas = ((int) Math.ceil(numeroSessoes * 1.0 / sessoesPorPagina))-1;
 
-					JFreeChart grafico = Graficos.criarGrafico(estatistica);
+					double presenca = Math.ceil(((Double.parseDouble(estatistica.getNumeroSessao())) / (Double.parseDouble(estatistica.getTotalSessao())))*100);
+					String presencaPassar = Double.toString(presenca);
+					
 
-					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-					final File arquivo = new File(getServletContext().getRealPath(".") + "/deputado1.png");
-
-					ChartUtilities.saveChartAsPNG(arquivo, grafico, 400, 200, info);
-
-
+					
+					
 					estatistica.setLista(EstatisticaControl.passarListaCerta(pagina-1, sessoesPorPagina, estatistica.getLista()));
 
+					request.setAttribute("presenca", presencaPassar);
 					request.setAttribute("noDePaginas", noDePaginas);
 					request.setAttribute("paginaAtual", pagina);
 					request.setAttribute("lista", lista);
 					request.setAttribute("estatistica", estatistica);
 					rd = request.getRequestDispatcher("/MostrarEstatisticaDeputado.jsp");
 
-					Thread.sleep(6000);
 				}
 				else {
 					rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
@@ -80,9 +71,7 @@ public class ParlamentarRecebido extends javax.servlet.http.HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (IndexOutOfBoundsException e) {
 				rd = request.getRequestDispatcher("/DeputadoNaoEncontrado.jsp");
-			} catch (InterruptedException e) {
-				
-			} catch (NumberFormatException e) {
+			}  catch (NumberFormatException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
 			} catch (ListaVaziaException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");

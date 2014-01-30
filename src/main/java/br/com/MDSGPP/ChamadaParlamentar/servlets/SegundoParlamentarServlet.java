@@ -1,6 +1,5 @@
 package br.com.MDSGPP.ChamadaParlamentar.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,18 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jfree.chart.ChartRenderingInfo;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.entity.StandardEntityCollection;
-
 import br.com.MDSGPP.ChamadaParlamentar.control.DeputadosControl;
 import br.com.MDSGPP.ChamadaParlamentar.control.EstatisticaControl;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ExceptionSqlInjection;
 import br.com.MDSGPP.ChamadaParlamentar.exception.ListaVaziaException;
 import br.com.MDSGPP.ChamadaParlamentar.model.Deputados;
 import br.com.MDSGPP.ChamadaParlamentar.model.Estatistica;
-import br.com.MDSGPP.ChamadaParlamentar.util.Graficos;
 
 public class SegundoParlamentarServlet extends HttpServlet {
 
@@ -55,15 +48,21 @@ public class SegundoParlamentarServlet extends HttpServlet {
 					lista.add(estatisticaPrimeiro);
 					lista.add(estatisticaSegundo);
 					
-					JFreeChart grafico = Graficos.gerarGraficoComparacao(lista);
-
-					final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-					final File arquivo = new File(getServletContext().getRealPath(".") + "/comparacaoDeputado.png");
-
-					ChartUtilities.saveChartAsPNG(arquivo, grafico, 500, 200, info);
+					double presencaPrimeiro = Math.ceil(((Double.parseDouble(estatisticaPrimeiro.getNumeroSessao())) / (Double.parseDouble(estatisticaPrimeiro.getTotalSessao())))*100);
+					String presencaPassar1 = Double.toString(presencaPrimeiro);
 					
-					Thread.sleep(2000);
-
+					double presencaSegundo = Math.ceil(((Double.parseDouble(estatisticaSegundo.getNumeroSessao())) / (Double.parseDouble(estatisticaSegundo.getTotalSessao())))*100);
+					String presencaPassar2 = Double.toString(presencaSegundo);
+					
+					ArrayList<String> listaNomes = new ArrayList<String>();
+					listaNomes.add(estatisticaPrimeiro.getNome());
+					listaNomes.add(estatisticaSegundo.getNome());
+					listaNomes.add("Total");
+					
+					request.setAttribute("lista", listaNomes);
+					request.setAttribute("nomePrimeiro", estatisticaPrimeiro.getNome());
+					request.setAttribute("presencaPrimeiro", presencaPassar1);
+					request.setAttribute("presencaSegundo", presencaPassar2);
 					request.setAttribute("estatisticaPrimeiro", estatisticaPrimeiro);
 					request.setAttribute("estatisticaSegundo", estatisticaSegundo);
 					
@@ -78,9 +77,6 @@ public class SegundoParlamentarServlet extends HttpServlet {
 				rd = request.getRequestDispatcher("/Erro.jsp");
 			} catch (NumberFormatException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (ListaVaziaException e) {
 				rd = request.getRequestDispatcher("/DadosNaoDisponiveis.jsp");
 			}
