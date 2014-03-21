@@ -14,5 +14,5 @@ Authorship and copyright information is available in the files listed below.
     File                  Purpose
     --------------------  -----------------------------------------
     AUTHORS.md            list of authors (updated at each release)
-    COPYRIGHT             Copyright statement for the project
-    COPYING               Full text of the project license
+    COPYRIGHT.txt             Copyright statement for the project
+    COPYING.txt               Full text of the project license
